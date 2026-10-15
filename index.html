@@ -1,729 +1,675 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C / C++ Programlama Eğitimi | IEEE Hacettepe</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            400: '#38bdf8',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                        },
-                        cpp: {
-                            blue: '#00599C',
-                            dark: '#004482',
-                            accent: '#659ad2',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .code-glow {
-            box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.15);
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #090d16;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #334155;
-        }
-    </style>
-</head>
-<body class="bg-[#0b0f19] text-slate-200 font-sans antialiased selection:bg-sky-500/30 selection:text-sky-300">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ Programlama Eğitimi | IEEE Hacettepe</title>
+  
+  <!-- Modern Fontlar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Top Glow Effect -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-64 bg-gradient-to-b from-sky-500/10 via-transparent to-transparent blur-3xl pointer-events-none -z-10"></div>
-
-    <!-- Navigation Bar -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0f19]/80 border-b border-slate-800/80">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-sky-400 to-blue-700 flex items-center justify-center font-mono font-bold text-white text-base shadow-lg shadow-sky-500/20">
-                    C++
-                </div>
-                <div>
-                    <span class="font-bold text-white text-sm sm:text-base tracking-tight flex items-center gap-2">
-                        IEEE Hacettepe
-                        <span class="text-[10px] uppercase font-semibold tracking-wider px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">
-                            Güz 2026
-                        </span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Desktop Links -->
-            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-                <a href="#mufredat" class="hover:text-sky-400 transition-colors">Müfredat</a>
-                <a href="#kurulum" class="hover:text-sky-400 transition-colors">Kurulum Rehberi</a>
-                <a href="#quizler" class="hover:text-sky-400 transition-colors">Canlı Quizler</a>
-                <a href="#odevler" class="hover:text-sky-400 transition-colors">Ödevler</a>
-                <a href="#kaynaklar" class="hover:text-sky-400 transition-colors">Kaynaklar</a>
-            </nav>
-
-            <div class="flex items-center gap-3">
-                <a href="https://github.com" target="_blank" class="flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700/80 transition-all text-slate-200">
-                    <i data-lucide="github" class="w-4 h-4"></i>
-                    <span class="hidden sm:inline">Repo</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-24">
-
-        <!-- HERO SECTION -->
-        <section class="text-center pt-8 pb-4 relative">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-medium text-sky-400 mb-6">
-                <span class="flex h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
-                5 Hafta • 10 Saat • Sıfırdan İleri Seviyeye
-            </div>
-            
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
-                Donanımın Dilini Konuşun: <br/>
-                <span class="bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                    C / C++ Programlama Eğitimi
-                </span>
-            </h1>
-
-            <p class="mt-6 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                İşlemci mimarisi ve bellek yönetiminden modern nesne yönelimli C++ standartlarına kadar, performans odaklı yazılım geliştirmenin temellerini uygulamalı olarak öğreniyoruz.
-            </p>
-
-            <!-- Quick Details Cards -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 text-left">
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                    <div class="flex items-center gap-2 text-sky-400 mb-2">
-                        <i data-lucide="calendar" class="w-4 h-4"></i>
-                        <span class="text-xs uppercase font-semibold tracking-wider text-slate-400">Süre</span>
-                    </div>
-                    <div class="font-bold text-white text-base">5 Hafta (Toplam 10 Saat)</div>
-                    <div class="text-xs text-slate-400 mt-0.5">Her ders 2 saatlik blok</div>
-                </div>
-
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                    <div class="flex items-center gap-2 text-sky-400 mb-2">
-                        <i data-lucide="map-pin" class="w-4 h-4"></i>
-                        <span class="text-xs uppercase font-semibold tracking-wider text-slate-400">Konum</span>
-                    </div>
-                    <div class="font-bold text-white text-base">IEEE Hacettepe Odası</div>
-                    <div class="text-xs text-slate-400 mt-0.5">Yüz yüze & Canlı Kodlama</div>
-                </div>
-
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                    <div class="flex items-center gap-2 text-sky-400 mb-2">
-                        <i data-lucide="cpu" class="w-4 h-4"></i>
-                        <span class="text-xs uppercase font-semibold tracking-wider text-slate-400">Ön Koşul</span>
-                    </div>
-                    <div class="font-bold text-white text-base">Ön Bilgi Gerekmez</div>
-                    <div class="text-xs text-slate-400 mt-0.5">Sıfırdan temel mantıkla</div>
-                </div>
-
-                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-                    <div class="flex items-center gap-2 text-sky-400 mb-2">
-                        <i data-lucide="terminal" class="w-4 h-4"></i>
-                        <span class="text-xs uppercase font-semibold tracking-wider text-slate-400">Araçlar</span>
-                    </div>
-                    <div class="font-bold text-white text-base">GCC / Clang & VS Code</div>
-                    <div class="text-xs text-slate-400 mt-0.5">Modern C++20 standardı</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CURRICULUM TIMELINE -->
-        <section id="mufredat" class="space-y-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800 pb-4">
-                <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
-                        <i data-lucide="layers" class="w-7 h-7 text-sky-400"></i>
-                        Ders Müfredatı
-                    </h2>
-                    <p class="text-slate-400 text-sm mt-1">Her hafta 2 saat: 50 dk Teori/Örnek + 10 dk Mola + 50 dk Canlı Kodlama & Quiz</p>
-                </div>
-                <div class="text-xs text-slate-400 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-                    Toplam 5 Hafta
-                </div>
-            </div>
-
-            <!-- Weeks Accordion List -->
-            <div class="space-y-4">
-
-                <!-- HAFTA 1 -->
-                <div class="rounded-xl border border-slate-800 bg-slate-900/50 overflow-hidden transition-all">
-                    <div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-800/40">
-                        <div class="flex items-start gap-4">
-                            <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-sky-500/20 text-sky-400 font-mono font-bold flex items-center justify-center text-sm border border-sky-500/30">
-                                W1
-                            </span>
-                            <div>
-                                <h3 class="text-base sm:text-lg font-bold text-white">Hafta 1: Bilgisayar Mimarisi, Bellek & Akış Kontrolü</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">Derleme Süreci • Veri Tipleri & sizeof • Operatör Tuzakları • Karar ve Döngü Yapıları</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 self-end md:self-auto">
-                            <a href="#" class="text-xs px-3 py-1.5 rounded-md bg-sky-500/10 text-sky-400 hover:bg-sky-500/20 border border-sky-500/20 font-medium flex items-center gap-1.5 transition">
-                                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Slaytlar (1A & 1B)
-                            </a>
-                            <a href="#odevler" class="text-xs px-3 py-1.5 rounded-md bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 font-medium flex items-center gap-1.5 transition">
-                                <i data-lucide="code" class="w-3.5 h-3.5"></i> Kodlar
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-5 text-sm text-slate-300 grid md:grid-cols-2 gap-6 border-t border-slate-800/70">
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">1A: Temeller & Bellek Mimarisi</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>CPU nasıl çalışır? Makine kodu ve Assembly kavramı</li>
-                                <li>Compiler (Derleyici) vs Interpreter (Yorumlayıcı)</li>
-                                <li>Veri Tipleri: <code class="text-sky-300 font-mono">int, char, float, double, bool</code> ve bellek boyutları</li>
-                                <li>Integer Division (Tamsayı bölmesi) tuzağı ve Type Casting</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">1B: Karar & İterasyon Yapıları</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Mantıksal operatörler ve <code class="text-sky-300 font-mono">boolalpha</code> çıktısı</li>
-                                <li><code class="text-sky-300 font-mono">if - else if - else</code> ve <code class="text-sky-300 font-mono">switch-case</code> kontrol blokları</li>
-                                <li>Döngüler: <code class="text-sky-300 font-mono">while, do-while, for</code></li>
-                                <li>Döngü kontrolleri: <code class="text-sky-300 font-mono">break</code> ve <code class="text-sky-300 font-mono">continue</code> kullanımı</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HAFTA 2 -->
-                <div class="rounded-xl border border-slate-800 bg-slate-900/50 overflow-hidden">
-                    <div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-800/20">
-                        <div class="flex items-start gap-4">
-                            <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-800 text-slate-400 font-mono font-bold flex items-center justify-center text-sm border border-slate-700">
-                                W2
-                            </span>
-                            <div>
-                                <h3 class="text-base sm:text-lg font-bold text-white">Hafta 2: Fonksiyonlar, Pointer & Referans Temelleri</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">Fonksiyon İmzaları • Call by Value vs Call by Reference • Bellek Adresi (&) ve Pointer (*)</p>
-                            </div>
-                        </div>
-                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-400 border border-slate-700/60 w-fit">2. Hafta</span>
-                    </div>
-                    <div class="p-5 text-sm text-slate-300 grid md:grid-cols-2 gap-6 border-t border-slate-800/70">
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">2A: Fonksiyon Mimarisi & Stack Bellek</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Geri dönüş tipleri ve parametre aktarımı</li>
-                                <li>Call Stack nasıl dolar? Stack Overflow nedir?</li>
-                                <li>Fonksiyon aşırı yükleme (Function Overloading)</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">2B: Pointer ve Referans Dünyası</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Adres Operatörü (<code class="text-sky-300 font-mono">&</code>) ve Dereference (<code class="text-sky-300 font-mono">*</code>)</li>
-                                <li>C++ Referansları (<code class="text-sky-300 font-mono">int& ref</code>) vs C Pointer'ları</li>
-                                <li>Pointer Aritmetiği temelleri</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HAFTA 3 -->
-                <div class="rounded-xl border border-slate-800 bg-slate-900/50 overflow-hidden">
-                    <div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-800/20">
-                        <div class="flex items-start gap-4">
-                            <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-800 text-slate-400 font-mono font-bold flex items-center justify-center text-sm border border-slate-700">
-                                W3
-                            </span>
-                            <div>
-                                <h3 class="text-base sm:text-lg font-bold text-white">Hafta 3: Diziler, Metinler ve Dinamik Bellek Yönetimi</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">Dizi Bellek Yerleşimi • C-Strings vs std::string • Heap Bellek (malloc/free & new/delete)</p>
-                            </div>
-                        </div>
-                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-400 border border-slate-700/60 w-fit">3. Hafta</span>
-                    </div>
-                    <div class="p-5 text-sm text-slate-300 grid md:grid-cols-2 gap-6 border-t border-slate-800/70">
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">3A: Diziler & Karakter Dizileri</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Dizi-Pointer ilişkisi (Array Decay)</li>
-                                <li>Null-terminated Strings (<code class="text-sky-300 font-mono">'\0'</code>) vs <code class="text-sky-300 font-mono">std::string</code></li>
-                                <li>Buffer Overflow güvenlik zafiyetleri</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">3B: Dinamik Bellek (Heap)</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Stack vs Heap bellek farkları</li>
-                                <li>C yaklaşımı: <code class="text-sky-300 font-mono">malloc / free</code></li>
-                                <li>C++ yaklaşımı: <code class="text-sky-300 font-mono">new / delete</code> ve Bellek Sızıntısı (Memory Leak)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HAFTA 4 -->
-                <div class="rounded-xl border border-slate-800 bg-slate-900/50 overflow-hidden">
-                    <div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-800/20">
-                        <div class="flex items-start gap-4">
-                            <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-800 text-slate-400 font-mono font-bold flex items-center justify-center text-sm border border-slate-700">
-                                W4
-                            </span>
-                            <div>
-                                <h3 class="text-base sm:text-lg font-bold text-white">Hafta 4: Nesne Yönelimli Programlama (OOP)</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">Sınıflar & Nesneler • Erişim Belirteçleri • Constructor / Destructor • RAII Mantığı</p>
-                            </div>
-                        </div>
-                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-400 border border-slate-700/60 w-fit">4. Hafta</span>
-                    </div>
-                    <div class="p-5 text-sm text-slate-300 grid md:grid-cols-2 gap-6 border-t border-slate-800/70">
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">4A: Struct'tan Class'a Geçiş</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li><code class="text-sky-300 font-mono">struct</code> vs <code class="text-sky-300 font-mono">class</code> farkı</li>
-                                <li>Encapsulation (<code class="text-sky-300 font-mono">public, private, protected</code>)</li>
-                                <li>Getter / Setter metodları ve veri gizleme</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">4B: Yaşam Döngüsü ve RAII</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Yapıcı (Constructor) ve Yıkıcı (Destructor)</li>
-                                <li>C++ felsefesi: RAII (Resource Acquisition Is Initialization)</li>
-                                <li>Kalıtım (Inheritance) ve Çok Biçimlilik (Polymorphism) giriş</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HAFTA 5 -->
-                <div class="rounded-xl border border-slate-800 bg-slate-900/50 overflow-hidden">
-                    <div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-800/20">
-                        <div class="flex items-start gap-4">
-                            <span class="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-800 text-slate-400 font-mono font-bold flex items-center justify-center text-sm border border-slate-700">
-                                W5
-                            </span>
-                            <div>
-                                <h3 class="text-base sm:text-lg font-bold text-white">Hafta 5: Modern C++, STL ve Gerçek Dünya Uygulamaları</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">std::vector & map • Smart Pointers (unique_ptr) • AI Motorları ve Gömülü Sistemlerde C++</p>
-                            </div>
-                        </div>
-                        <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-400 border border-slate-700/60 w-fit">5. Hafta</span>
-                    </div>
-                    <div class="p-5 text-sm text-slate-300 grid md:grid-cols-2 gap-6 border-t border-slate-800/70">
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">5A: Modern C++ & STL Konteynerleri</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Dinamik Diziler: <code class="text-sky-300 font-mono">std::vector</code> kullanımı ve metodları</li>
-                                <li>Anahtar-Değer Haritaları: <code class="text-sky-300 font-mono">std::map</code> ve <code class="text-sky-300 font-mono">unordered_map</code></li>
-                                <li>Akıllı İşaretçiler: <code class="text-sky-300 font-mono">std::unique_ptr</code> ile sıfır bellek sızıntısı</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <span class="text-xs uppercase font-bold text-sky-400 tracking-wider block mb-2">5B: Büyük Resim & Kapanış Projesi</span>
-                            <ul class="space-y-1.5 text-xs text-slate-400 list-disc list-inside">
-                                <li>Dosya I/O (<code class="text-sky-300 font-mono">fstream</code>) ile veri kaydetme</li>
-                                <li>C++ oyun motorlarında ve AI tensor kütüphanelerinde nasıl kullanılır?</li>
-                                <li>Mini Konsol Projesi Değerlendirmesi & Sertifikasyon</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- LIVE QUIZ SIMULATION SECTION -->
-        <section id="quizler" class="space-y-6">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
-                    <i data-lucide="help-circle" class="w-7 h-7 text-sky-400"></i>
-                    Ders İçi İnteraktif Quizler: "C++ Ne Yazar?"
-                </h2>
-                <p class="text-slate-400 text-sm mt-1">Derslerde her konunun ardından ekrana yansıtılacak olan canlı tahmin mekanizması örneği.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-12 gap-6 p-6 rounded-2xl bg-slate-900/80 border border-slate-800 code-glow">
-                
-                <!-- Left: Code Snippet -->
-                <div class="lg:col-span-7 space-y-4">
-                    <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-800 pb-2">
-                        <span class="font-mono text-sky-400">quiz_01_division.cpp</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded text-[11px]">Hafta 1 Quiz</span>
-                    </div>
-
-                    <pre class="font-mono text-xs sm:text-sm bg-black/60 p-4 rounded-xl border border-slate-800 text-slate-200 overflow-x-auto leading-relaxed"><code><span class="text-purple-400">#include</span> <span class="text-emerald-400">&lt;iostream&gt;</span>
-
-<span class="text-purple-400">int</span> <span class="text-blue-400">main</span>() {
-    <span class="text-purple-400">int</span> a = <span class="text-amber-400">7</span>;
-    <span class="text-purple-400">int</span> b = <span class="text-amber-400">2</span>;
-    <span class="text-purple-400">float</span> c = a / b;
-
-    <span class="text-slate-500">// Konsola tam olarak ne yazdırılır?</span>
-    std::cout &lt;&lt; c &lt;&lt; std::endl;
-    <span class="text-purple-400">return</span> <span class="text-amber-400">0</span>;
-}</code></pre>
-                    <p class="text-xs text-slate-400">
-                        <span class="text-amber-400 font-semibold">Tuzak:</span> <code class="font-mono text-slate-300">c</code> değişkeni float olmasına rağmen <code class="font-mono text-slate-300">a / b</code> ifadesi iki tamsayı arasındadır.
-                    </p>
-                </div>
-
-                <!-- Right: Interactive Voting Preview -->
-                <div class="lg:col-span-5 flex flex-col justify-between bg-slate-800/40 p-5 rounded-xl border border-slate-700/60">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Canlı Oylama Simülasyonu</span>
-                            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Canlı
-                            </span>
-                        </div>
-
-                        <!-- Quiz Options -->
-                        <div class="space-y-2.5" id="quizOptions">
-                            <button onclick="voteOption('A', 15)" class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center justify-between text-xs sm:text-sm">
-                                <span>A) 3.5</span>
-                                <span class="text-xs text-slate-400 font-mono" id="optA">%15</span>
-                            </button>
-                            <button onclick="voteOption('B', 68)" class="w-full text-left p-3 rounded-lg bg-sky-950/40 border border-sky-500/40 text-sky-200 transition flex items-center justify-between text-xs sm:text-sm font-semibold">
-                                <span>B) 3 (Doğru Yanıt)</span>
-                                <span class="text-xs text-sky-400 font-mono" id="optB">%68</span>
-                            </button>
-                            <button onclick="voteOption('C', 12)" class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center justify-between text-xs sm:text-sm">
-                                <span>C) 3.0</span>
-                                <span class="text-xs text-slate-400 font-mono" id="optC">%12</span>
-                            </button>
-                            <button onclick="voteOption('D', 5)" class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center justify-between text-xs sm:text-sm">
-                                <span>D) Derleme Hatası (Compiler Error)</span>
-                                <span class="text-xs text-slate-400 font-mono" id="optD">%5</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- QR code notice -->
-                    <div class="mt-4 pt-4 border-t border-slate-700/60 flex items-center gap-3">
-                        <div class="w-12 h-12 rounded bg-white p-1 flex items-center justify-center flex-shrink-0">
-                            <!-- Inline SVG QR Placeholder -->
-                            <svg viewBox="0 0 24 24" class="w-full h-full text-slate-900 fill-current">
-                                <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm13-2h3v3h-3v-3zm0 5h5v3h-5v-3zm3-2h2v2h-2v-2zM5 5h2v2H5V5zm12 0h2v2h-2V5zM5 17h2v2H5v-2z"/>
-                            </svg>
-                        </div>
-                        <div class="text-xs text-slate-400">
-                            <span class="text-slate-200 font-semibold block">Ders Esnasında:</span>
-                            Telefon kamerasıyla QR'ı okutup doğrudan oy verebilirsiniz.
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- INSTALLATION GUIDE SECTION -->
-        <section id="kurulum" class="space-y-6">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
-                    <i data-lucide="wrench" class="w-7 h-7 text-sky-400"></i>
-                    İlk Derse Gelmeden Önce: Kurulum Rehberi
-                </h2>
-                <p class="text-slate-400 text-sm mt-1">Derslerde vakit kaybetmemek için bilgisayarınıza derleyici ve editörü kurmanız önerilir.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Windows Setup -->
-                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <span class="p-2 rounded bg-blue-500/10 text-blue-400">
-                            <i data-lucide="monitor" class="w-5 h-5"></i>
-                        </span>
-                        <div>
-                            <h3 class="font-bold text-white text-base">Windows (MinGW-w64 / MSYS2)</h3>
-                            <p class="text-xs text-slate-400">GCC & G++ Derleyicisi Kurulumu</p>
-                        </div>
-                    </div>
-                    <ol class="space-y-2.5 text-xs text-slate-300 list-decimal list-inside">
-                        <li><strong>VS Code</strong>'u <a href="https://code.visualstudio.com" target="_blank" class="text-sky-400 underline">resmi sitesinden</a> indirin ve kurun.</li>
-                        <li>VS Code Eklentiler kısmından <strong>"C/C++" (Microsoft)</strong> ve <strong>"Code Runner"</strong> eklentilerini kurun.</li>
-                        <li>Derleyici için <a href="https://github.com/skeeto/w64devkit/releases" target="_blank" class="text-sky-400 underline">w64devkit</a> veya <strong>MSYS2</strong> ile GCC'yi edinin.</li>
-                        <li>MinGW'nin <code class="font-mono bg-slate-800 px-1.5 py-0.5 rounded text-sky-300">bin</code> klasörünü Windows'un <strong>Sistem Ortam Değişkenleri (PATH)</strong> kısmına ekleyin.</li>
-                        <li>Terminalde kontrol edin:
-                            <div class="mt-1 font-mono bg-black/60 p-2 rounded border border-slate-800 text-slate-300">g++ --version</div>
-                        </li>
-                    </ol>
-                </div>
-
-                <!-- macOS / Linux Setup -->
-                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <span class="p-2 rounded bg-purple-500/10 text-purple-400">
-                            <i data-lucide="terminal-square" class="w-5 h-5"></i>
-                        </span>
-                        <div>
-                            <h3 class="font-bold text-white text-base">macOS & Linux (Clang / GCC)</h3>
-                            <p class="text-xs text-slate-400">Yerel Terminal Paketleri</p>
-                        </div>
-                    </div>
-                    <div class="space-y-3 text-xs text-slate-300">
-                        <div>
-                            <span class="font-semibold text-slate-200 block mb-1">macOS (Apple Clang):</span>
-                            <p class="text-slate-400 mb-1.5">Terminali açın ve Xcode komut satırı araçlarını yükleyin:</p>
-                            <div class="font-mono bg-black/60 p-2 rounded border border-slate-800 text-slate-300">xcode-select --install</div>
-                        </div>
-
-                        <div class="pt-2 border-t border-slate-800">
-                            <span class="font-semibold text-slate-200 block mb-1">Ubuntu / Debian:</span>
-                            <div class="font-mono bg-black/60 p-2 rounded border border-slate-800 text-slate-300">sudo apt update && sudo apt install build-essential gdb</div>
-                        </div>
-
-                        <div class="pt-2 border-t border-slate-800">
-                            <span class="font-semibold text-slate-200 block mb-1">Fedora / Arch:</span>
-                            <div class="font-mono bg-black/60 p-2 rounded border border-slate-800 text-slate-300">sudo dnf groupinstall "Development Tools"</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ASSIGNMENTS / PRACTICE HUB -->
-        <section id="odevler" class="space-y-6">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
-                    <i data-lucide="check-square" class="w-7 h-7 text-sky-400"></i>
-                    Ödev & Pratik Merkezi
-                </h2>
-                <p class="text-slate-400 text-sm mt-1">Ders sonrasında elinizin kod yazmaya alışması için hazırlanan mini görevler.</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                
-                <!-- Odev 1 -->
-                <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-xs mb-3">
-                            <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-medium">Hafta 1 Görevi</span>
-                            <span class="text-slate-500">Zorluk: Başlangıç</span>
-                        </div>
-                        <h3 class="font-bold text-white text-base mb-2">Delta Hesabı ile Kök Bulma</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Kullanıcıdan ax² + bx + c = 0 denklemi için a, b, c katsayılarını alıp diskriminant (Δ = b² - 4ac) hesabına göre gerçek kökleri ekrana yazdıran program.
-                        </p>
-                    </div>
-                    <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-slate-500">delta_solver.cpp</span>
-                        <button onclick="copySnippet('delta')" class="text-xs text-sky-400 hover:text-sky-300 flex items-center gap-1 font-medium">
-                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Şablonu Al
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Odev 2 -->
-                <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-xs mb-3">
-                            <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-medium">Hafta 1 Görevi</span>
-                            <span class="text-slate-500">Zorluk: Orta</span>
-                        </div>
-                        <h3 class="font-bold text-white text-base mb-2">Prefix vs Postfix Davranış Analizi</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            <code class="font-mono text-sky-300">++x</code> ile <code class="font-mono text-sky-300">x++</code> ifadelerinin aynı satır ve farklı döngü koşulları içerisindeki çıktı farkını gösteren test senaryoları.
-                        </p>
-                    </div>
-                    <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-slate-500">postfix_test.cpp</span>
-                        <button onclick="copySnippet('postfix')" class="text-xs text-sky-400 hover:text-sky-300 flex items-center gap-1 font-medium">
-                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Şablonu Al
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Odev 3 -->
-                <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-xs mb-3">
-                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 font-medium">Gelecek Hafta</span>
-                            <span class="text-slate-500">Zorluk: Orta</span>
-                        </div>
-                        <h3 class="font-bold text-white text-base mb-2">Pointer Swap Fonksiyonu</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            İki tamsayının adreslerini parametre olarak alıp (<code class="font-mono text-slate-300">int* a, int* b</code>) değerlerini yer değiştiren (swap) fonksiyonun yazımı.
-                        </p>
-                    </div>
-                    <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-[11px] font-mono text-slate-500">swap_pointers.cpp</span>
-                        <span class="text-xs text-slate-500">W2'de açılacak</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- RESOURCES SECTION -->
-        <section id="kaynaklar" class="space-y-6">
-            <div class="border-b border-slate-800 pb-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
-                    <i data-lucide="bookmark" class="w-7 h-7 text-sky-400"></i>
-                    Önerilen Kaynaklar & Dokümantasyon
-                </h2>
-                <p class="text-slate-400 text-sm mt-1">Eğitim boyunca ve sonrasında başvurabileceğiniz en güvenilir C/C++ referansları.</p>
-            </div>
-
-            <div class="grid sm:grid-cols-3 gap-4">
-                <a href="https://en.cppreference.com" target="_blank" class="p-4 rounded-xl bg-slate-900/50 hover:bg-slate-800/60 border border-slate-800 transition flex items-start gap-3 group">
-                    <span class="p-2 rounded bg-sky-500/10 text-sky-400 group-hover:scale-110 transition-transform">
-                        <i data-lucide="globe" class="w-5 h-5"></i>
-                    </span>
-                    <div>
-                        <h4 class="font-bold text-white text-sm group-hover:text-sky-300 transition-colors">cppreference.com</h4>
-                        <p class="text-xs text-slate-400 mt-1">C ve C++ standart kütüphanesinin resmi ansiklopedisi.</p>
-                    </div>
-                </a>
-
-                <a href="https://www.learncpp.com" target="_blank" class="p-4 rounded-xl bg-slate-900/50 hover:bg-slate-800/60 border border-slate-800 transition flex items-start gap-3 group">
-                    <span class="p-2 rounded bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform">
-                        <i data-lucide="book-open" class="w-5 h-5"></i>
-                    </span>
-                    <div>
-                        <h4 class="font-bold text-white text-sm group-hover:text-emerald-300 transition-colors">LearnCpp.com</h4>
-                        <p class="text-xs text-slate-400 mt-1">Sıfırdan C++20 standartlarına kadar dünyanın en iyi ücretsiz ders serisi.</p>
-                    </div>
-                </a>
-
-                <a href="https://godbolt.org" target="_blank" class="p-4 rounded-xl bg-slate-900/50 hover:bg-slate-800/60 border border-slate-800 transition flex items-start gap-3 group">
-                    <span class="p-2 rounded bg-amber-500/10 text-amber-400 group-hover:scale-110 transition-transform">
-                        <i data-lucide="cpu" class="w-5 h-5"></i>
-                    </span>
-                    <div>
-                        <h4 class="font-bold text-white text-sm group-hover:text-amber-300 transition-colors">Compiler Explorer</h4>
-                        <p class="text-xs text-slate-400 mt-1">Yazdığınız C++ kodunun arka planda ürettiği assembly makine kodunu canlı izleyin.</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="mt-20 border-t border-slate-800/80 bg-[#070a12] py-8 text-center text-xs text-slate-500">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2">
-                <span class="font-semibold text-slate-300">IEEE Hacettepe Computer Society</span>
-                <span>•</span>
-                <span>C / C++ Eğitimi 2026</span>
-            </div>
-            <div>
-                Öğrenci Topluluğu Eğitimi Amaçlı Hazırlanmıştır.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Copy feedback toast -->
-    <div id="copyToast" class="fixed bottom-6 right-6 bg-sky-500 text-white font-medium text-xs px-4 py-2.5 rounded-lg shadow-xl opacity-0 pointer-events-none transition-opacity duration-300 flex items-center gap-2">
-        <i data-lucide="check" class="w-4 h-4"></i>
-        <span>Kod panoya kopyalandı!</span>
-    </div>
-
-    <!-- Scripts -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Copy Code Snippets
-        const snippets = {
-            delta: `// IEEE Hacettepe C++ Egitimi - Odev 1: Delta Hesabi
-#include <iostream>
-#include <cmath>
-
-int main() {
-    double a, b, c;
-    std::cout << "a, b ve c katsayilarini giriniz: ";
-    std::cin >> a >> b >> c;
-
-    double delta = (b * b) - (4 * a * c);
-
-    if (delta > 0) {
-        double x1 = (-b + std::sqrt(delta)) / (2 * a);
-        double x2 = (-b - std::sqrt(delta)) / (2 * a);
-        std::cout << "Iki gercek kok var: x1 = " << x1 << ", x2 = " << x2 << std::endl;
-    } else if (delta == 0) {
-        double x = -b / (2 * a);
-        std::cout << "Cakisik tek kok var: x = " << x << std::endl;
-    } else {
-        std::cout << "Gercek kok yoktur (Karmasik kokler vardir)." << std::endl;
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #0ea5e9;
+      --accent-glow: rgba(14, 165, 233, 0.15);
+      --bg: #0b0f19;
+      --surface: #111827;
+      --surface-border: #1f293d;
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+      --code-bg: #070a12;
+      --success: #10b981;
+      --warning: #f59e0b;
     }
 
-    return 0;
-}`,
-            postfix: `// IEEE Hacettepe C++ Egitimi - Odev 2: Prefix vs Postfix
-#include <iostream>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-int main() {
-    int x = 5;
-    
-    // Postfix: Once eski degeri atar, sonra x'i 1 artirir.
-    int y = x++; 
-    std::cout << "Postfix -> x: " << x << ", y: " << y << std::endl;
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-    int a = 5;
-    // Prefix: Once a'yi 1 artirir, sonra yeni degeri atar.
-    int b = ++a; 
-    std::cout << "Prefix  -> a: " << a << ", b: " << b << std::endl;
+    code, pre {
+      font-family: 'Fira Code', monospace;
+    }
 
-    return 0;
-}`
-        };
+    /* Header & Navbar */
+    header {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        function copySnippet(type) {
-            const text = snippets[type] || "";
-            // Safe copy method
-            const temp = document.createElement("textarea");
-            temp.value = text;
-            document.body.appendChild(temp);
-            temp.select();
-            document.execCommand("copy");
-            document.body.removeChild(temp);
+    .nav-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.5rem;
+    }
 
-            // Show Toast
-            const toast = document.getElementById("copyToast");
-            toast.classList.remove("opacity-0");
-            setTimeout(() => {
-                toast.classList.add("opacity-0");
-            }, 2500);
-        }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
 
-        // Quiz voting mockup
-        function voteOption(opt, pct) {
-            const toast = document.getElementById("copyToast");
-            toast.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i> Oyunuz (${opt}) kaydedildi!`;
-            lucide.createIcons();
-            toast.classList.remove("opacity-0");
-            setTimeout(() => {
-                toast.classList.add("opacity-0");
-            }, 2000);
-        }
-    </script>
+    .brand-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .brand-text p {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 2rem 0 4rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-glow);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      color: var(--accent);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h2 span {
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .meta-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .meta-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+    }
+
+    .meta-card span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .meta-card strong {
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .terminal-preview {
+      background: var(--code-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+    }
+
+    .terminal-header {
+      background: #161f30;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    .t-blue { color: #38bdf8; }
+    .t-purple { color: #c084fc; }
+    .t-green { color: #4ade80; }
+    .t-gray { color: #64748b; }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    /* Program Table */
+    .table-container {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    th {
+      background: #161f30;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .week-cell {
+      width: 220px;
+      vertical-align: top;
+    }
+
+    .week-title {
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .week-date {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.2rem;
+      display: block;
+    }
+
+    .part-box {
+      margin-bottom: 0.85rem;
+    }
+
+    .part-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .part-tag {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--accent);
+      margin-right: 0.5rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .part-desc {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .slide-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #1e293b;
+      color: #f8fafc;
+      text-decoration: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--surface-border);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .slide-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Kurulum & Araçlar (Dev-C++) */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 1.75rem;
+    }
+
+    .tool-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+
+    .tool-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: steps;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      margin-bottom: 0.85rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      background: #1e293b;
+      color: var(--accent);
+      border: 1px solid var(--surface-border);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--surface-border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .meta-cards { grid-template-columns: 1fr; }
+      th, td { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-group">
+        <!-- Logo alanı: Kendi logonuzu 'assets/logo.png' olarak repoya atıp src'yi değiştirebilirsiniz -->
+        <img class="brand-logo-img" src="https://ieeehacettepe.com/static/media/logo.54877cfc.png" alt="IEEE Hacettepe Logo" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='inline-block';">
+        <span id="logo-fallback" style="display:none; font-weight:800; color:#38bdf8; font-size:1.2rem;">IEEE</span>
+        <div class="brand-text">
+          <h1>IEEE Hacettepe</h1>
+          <p>C++ Programlama Eğitimi</p>
+        </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#mufredat">Müfredat</a></li>
+          <li><a href="#kurulum">Dev-C++ Kurulumu</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div>
+        <div class="hero-badge">⚡ Güz 2026 Dönemi | 5 Hafta</div>
+        <h2>Sıfırdan İleri Seviyeye <span>C++ Eğitimi</span></h2>
+        <p>
+          Donanım mimarisi, bellek yönetimi ve sistem programlamanın temel taşı olan C++ dilini uygulamalı kodlama, hafıza diyagramları ve interaktif ders akışıyla öğreniyoruz.
+        </p>
+
+        <div class="meta-cards">
+          <div class="meta-card">
+            <span>Ders Yeri</span>
+            <strong>Hacettepe Üniversitesi EEM Binası - E4 Sınıfı</strong>
+          </div>
+          <div class="meta-card">
+            <span>Ders Takvimi</span>
+            <strong>Her Perşembe, 18.00 (22 Ekim Başlangıç)</strong>
+          </div>
+          <div class="meta-card">
+            <span>Ön Bilgi</span>
+            <strong>Gerekmez (Sıfırdan Başlıyoruz)</strong>
+          </div>
+          <div class="meta-card">
+            <span>Geliştirme Ortamı</span>
+            <strong>Dev-C++ (TDM-GCC Derleyicisi)</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-preview">
+        <div class="terminal-header">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span style="font-size:0.75rem; color:#64748b; margin-left:0.5rem; font-family:'Fira Code';">main.cpp</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="t-purple">#include</span> <span class="t-green">&lt;iostream&gt;</span></p>
+          <br>
+          <p><span class="t-blue">int</span> <span class="t-yellow">main</span>() {</p>
+          <p>&nbsp;&nbsp;<span class="t-gray">// IEEE Hacettepe C++ Eğitimi Başlıyor</span></p>
+          <p>&nbsp;&nbsp;std::cout &lt;&lt; <span class="t-green">"Selam IEEE Hacettepe !"</span> &lt;&lt; std::endl;</p>
+          <p>&nbsp;&nbsp;<span class="t-purple">return</span> <span class="t-blue">0</span>;</p>
+          <p>}</p>
+          <br>
+          <p class="t-gray">---------------------------------------</p>
+          <p class="t-green">Output: Selam IEEE Hacettepe !</p>
+          <p class="t-gray">Process exited after 0.012 seconds.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Müfredat Bölümü -->
+    <section id="mufredat" style="padding-top: 3rem;">
+      <h3 class="section-title">Eğitim Müfredatı</h3>
+      <p class="section-desc">Her ders 2 saatlik bloktan oluşur ve PART 1 & PART 2 olarak iki aşamada işlenir.</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Hafta & Tarih</th>
+              <th>Ders İçeriği</th>
+              <th style="text-align: right;">Slaytlar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Hafta 1 -->
+            <tr>
+              <td class="week-cell">
+                <span class="week-title">1. HAFTA</span>
+                <span class="week-date">22 Ekim 2026</span>
+              </td>
+              <td>
+                <div class="part-box">
+                  <span class="part-tag">PART 1</span>
+                  <span class="part-desc">C++ Mimarisi & Genel Slayt Sunumu, Veritipleri, Format Belirleyiciler, Standart Giriş/Çıkış (<code>cin</code> / <code>cout</code>)</span>
+                </div>
+                <div class="part-box">
+                  <span class="part-tag">PART 2</span>
+                  <span class="part-desc">Aritmetik İşlemler, Atamalar, Artırma/Azaltma, Tür Dönüşümleri (Casting), Koşullu İfadeler (<code>if-else</code>), Mantık İfadeleri, <code>switch-case</code> Kullanımı</span>
+                </div>
+              </td>
+              <td style="text-align: right;">
+                <a href="slides/ders1.html" class="slide-btn">Slayt 1 ↗</a>
+              </td>
+            </tr>
+
+            <!-- Hafta 2 -->
+            <tr>
+              <td class="week-cell">
+                <span class="week-title">2. HAFTA</span>
+                <span class="week-date">29 Ekim 2026</span>
+              </td>
+              <td>
+                <div class="part-box">
+                  <span class="part-tag">PART 1</span>
+                  <span class="part-desc">Döngü Yapıları (<code>while</code>, <code>do-while</code>, <code>for</code>), <code>break</code> ve <code>continue</code> Deyimleri</span>
+                </div>
+                <div class="part-box">
+                  <span class="part-tag">PART 2</span>
+                  <span class="part-desc">Fonksiyonlar, Parametre ve <code>return</code> Mantığı, Kapsamlı Örnekler (Fibonacci Serisi Hesaplama)</span>
+                </div>
+              </td>
+              <td style="text-align: right;">
+                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              </td>
+            </tr>
+
+            <!-- Hafta 3 -->
+            <tr>
+              <td class="week-cell">
+                <span class="week-title">3. HAFTA</span>
+                <span class="week-date">5 Kasım 2026</span>
+              </td>
+              <td>
+                <div class="part-box">
+                  <span class="part-tag">PART 1</span>
+                  <span class="part-desc">Dizilere (Arrays) Giriş, Tek Boyutlu Diziler, Karakter Dizileri (Char Arrays vs. Strings)</span>
+                </div>
+                <div class="part-box">
+                  <span class="part-tag">PART 2</span>
+                  <span class="part-desc">Çok Boyutlu Diziler (Matrisler), Fonksiyonlara Parametre Olarak Dizi ve Karakter Dizisi Aktarımı, Örnekler</span>
+                </div>
+              </td>
+              <td style="text-align: right;">
+                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              </td>
+            </tr>
+
+            <!-- Hafta 4 -->
+            <tr>
+              <td class="week-cell">
+                <span class="week-title">4. HAFTA</span>
+                <span class="week-date">12 Kasım 2026</span>
+              </td>
+              <td>
+                <div class="part-box">
+                  <span class="part-tag">PART 1</span>
+                  <span class="part-desc">Pointerlar ve Bellek Adresi Mantığı, <i>Call by Value</i> vs. <i>Call by Reference</i></span>
+                </div>
+                <div class="part-box">
+                  <span class="part-tag">PART 2</span>
+                  <span class="part-desc">Diziler ile Pointer İlişkisi, Stringler ve Pointerlar, Dönüş Tipi Pointer Olan Fonksiyonlar ve Bellek Güvenliği</span>
+                </div>
+              </td>
+              <td style="text-align: right;">
+                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              </td>
+            </tr>
+
+            <!-- Hafta 5 -->
+            <tr>
+              <td class="week-cell">
+                <span class="week-title">5. HAFTA</span>
+                <span class="week-date">19 Kasım 2026</span>
+              </td>
+              <td>
+                <div class="part-box">
+                  <span class="part-tag">PART 1</span>
+                  <span class="part-desc">Yapılar (<code>struct</code> Mantığı), Bellekte Hizalama, İç İçe Yapılar, Structure Dizileri</span>
+                </div>
+                <div class="part-box">
+                  <span class="part-tag">PART 2</span>
+                  <span class="part-desc">Fonksiyonlar ve Yapılar, Pointerlar ve Yapı İlişkisi (<code>-&gt;</code> Operatörü), Yapıları Referans Olarak Göndermek ve Proje Uygulaması</span>
+                </div>
+              </td>
+              <td style="text-align: right;">
+                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Kurulum Rehberi (Dev-C++) -->
+    <section id="kurulum">
+      <h3 class="section-title">Geliştirme Ortamı: Dev-C++</h3>
+      <p class="section-desc">Eğitim boyunca hafifliği, dahili GCC derleyicisi ve doğrudan kurulabilmesi sebebiyle Dev-C++ kullanacağız.</p>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <h3>Dev-C++ Kurulum Adımları</h3>
+          <p>Derslere gelmeden önce bilgisayarınızda derleyicinin hazır olması gerekmektedir.</p>
+          <ol class="step-list">
+            <li>Embarcadero Dev-C++ (güncel TDM-GCC sürümü içeren paket) kurulum dosyasını indirin.</li>
+            <li>Kurulum sırasında <b>TDM-GCC</b> bileşeninin seçili olduğundan emin olarak kurulumu tamamlayın.</li>
+            <li>Programı açıp <code>File -> New -> Source File</code> yolunu izleyin.</li>
+            <li>Konsol ekranında Türkçe karakterlerin ve modern C++ özelliklerinin sorunsuz çalışması için <code>Tools -> Compiler Options</code> altından <code>-std=c++11</code> veya üstü bayrağı aktif edebilirsiniz.</li>
+          </ol>
+        </div>
+
+        <div class="tool-card">
+          <h3>İlk Test ve Derleme</h3>
+          <p>Kurulumun başarılı olduğunu doğrulamak için aşağıdaki adımları deneyin:</p>
+          <ol class="step-list">
+            <li>Yeni bir kaynak dosyası açıp içine <code>cout &lt;&lt; "Test";</code> içeren temel <code>main</code> fonksiyonunu yazın.</li>
+            <li>Dosyayı <code>.cpp</code> uzantısıyla kaydedin (Örn: <code>deneme.cpp</code>).</li>
+            <li>Klavyeden <b>F11</b> tuşuna basarak (<i>Compile & Run</i>) kodun derlenip konsol penceresinin açıldığını doğrulayın.</li>
+            <li>Herhangi bir derleme hatası alırsanız ders WhatsApp grubundan destek alabilirsiniz.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- İletişim -->
+    <section id="iletisim" style="background: var(--surface); border: 1px solid var(--surface-border); border-radius: 14px; padding: 2rem; text-align: center; margin-bottom: 3rem;">
+      <h3 style="color:#fff; margin-bottom: 0.5rem; font-size: 1.3rem;">Sorularınız mı Var?</h3>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem;">
+        Kodlama esnasında takıldığınız yerleri veya derleyici kurulumuyla ilgili sorularınızı topluluk WhatsApp grubuna iletebilirsiniz.
+      </p>
+      <a href="https://ieeehacettepe.com" target="_blank" class="slide-btn" style="background: var(--primary); border:none; padding: 0.75rem 1.5rem; font-size: 0.95rem;">IEEE Hacettepe Web Sitesi ↗</a>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p><b>IEEE Hacettepe Öğrenci Kolu</b> • C++ Programlama Eğitimi Güz 2026</p>
+    <p style="margin-top: 0.5rem; color: #64748b;">Hacettepe Üniversitesi Elektrik ve Elektronik Mühendisliği Bölümü - E4 Sınıfı</p>
+  </footer>
+
 </body>
 </html>
