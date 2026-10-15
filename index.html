@@ -3,64 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C++ Programlama Eğitimi | IEEE Hacettepe</title>
+  <title>C++ Programlama | Programmix V - IEEE Hacettepe</title>
   
-  <!-- Modern Fontlar -->
+  <!-- Fontlar -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --accent: #0ea5e9;
-      --accent-glow: rgba(14, 165, 233, 0.15);
-      --bg: #0b0f19;
-      --surface: #111827;
-      --surface-border: #1f293d;
-      --text-main: #f3f4f6;
+      --primary-hover: #0369a1;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --bg: #070b14;
+      --surface: #0f172a;
+      --surface-card: #131d35;
+      --surface-border: #1e293b;
+      --surface-border-light: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --code-bg: #070a12;
+      --text-dim: #64748b;
+      --code-bg: #030712;
       --success: #10b981;
       --warning: #f59e0b;
+      --tag-bg: rgba(2, 132, 199, 0.18);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
     }
 
     code, pre {
       font-family: 'Fira Code', monospace;
     }
 
-    /* Header & Navbar */
+    /* Navbar */
     header {
-      background: rgba(17, 24, 39, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--surface-border);
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--surface-border-light);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .nav-container {
-      max-width: 1150px;
+      max-width: 1240px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.85rem 1.5rem;
+      padding: 0.9rem 1.5rem;
     }
 
     .brand-group {
@@ -72,17 +82,31 @@
     }
 
     .brand-logo-img {
-      height: 44px;
+      height: 42px;
       width: auto;
       object-fit: contain;
       display: block;
     }
 
     .brand-text h1 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-event {
+      font-size: 0.65rem;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .brand-text p {
@@ -90,13 +114,13 @@
       color: var(--accent);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     nav a {
@@ -113,93 +137,102 @@
 
     /* Container */
     .container {
-      max-width: 1150px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 3rem 1.5rem;
+      padding: 2.5rem 1.5rem 5rem;
     }
 
     /* Hero Section */
     .hero {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 3rem;
       align-items: center;
-      padding: 2rem 0 4rem;
-      border-bottom: 1px solid var(--surface-border);
+      padding: 2.5rem 0 4rem;
+      border-bottom: 1px solid var(--surface-border-light);
     }
 
-    .hero-badge {
+    .hero-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--accent-glow);
-      border: 1px solid rgba(14, 165, 233, 0.3);
+      background: var(--tag-bg);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--accent);
-      padding: 0.35rem 0.85rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 9999px;
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 1.25rem;
+      letter-spacing: 0.03em;
     }
 
     .hero h2 {
-      font-size: 2.8rem;
+      font-size: 2.9rem;
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.03em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero h2 span {
-      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 60%, #60a5fa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
+      max-width: 620px;
     }
 
-    .meta-cards {
+    .meta-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
 
-    .meta-card {
+    .meta-item {
       background: var(--surface);
       border: 1px solid var(--surface-border);
       border-radius: 12px;
-      padding: 1rem 1.25rem;
+      padding: 1rem 1.2rem;
+      transition: border-color 0.2s;
     }
 
-    .meta-card span {
+    .meta-item:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .meta-item span {
       display: block;
-      font-size: 0.75rem;
-      color: var(--text-muted);
+      font-size: 0.72rem;
+      color: var(--text-dim);
       text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       margin-bottom: 0.25rem;
     }
 
-    .meta-card strong {
-      font-size: 0.95rem;
+    .meta-item strong {
+      font-size: 0.92rem;
       color: #fff;
+      font-weight: 600;
     }
 
-    .terminal-preview {
+    /* Terminal */
+    .terminal-window {
       background: var(--code-bg);
       border: 1px solid var(--surface-border);
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     }
 
-    .terminal-header {
-      background: #161f30;
+    .terminal-topbar {
+      background: #111a2e;
       padding: 0.75rem 1rem;
       display: flex;
       align-items: center;
@@ -207,49 +240,63 @@
       border-bottom: 1px solid var(--surface-border);
     }
 
-    .dot {
+    .term-dot {
       width: 11px;
       height: 11px;
       border-radius: 50%;
-      display: inline-block;
     }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
+    .td-red { background: #ef4444; }
+    .td-yellow { background: #f59e0b; }
+    .td-green { background: #10b981; }
 
-    .terminal-body {
-      padding: 1.25rem;
-      font-size: 0.85rem;
+    .term-title {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-left: 0.5rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .terminal-content {
+      padding: 1.3rem;
+      font-size: 0.86rem;
       line-height: 1.7;
       color: #cbd5e1;
     }
 
-    .t-blue { color: #38bdf8; }
-    .t-purple { color: #c084fc; }
-    .t-green { color: #4ade80; }
-    .t-gray { color: #64748b; }
+    .t-kw { color: #c084fc; font-weight: 600; }
+    .t-fn { color: #38bdf8; }
+    .t-str { color: #4ade80; }
+    .t-num { color: #f59e0b; }
+    .t-cmt { color: #64748b; font-style: italic; }
 
     /* Section Headers */
+    .section-head {
+      margin: 4.5rem 0 2rem;
+    }
+
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     .section-desc {
       color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 1rem;
+      margin-top: 0.4rem;
+      font-size: 0.98rem;
     }
 
-    /* Program Table */
-    .table-container {
+    /* Müfredat Tablosu */
+    .table-wrapper {
       background: var(--surface);
       border: 1px solid var(--surface-border);
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 4rem;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
     }
 
     table {
@@ -259,90 +306,328 @@
     }
 
     th, td {
-      padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid var(--surface-border);
+      padding: 1.35rem 1.6rem;
+      border-bottom: 1px solid var(--surface-border-light);
     }
 
     th {
-      background: #161f30;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      background: #0d1527;
+      font-size: 0.8rem;
+      color: var(--text-dim);
       text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
-    .week-cell {
-      width: 220px;
+    .col-week {
+      width: 210px;
       vertical-align: top;
     }
 
-    .week-title {
-      font-weight: 700;
+    .week-lbl {
+      font-weight: 800;
+      font-size: 1.1rem;
       color: #fff;
       display: block;
-      font-size: 1.05rem;
     }
 
-    .week-date {
-      font-size: 0.85rem;
+    .week-dt {
+      display: inline-block;
+      margin-top: 0.25rem;
       color: var(--accent);
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-top: 0.2rem;
-      display: block;
     }
 
-    .part-box {
-      margin-bottom: 0.85rem;
+    .part-item {
+      margin-bottom: 0.9rem;
     }
-
-    .part-box:last-child {
+    .part-item:last-child {
       margin-bottom: 0;
     }
 
-    .part-tag {
+    .part-badge {
       display: inline-block;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 5px;
+      font-size: 0.72rem;
       font-weight: 700;
-      background: rgba(14, 165, 233, 0.15);
+      background: var(--tag-bg);
       color: var(--accent);
-      margin-right: 0.5rem;
+      margin-right: 0.6rem;
       font-family: 'Fira Code', monospace;
     }
 
-    .part-desc {
-      font-size: 0.95rem;
-      color: #cbd5e1;
+    .part-txt {
+      font-size: 0.94rem;
+      color: #d1d5db;
     }
 
-    .slide-btn {
+    .action-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: #1e293b;
-      color: #f8fafc;
-      text-decoration: none;
-      padding: 0.5rem 0.9rem;
+      padding: 0.45rem 0.8rem;
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      border: 1px solid var(--surface-border);
-      transition: all 0.2s;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
       white-space: nowrap;
     }
 
-    .slide-btn:hover {
+    .btn-primary {
+      background: #1e293b;
+      color: #f8fafc;
+      border-color: var(--surface-border);
+    }
+    .btn-primary:hover {
       background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .btn-accent {
+      background: rgba(2, 132, 199, 0.2);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+    .btn-accent:hover {
+      background: var(--primary);
+      color: #fff;
       border-color: var(--primary);
     }
 
-    /* Kurulum & Araçlar (Dev-C++) */
+    .btn-devcpp {
+      background: #0f233a;
+      color: #38bdf8;
+      border-color: #1e3a5f;
+    }
+    .btn-devcpp:hover {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    .btn-compiler {
+      background: #1a1e2e;
+      color: #34d399;
+      border-color: #274738;
+    }
+    .btn-compiler:hover {
+      background: #059669;
+      color: #fff;
+    }
+
+    .btn-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Alıştırmalar & Ödevler Bölümü */
+    .exercise-week-container {
+      margin-bottom: 2.25rem;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .exercise-week-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--surface-border-light);
+    }
+
+    .exercise-week-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .exercise-week-date {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* 4 Kolon Grid + Taşarsa Yatay Kaydırma (Horizontal Scroll) */
+    .exercise-grid-scroll {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(260px, 1fr));
+      gap: 1.15rem;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) var(--surface);
+    }
+
+    .exercise-grid-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+    .exercise-grid-scroll::-webkit-scrollbar-track {
+      background: var(--surface);
+      border-radius: 999px;
+    }
+    .exercise-grid-scroll::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 999px;
+    }
+    .exercise-grid-scroll::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
+    }
+
+    .exercise-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border-light);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .exercise-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .exercise-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.07);
+      color: #cbd5e1;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .diff-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+    .diff-easy { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .diff-med { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .diff-hard { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+
+    .exercise-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.45rem;
+    }
+
+    .exercise-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .exercise-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .exercise-actions .btn {
+      flex: 1;
+      justify-content: center;
+      padding: 0.45rem 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    /* Referans Kartları */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+
+    .ref-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 1.35rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ref-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      background: #111c33;
+    }
+
+    .ref-card h4 {
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ref-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .ref-card span {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Kurulum & Araçlar */
     .tools-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -350,62 +635,92 @@
       margin-bottom: 4rem;
     }
 
-    .tool-card {
+    .tool-box {
       background: var(--surface);
       border: 1px solid var(--surface-border);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 1.75rem;
     }
 
-    .tool-card h3 {
+    .tool-box h3 {
       font-size: 1.25rem;
-      margin-bottom: 0.75rem;
       color: #fff;
+      margin-bottom: 0.75rem;
     }
 
-    .tool-card p {
+    .tool-box p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       margin-bottom: 1.25rem;
     }
 
-    .step-list {
+    .steps-list {
       list-style: none;
-      counter-reset: steps;
+      counter-reset: step-counter;
     }
 
-    .step-list li {
-      counter-increment: steps;
-      margin-bottom: 0.85rem;
-      font-size: 0.9rem;
-      color: #cbd5e1;
+    .steps-list li {
+      counter-increment: step-counter;
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      margin-bottom: 0.8rem;
     }
 
-    .step-list li::before {
-      content: counter(steps);
+    .steps-list li::before {
+      content: counter(step-counter);
       background: #1e293b;
       color: var(--accent);
-      border: 1px solid var(--surface-border);
+      border: 1px solid var(--surface-border-light);
       width: 22px;
       height: 22px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
-      font-weight: bold;
+      font-size: 0.72rem;
+      font-weight: 700;
       flex-shrink: 0;
+    }
+
+    /* İletişim Kutusu */
+    .contact-card {
+      background: linear-gradient(180deg, var(--surface) 0%, #0d1629 100%);
+      border: 1px solid var(--surface-border);
+      border-radius: 18px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .contact-card h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--surface-border);
+      border-top: 1px solid var(--surface-border-light);
       padding: 3rem 1.5rem;
       text-align: center;
-      color: var(--text-muted);
+      color: var(--text-dim);
       font-size: 0.85rem;
     }
 
@@ -414,11 +729,13 @@
       text-decoration: none;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .tools-grid { grid-template-columns: 1fr; }
-      .meta-cards { grid-template-columns: 1fr; }
-      th, td { padding: 1rem; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .exercise-grid-scroll { grid-template-columns: repeat(4, 250px); }
+      .action-group { align-items: flex-start; }
+      .btn-row { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -428,18 +745,19 @@
   <header>
     <div class="nav-container">
       <a href="#" class="brand-group">
-        <!-- Logo alanı: Kendi logonuzu 'assets/logo.png' olarak repoya atıp src'yi değiştirebilirsiniz -->
-        <img class="brand-logo-img" src="https://ieeehacettepe.com/static/media/logo.54877cfc.png" alt="IEEE Hacettepe Logo" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='inline-block';">
+        <img class="brand-logo-img" src="https://ieeehacettepe.com/static/media/logo.54877cfc.png" alt="IEEE Hacettepe" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='inline-block';">
         <span id="logo-fallback" style="display:none; font-weight:800; color:#38bdf8; font-size:1.2rem;">IEEE</span>
         <div class="brand-text">
-          <h1>IEEE Hacettepe</h1>
+          <h1>IEEE Hacettepe <span class="badge-event">Programmix V</span></h1>
           <p>C++ Programlama Eğitimi</p>
         </div>
       </a>
       <nav>
         <ul>
           <li><a href="#mufredat">Müfredat</a></li>
-          <li><a href="#kurulum">Dev-C++ Kurulumu</a></li>
+          <li><a href="#alistirmalar">Alıştırmalar</a></li>
+          <li><a href="#referanslar">Referanslar</a></li>
+          <li><a href="#kurulum">Dev-C++</a></li>
           <li><a href="#iletisim">İletişim</a></li>
         </ul>
       </nav>
@@ -448,175 +766,226 @@
 
   <div class="container">
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
       <div>
-        <div class="hero-badge">⚡ Güz 2026 Dönemi | 5 Hafta</div>
-        <h2>Sıfırdan İleri Seviyeye <span>C++ Eğitimi</span></h2>
+        <div class="hero-pill">⚡ Programmix V | 5 Haftalık Yoğun Kamp</div>
+        <h2>Geleceği Kodla: <span>C++ Eğitimi</span></h2>
         <p>
-          Donanım mimarisi, bellek yönetimi ve sistem programlamanın temel taşı olan C++ dilini uygulamalı kodlama, hafıza diyagramları ve interaktif ders akışıyla öğreniyoruz.
+          Donanım mimarisinden modern yazılım paradigmalarına kadar, performans ve bellek hakimiyetinin dili olan C++'ı bol pratik, ödevler ve canlı alıştırmalarla keşfediyoruz.
         </p>
 
-        <div class="meta-cards">
-          <div class="meta-card">
-            <span>Ders Yeri</span>
-            <strong>Hacettepe Üniversitesi EEM Binası - E4 Sınıfı</strong>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span>Ders Konumu</span>
+            <strong>Hacettepe Üniv. EEM Binası - E4 Sınıfı</strong>
           </div>
-          <div class="meta-card">
-            <span>Ders Takvimi</span>
+          <div class="meta-item">
+            <span>Takvim</span>
             <strong>Her Perşembe, 18.00 (22 Ekim Başlangıç)</strong>
           </div>
-          <div class="meta-card">
-            <span>Ön Bilgi</span>
-            <strong>Gerekmez (Sıfırdan Başlıyoruz)</strong>
+          <div class="meta-item">
+            <span>Ön Bilgi Gereksinimi</span>
+            <strong>Sıfır (Programlamaya İlk Adım)</strong>
           </div>
-          <div class="meta-card">
+          <div class="meta-item">
             <span>Geliştirme Ortamı</span>
-            <strong>Dev-C++ (TDM-GCC Derleyicisi)</strong>
+            <strong>Dev-C++ / Modern GCC Derleyicisi</strong>
           </div>
         </div>
       </div>
 
-      <div class="terminal-preview">
-        <div class="terminal-header">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-green"></span>
-          <span style="font-size:0.75rem; color:#64748b; margin-left:0.5rem; font-family:'Fira Code';">main.cpp</span>
+      <!-- Kod Önizleme Terminali -->
+      <div class="terminal-window">
+        <div class="terminal-topbar">
+          <span class="term-dot td-red"></span>
+          <span class="term-dot td-yellow"></span>
+          <span class="term-dot td-green"></span>
+          <span class="term-title">programmix_v.cpp</span>
         </div>
-        <div class="terminal-body">
-          <p><span class="t-purple">#include</span> <span class="t-green">&lt;iostream&gt;</span></p>
+        <div class="terminal-content">
+          <p><span class="t-kw">#include</span> <span class="t-str">&lt;iostream&gt;</span></p>
+          <p><span class="t-kw">using namespace</span> std;</p>
           <br>
-          <p><span class="t-blue">int</span> <span class="t-yellow">main</span>() {</p>
-          <p>&nbsp;&nbsp;<span class="t-gray">// IEEE Hacettepe C++ Eğitimi Başlıyor</span></p>
-          <p>&nbsp;&nbsp;std::cout &lt;&lt; <span class="t-green">"Selam IEEE Hacettepe !"</span> &lt;&lt; std::endl;</p>
-          <p>&nbsp;&nbsp;<span class="t-purple">return</span> <span class="t-blue">0</span>;</p>
+          <p><span class="t-fn">int</span> <span class="t-fn">main</span>() {</p>
+          <p>&nbsp;&nbsp;<span class="t-cmt">// Programmix V: C++ Eğitimi Başlıyor!</span></p>
+          <p>&nbsp;&nbsp;cout &lt;&lt; <span class="t-str">"Selam IEEE Hacettepe !"</span> &lt;&lt; endl;</p>
+          <p>&nbsp;&nbsp;cout &lt;&lt; <span class="t-str">"C++ ile donanima hukum et."</span> &lt;&lt; endl;</p>
+          <p>&nbsp;&nbsp;<span class="t-kw">return</span> <span class="t-num">0</span>;</p>
           <p>}</p>
           <br>
-          <p class="t-gray">---------------------------------------</p>
-          <p class="t-green">Output: Selam IEEE Hacettepe !</p>
-          <p class="t-gray">Process exited after 0.012 seconds.</p>
+          <p class="t-cmt">-----------------------------------------</p>
+          <p style="color:#4ade80;">&gt; Selam IEEE Hacettepe !</p>
+          <p style="color:#4ade80;">&gt; C++ ile donanima hukum et.</p>
+          <p class="t-cmt">&gt; Process returned 0 (0x0) execution time : 0.008 s</p>
         </div>
       </div>
     </section>
 
-    <!-- Müfredat Bölümü -->
-    <section id="mufredat" style="padding-top: 3rem;">
-      <h3 class="section-title">Eğitim Müfredatı</h3>
-      <p class="section-desc">Her ders 2 saatlik bloktan oluşur ve PART 1 & PART 2 olarak iki aşamada işlenir.</p>
+    <!-- MÜFREDAT BÖLÜMÜ -->
+    <section id="mufredat">
+      <div class="section-head">
+        <h3 class="section-title">📅 Eğitim Müfredatı</h3>
+        <p class="section-desc">Toplam 5 hafta ve 10 saatten oluşan eğitim akışı. Her hafta PART 1 ve PART 2 olarak işlenir.</p>
+      </div>
 
-      <div class="table-container">
+      <div class="table-wrapper">
         <table>
           <thead>
             <tr>
               <th>Hafta & Tarih</th>
-              <th>Ders İçeriği</th>
-              <th style="text-align: right;">Slaytlar</th>
+              <th>Ders Kapsamı</th>
+              <th style="text-align: right; width: 340px;">Kaynaklar & İşlemler</th>
             </tr>
           </thead>
           <tbody>
             <!-- Hafta 1 -->
             <tr>
-              <td class="week-cell">
-                <span class="week-title">1. HAFTA</span>
-                <span class="week-date">22 Ekim 2026</span>
+              <td class="col-week">
+                <span class="week-lbl">1. HAFTA</span>
+                <span class="week-dt">22 Ekim 2026</span>
               </td>
               <td>
-                <div class="part-box">
-                  <span class="part-tag">PART 1</span>
-                  <span class="part-desc">C++ Mimarisi & Genel Slayt Sunumu, Veritipleri, Format Belirleyiciler, Standart Giriş/Çıkış (<code>cin</code> / <code>cout</code>)</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 1</span>
+                  <span class="part-txt">C++ Mimarisi, Bellek & Derleme Mantığı, Veritipleri, <code>sizeof</code>, Standart I/O (<code>cin</code> / <code>cout</code>)</span>
                 </div>
-                <div class="part-box">
-                  <span class="part-tag">PART 2</span>
-                  <span class="part-desc">Aritmetik İşlemler, Atamalar, Artırma/Azaltma, Tür Dönüşümleri (Casting), Koşullu İfadeler (<code>if-else</code>), Mantık İfadeleri, <code>switch-case</code> Kullanımı</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 2</span>
+                  <span class="part-txt">Aritmetik & Mantık Operatörleri, Casting, Koşullu İfadeler (<code>if-else</code>), <code>switch-case</code> Kullanımı</span>
                 </div>
               </td>
-              <td style="text-align: right;">
-                <a href="slides/ders1.html" class="slide-btn">Slayt 1 ↗</a>
+              <td>
+                <div class="action-group">
+                  <div class="btn-row">
+                    <a href="slides/ders1.html" class="btn btn-primary">📑 Slayt 1</a>
+                    <a href="#hafta-1" class="btn btn-accent">🎯 Alıştırmalar</a>
+                  </div>
+                  <div class="btn-row">
+                    <a href="code/hafta1_sablon.cpp" download class="btn btn-devcpp">📥 Dev-C++ (.cpp)</a>
+                    <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Online Compiler</a>
+                  </div>
+                </div>
               </td>
             </tr>
 
             <!-- Hafta 2 -->
             <tr>
-              <td class="week-cell">
-                <span class="week-title">2. HAFTA</span>
-                <span class="week-date">29 Ekim 2026</span>
+              <td class="col-week">
+                <span class="week-lbl">2. HAFTA</span>
+                <span class="week-dt">29 Ekim 2026</span>
               </td>
               <td>
-                <div class="part-box">
-                  <span class="part-tag">PART 1</span>
-                  <span class="part-desc">Döngü Yapıları (<code>while</code>, <code>do-while</code>, <code>for</code>), <code>break</code> ve <code>continue</code> Deyimleri</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 1</span>
+                  <span class="part-txt">Döngü Yapıları (<code>while</code>, <code>do-while</code>, <code>for</code>), <code>break</code> ve <code>continue</code> Akış Denetimi</span>
                 </div>
-                <div class="part-box">
-                  <span class="part-tag">PART 2</span>
-                  <span class="part-desc">Fonksiyonlar, Parametre ve <code>return</code> Mantığı, Kapsamlı Örnekler (Fibonacci Serisi Hesaplama)</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 2</span>
+                  <span class="part-txt">Fonksiyonlar, Parametre Aktarımı, <code>return</code> Yapısı, Kapsamlı Uygulama (Fibonacci Serisi)</span>
                 </div>
               </td>
-              <td style="text-align: right;">
-                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              <td>
+                <div class="action-group">
+                  <div class="btn-row">
+                    <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 2</a>
+                    <a href="#hafta-2" class="btn btn-accent">🎯 Alıştırmalar</a>
+                  </div>
+                  <div class="btn-row">
+                    <a href="code/hafta2_sablon.cpp" download class="btn btn-devcpp">📥 Dev-C++ (.cpp)</a>
+                    <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Online Compiler</a>
+                  </div>
+                </div>
               </td>
             </tr>
 
             <!-- Hafta 3 -->
             <tr>
-              <td class="week-cell">
-                <span class="week-title">3. HAFTA</span>
-                <span class="week-date">5 Kasım 2026</span>
+              <td class="col-week">
+                <span class="week-lbl">3. HAFTA</span>
+                <span class="week-dt">5 Kasım 2026</span>
               </td>
               <td>
-                <div class="part-box">
-                  <span class="part-tag">PART 1</span>
-                  <span class="part-desc">Dizilere (Arrays) Giriş, Tek Boyutlu Diziler, Karakter Dizileri (Char Arrays vs. Strings)</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 1</span>
+                  <span class="part-txt">Dizilere (Arrays) Giriş, Bellekte Dizilme, Karakter Dizileri (C-String vs. <code>string</code>)</span>
                 </div>
-                <div class="part-box">
-                  <span class="part-tag">PART 2</span>
-                  <span class="part-desc">Çok Boyutlu Diziler (Matrisler), Fonksiyonlara Parametre Olarak Dizi ve Karakter Dizisi Aktarımı, Örnekler</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 2</span>
+                  <span class="part-txt">Çok Boyutlu Diziler (Matrisler), Fonksiyonlara Parametre Olarak Dizi ve Karakter Dizisi Gönderme</span>
                 </div>
               </td>
-              <td style="text-align: right;">
-                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              <td>
+                <div class="action-group">
+                  <div class="btn-row">
+                    <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 3</a>
+                    <a href="#hafta-3" class="btn btn-accent">🎯 Alıştırmalar</a>
+                  </div>
+                  <div class="btn-row">
+                    <a href="code/hafta3_sablon.cpp" download class="btn btn-devcpp">📥 Dev-C++ (.cpp)</a>
+                    <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Online Compiler</a>
+                  </div>
+                </div>
               </td>
             </tr>
 
             <!-- Hafta 4 -->
             <tr>
-              <td class="week-cell">
-                <span class="week-title">4. HAFTA</span>
-                <span class="week-date">12 Kasım 2026</span>
+              <td class="col-week">
+                <span class="week-lbl">4. HAFTA</span>
+                <span class="week-dt">12 Kasım 2026</span>
               </td>
               <td>
-                <div class="part-box">
-                  <span class="part-tag">PART 1</span>
-                  <span class="part-desc">Pointerlar ve Bellek Adresi Mantığı, <i>Call by Value</i> vs. <i>Call by Reference</i></span>
+                <div class="part-item">
+                  <span class="part-badge">PART 1</span>
+                  <span class="part-txt">Bellek Adresleri & Pointer Mantığı (<code>&</code>, <code>*</code>), <i>Call by Value</i> vs. <i>Call by Reference</i></span>
                 </div>
-                <div class="part-box">
-                  <span class="part-tag">PART 2</span>
-                  <span class="part-desc">Diziler ile Pointer İlişkisi, Stringler ve Pointerlar, Dönüş Tipi Pointer Olan Fonksiyonlar ve Bellek Güvenliği</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 2</span>
+                  <span class="part-txt">Diziler ile Pointer İlişkisi, Pointer Aritmetiği, Stringler ve Pointerlar, Dönüş Tipi Pointer Olan Fonksiyonlar</span>
                 </div>
               </td>
-              <td style="text-align: right;">
-                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              <td>
+                <div class="action-group">
+                  <div class="btn-row">
+                    <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 4</a>
+                    <a href="#hafta-4" class="btn btn-accent">🎯 Alıştırmalar</a>
+                  </div>
+                  <div class="btn-row">
+                    <a href="code/hafta4_sablon.cpp" download class="btn btn-devcpp">📥 Dev-C++ (.cpp)</a>
+                    <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Online Compiler</a>
+                  </div>
+                </div>
               </td>
             </tr>
 
             <!-- Hafta 5 -->
             <tr>
-              <td class="week-cell">
-                <span class="week-title">5. HAFTA</span>
-                <span class="week-date">19 Kasım 2026</span>
+              <td class="col-week">
+                <span class="week-lbl">5. HAFTA</span>
+                <span class="week-dt">19 Kasım 2026</span>
               </td>
               <td>
-                <div class="part-box">
-                  <span class="part-tag">PART 1</span>
-                  <span class="part-desc">Yapılar (<code>struct</code> Mantığı), Bellekte Hizalama, İç İçe Yapılar, Structure Dizileri</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 1</span>
+                  <span class="part-txt">Yapılar (<code>struct</code> Mantığı), Bellekte Hizalama, İç İçe Yapılar, Structure Dizi Tanımları</span>
                 </div>
-                <div class="part-box">
-                  <span class="part-tag">PART 2</span>
-                  <span class="part-desc">Fonksiyonlar ve Yapılar, Pointerlar ve Yapı İlişkisi (<code>-&gt;</code> Operatörü), Yapıları Referans Olarak Göndermek ve Proje Uygulaması</span>
+                <div class="part-item">
+                  <span class="part-badge">PART 2</span>
+                  <span class="part-txt">Fonksiyonlar ve Yapılar, Pointerlar ve Yapı İlişkisi (<code>-&gt;</code> Operatörü), Referansla Yapı Gönderme & Mini Proje</span>
                 </div>
               </td>
-              <td style="text-align: right;">
-                <a href="#" class="slide-btn" style="opacity:0.6; cursor:not-allowed;">Yakında</a>
+              <td>
+                <div class="action-group">
+                  <div class="btn-row">
+                    <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 5</a>
+                    <a href="#hafta-5" class="btn btn-accent">🎯 Alıştırmalar</a>
+                  </div>
+                  <div class="btn-row">
+                    <a href="code/hafta5_sablon.cpp" download class="btn btn-devcpp">📥 Dev-C++ (.cpp)</a>
+                    <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Online Compiler</a>
+                  </div>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -624,51 +993,482 @@
       </div>
     </section>
 
-    <!-- Kurulum Rehberi (Dev-C++) -->
+    <!-- ALIŞTIRMALAR BÖLÜMÜ -->
+    <section id="alistirmalar">
+      <div class="section-head">
+        <h3 class="section-title">🎯 Haftalık Alıştırmalar ve Görevler</h3>
+        <p class="section-desc">Her hafta için hazırlanan TODO şablonlarını indirerek Dev-C++ ile çözebilir ya da doğrudan tarayıcı üzerinden çalıştırabilirsiniz. Bir satırda en fazla 4 görev yer alır; daha fazlası sağa kaydırılabilir.</p>
+      </div>
+
+      <!-- HAFTA 1 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-1">
+        <div class="exercise-week-header">
+          <div class="exercise-week-title">
+            <span>📌 1. Hafta Alıştırmaları</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Temel Tipler, Giriş/Çıkış ve Koşullar)</span>
+          </div>
+          <span class="exercise-week-date">22 Ekim 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <!-- Ödev 1 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 1.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Tamsayı Bölmesi & Casting</h4>
+              <p class="exercise-desc">Kullanıcıdan iki tamsayı alıp tamsayı bölme sonucunu ve tür dönüşümü (float cast) ile hassas kesirli sonucunu ekrana yazdırın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta1_odev1.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Ödev 2 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 1.2</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Sensör Sıcaklık Kontrolü</h4>
+              <p class="exercise-desc">Girilen sıcaklık değerine göre motor çalışma seviyesini <code>if - else if - else</code> blokları ile belirleyip konsola bildirin.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta1_odev2.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Ödev 3 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 1.3</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Hesap Makinesi (Switch-Case)</h4>
+              <p class="exercise-desc">İki reel sayı ve işlem kodu alarak çalışan, sıfıra bölme hatasını kontrol eden menülü bir hesap makinesi tasarlayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta1_odev3.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Ödev 4 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 1.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">Delta ve Kök Analizi</h4>
+              <p class="exercise-desc">2. dereceden ax² + bx + c = 0 denkleminin diskriminantını (Δ = b² - 4ac) hesaplayarak köklerin reel/çakışık durumunu raporlayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta1_odev4.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HAFTA 2 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-2">
+        <div class="exercise-week-header">
+          <div class="exercise-week-title">
+            <span>📌 2. Hafta Alıştırmaları</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Döngüler, Akış Kontrolü ve Fonksiyonlar)</span>
+          </div>
+          <span class="exercise-week-date">29 Ekim 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Basamaklar Toplamı (Do-While)</h4>
+              <p class="exercise-desc">Kullanıcıdan alınan pozitif bir tam sayının rakamları toplamını <code>do-while</code> döngüsü ve mod operatörü kullanarak bulun.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta2_odev1.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Fibonacci Üreteci</h4>
+              <p class="exercise-desc">İlk N terimi üreten bir fonksiyon yazın. Döngü değişkenlerini doğru güncelleyerek ekrana seriyi yazdırın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta2_odev2.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.3</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Aralıktaki Asalları Filtrele</h4>
+              <p class="exercise-desc">Verilen iki sınır arasındaki asal sayıları tespit eden ve <code>continue</code> ile çiftleri atlayan bir fonksiyon kurgulayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta2_odev3.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">Özyinelemeli (Recursive) Üs</h4>
+              <p class="exercise-desc">Döngü kullanmadan, taban ve üs parametrelerini özyinelemeli (recursive) çağıran bir C++ fonksiyonu geliştirin.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta2_odev4.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HAFTA 3 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-3">
+        <div class="exercise-week-header">
+          <div class="exercise-week-title">
+            <span>📌 3. Hafta Alıştırmaları</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Diziler, Karakter Dizileri ve Matrisler)</span>
+          </div>
+          <span class="exercise-week-date">5 Kasım 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Dizi İstatistikleri</h4>
+              <p class="exercise-desc">N elemanlı bir dizideki en büyük, en küçük elemanı ve ortalamayı tek geçişte hesaplayan fonksiyonu doldurun.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta3_odev1.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Palindrom String Kontrolü</h4>
+              <p class="exercise-desc">Karakter dizisini tersten inceleyerek kelimenin tersten okunuşunun aynı olup olmadığını kontrol edin.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta3_odev2.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.3</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Matris Transpozu</h4>
+              <p class="exercise-desc">İki boyutlu 3x3'lük matrisin satır ve sütunlarını yer değiştirerek transpozunu ekrana yazdırın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta3_odev3.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">Matris Çarpımı Fonksiyonu</h4>
+              <p class="exercise-desc">İki matrisi parametre olarak alıp çarpım matrisini üreten 3 seviyeli döngü algoritmasını tamamlayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta3_odev4.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HAFTA 4 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-4">
+        <div class="exercise-week-header">
+          <div class="exercise-week-title">
+            <span>📌 4. Hafta Alıştırmaları</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(İşaretçiler, Bellek ve Call by Reference)</span>
+          </div>
+          <span class="exercise-week-date">12 Kasım 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Değer Takası (Swap)</h4>
+              <p class="exercise-desc">İki değişkenin değerini adreslerini (pointer) veya referanslarını kullanarak takas eden fonksiyonu yazın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta4_odev1.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Pointer Aritmetiğiyle Dizi</h4>
+              <p class="exercise-desc">Köşeli parantez `[]` kullanmadan, sadece `*(ptr + i)` aritmetiğiyle bir diziyi dolaşıp elemanları ikiye katlayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta4_odev2.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.3</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Kendi String Boyut Fonksiyonun</h4>
+              <p class="exercise-desc">`strlen` kullanmadan, `char*` işaretçisi `'\0'` görene kadar ilerleyerek karakter dizisi uzunluğunu hesaplayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta4_odev3.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">Adres Döndüren Fonksiyon</h4>
+              <p class="exercise-desc">Bir dizideki maksimum elemanın bellekteki adresini işaretçi olarak döndüren güvenli arama fonksiyonunu yazın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta4_odev4.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HAFTA 5 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-5">
+        <div class="exercise-week-header">
+          <div class="exercise-week-title">
+            <span>📌 5. Hafta Alıştırmaları</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Yapılar / Structs ve Nesnel Temeller)</span>
+          </div>
+          <span class="exercise-week-date">19 Kasım 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Öğrenci Kayıt Yapısı</h4>
+              <p class="exercise-desc">İsim, numara ve notlar içeren bir `struct Ogrenci` tipi oluşturup kullanıcıdan 3 öğrenci kaydı alın.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta5_odev1.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Ok Operatörü (->) ile Erişim</h4>
+              <p class="exercise-desc">Fonksiyona parametre olarak yapı işaretçisi (`Ogrenci*`) gönderip alanları `->` ile güncelleyin.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta5_odev2.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.3</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">İç İçe Yapılar (Sensör Paketi)</h4>
+              <p class="exercise-desc">Zaman damgası, koordinat yapısı ve telemetri verilerini iç içe `struct` hiyerarşisiyle modelleyin.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta5_odev3.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.4</span>
+                <span class="diff-badge diff-hard">Mini Proje</span>
+              </div>
+              <h4 class="exercise-title">Envanter Takip Sistemi</h4>
+              <p class="exercise-desc">Ürün ekleme, listeleme, stok sorgulama ve ortalama fiyat hesaplama yapabilen menülü konsol uygulaması.</p>
+            </div>
+            <div class="exercise-actions">
+              <a href="code/hafta5_odev4.cpp" download class="btn btn-devcpp">📥 Dev-C++</a>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAYDALI KAYNAKLAR & REFERANSLAR -->
+    <section id="referanslar">
+      <div class="section-head">
+        <h3 class="section-title">📚 Önerilen Referanslar & Kaynaklar</h3>
+        <p class="section-desc">Ders dışında konuları pekiştirmek, dokümantasyon okuma alışkanlığı kazanmak ve kütüphaneleri incelemek için başucu siteleri.</p>
+      </div>
+
+      <div class="ref-grid">
+        <a href="https://en.cppreference.com/w/" target="_blank" class="ref-card">
+          <div>
+            <h4>cppreference.com ↗</h4>
+            <p>C++ dünyasının en güvenilir ve eksiksiz standart kütüphane dokümantasyonu. Tipler, fonksiyon imzaları ve algoritmalar için resmi kılavuz.</p>
+          </div>
+          <span>Dokümantasyonu İncele →</span>
+        </a>
+
+        <a href="https://www.learncpp.com/" target="_blank" class="ref-card">
+          <div>
+            <h4>LearnCpp.com ↗</h4>
+            <p>Sıfırdan ileri seviyeye modern C++ öğrenmek için hazırlanmış en kapsamlı, pedagojik ve güncel C++11/17/20 çevrimiçi rehberi.</p>
+          </div>
+          <span>Dersleri İncele →</span>
+        </a>
+
+        <a href="https://cplusplus.com/" target="_blank" class="ref-card">
+          <div>
+            <h4>cplusplus.com ↗</h4>
+            <p>Özellikle temel C++ ve C kütüphane fonksiyonlarını sade örnekler ve açıklamalarla hızlıca aramak için ideal bir referans.</p>
+          </div>
+          <span>Sözlüğü Aç →</span>
+        </a>
+
+        <a href="https://sourceforge.net/projects/embarcadero-devcpp/" target="_blank" class="ref-card">
+          <div>
+            <h4>Embarcadero Dev-C++ ↗</h4>
+            <p>Derslerimizde kullandığımız hafif, pratik ve TDM-GCC derleyicisi entegre açık kaynaklı C/C++ geliştirme ortamı.</p>
+          </div>
+          <span>İndirme Sayfası →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- DEV-C++ KURULUM VE TEST -->
     <section id="kurulum">
-      <h3 class="section-title">Geliştirme Ortamı: Dev-C++</h3>
-      <p class="section-desc">Eğitim boyunca hafifliği, dahili GCC derleyicisi ve doğrudan kurulabilmesi sebebiyle Dev-C++ kullanacağız.</p>
+      <div class="section-head">
+        <h3 class="section-title">⚙️ Geliştirme Ortamı: Dev-C++</h3>
+        <p class="section-desc">Ders öncesinde derleyicinizin sorunsuz çalıştığından emin olmak için aşağıdaki adımları tamamlayın.</p>
+      </div>
 
       <div class="tools-grid">
-        <div class="tool-card">
-          <h3>Dev-C++ Kurulum Adımları</h3>
-          <p>Derslere gelmeden önce bilgisayarınızda derleyicinin hazır olması gerekmektedir.</p>
-          <ol class="step-list">
-            <li>Embarcadero Dev-C++ (güncel TDM-GCC sürümü içeren paket) kurulum dosyasını indirin.</li>
-            <li>Kurulum sırasında <b>TDM-GCC</b> bileşeninin seçili olduğundan emin olarak kurulumu tamamlayın.</li>
-            <li>Programı açıp <code>File -> New -> Source File</code> yolunu izleyin.</li>
-            <li>Konsol ekranında Türkçe karakterlerin ve modern C++ özelliklerinin sorunsuz çalışması için <code>Tools -> Compiler Options</code> altından <code>-std=c++11</code> veya üstü bayrağı aktif edebilirsiniz.</li>
+        <div class="tool-box">
+          <h3>Dev-C++ Kurulum Kılavuzu</h3>
+          <p>Windows ortamında C++ kodlarını derlemek için en zahmetsiz seçenek olan Dev-C++ kurulum adımları:</p>
+          <ol class="steps-list">
+            <li>Embarcadero Dev-C++ güncel kurulum dosyasını indirin.</li>
+            <li>Kurulum sırasında <b>TDM-GCC 9.2.0</b> bileşeninin işaretli olduğundan emin olun.</li>
+            <li>Programı çalıştırıp dil ve tema ayarlarını tamamlayın.</li>
+            <li>Standart uyumluluğu için <code>Tools -&gt; Compiler Options</code> penceresinde <code>-std=c++11</code> seçeneğini işaretleyin.</li>
           </ol>
         </div>
 
-        <div class="tool-card">
-          <h3>İlk Test ve Derleme</h3>
-          <p>Kurulumun başarılı olduğunu doğrulamak için aşağıdaki adımları deneyin:</p>
-          <ol class="step-list">
-            <li>Yeni bir kaynak dosyası açıp içine <code>cout &lt;&lt; "Test";</code> içeren temel <code>main</code> fonksiyonunu yazın.</li>
-            <li>Dosyayı <code>.cpp</code> uzantısıyla kaydedin (Örn: <code>deneme.cpp</code>).</li>
-            <li>Klavyeden <b>F11</b> tuşuna basarak (<i>Compile & Run</i>) kodun derlenip konsol penceresinin açıldığını doğrulayın.</li>
-            <li>Herhangi bir derleme hatası alırsanız ders WhatsApp grubundan destek alabilirsiniz.</li>
+        <div class="tool-box">
+          <h3>İlk Kod ve Derleme Testi</h3>
+          <p>Ortamınızın sağlıklı çalıştığını doğrulamak için şu adımları izleyin:</p>
+          <ol class="steps-list">
+            <li><code>File -&gt; New -&gt; Source File</code> (Kısayol: <b>Ctrl + N</b>) ile yeni bir dosya açın.</li>
+            <li>Yukarıdaki örnek `main` fonksiyonunu yapıştırın.</li>
+            <li>Dosyayı <code>.cpp</code> uzantısıyla masaüstünüze kaydedin (Kısayol: <b>Ctrl + S</b>).</li>
+            <li><b>F11</b> tuşuna basarak (<i>Compile &amp; Run</i>) siyah konsol penceresinin açıldığını teyit edin.</li>
           </ol>
         </div>
       </div>
     </section>
 
-    <!-- İletişim -->
-    <section id="iletisim" style="background: var(--surface); border: 1px solid var(--surface-border); border-radius: 14px; padding: 2rem; text-align: center; margin-bottom: 3rem;">
-      <h3 style="color:#fff; margin-bottom: 0.5rem; font-size: 1.3rem;">Sorularınız mı Var?</h3>
-      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem;">
-        Kodlama esnasında takıldığınız yerleri veya derleyici kurulumuyla ilgili sorularınızı topluluk WhatsApp grubuna iletebilirsiniz.
-      </p>
-      <a href="https://ieeehacettepe.com" target="_blank" class="slide-btn" style="background: var(--primary); border:none; padding: 0.75rem 1.5rem; font-size: 0.95rem;">IEEE Hacettepe Web Sitesi ↗</a>
+    <!-- İLETİŞİM -->
+    <section id="iletisim">
+      <div class="contact-card">
+        <h3>Sorularınız veya Destek İhtiyacınız mı Var?</h3>
+        <p>
+          Eğitim süresince ödevlerde takıldığınız noktaları, derleyici hatalarını veya önerilerinizi çekinmeden iletebilirsiniz.
+        </p>
+        <div class="contact-actions">
+          <a href="mailto:eryilmaz2000meliksah@gmail.com" class="btn btn-primary" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
+            ✉️ eryilmaz2000meliksah@gmail.com
+          </a>
+          <a href="https://ieeehacettepe.com" target="_blank" class="btn btn-accent" style="padding: 0.75rem 1.4rem; font-size: 0.9rem;">
+            🌐 IEEE Hacettepe Resmi Sitesi ↗
+          </a>
+        </div>
+      </div>
     </section>
 
   </div>
 
   <!-- Footer -->
   <footer>
-    <p><b>IEEE Hacettepe Öğrenci Kolu</b> • C++ Programlama Eğitimi Güz 2026</p>
-    <p style="margin-top: 0.5rem; color: #64748b;">Hacettepe Üniversitesi Elektrik ve Elektronik Mühendisliği Bölümü - E4 Sınıfı</p>
+    <p><b>IEEE Hacettepe Öğrenci Kolu</b> • Programmix V C++ Programlama Eğitimi</p>
+    <p style="margin-top: 0.4rem;">Hacettepe Üniversitesi Elektrik ve Elektronik Mühendisliği Bölümü - E4 Sınıfı</p>
+    <p style="margin-top: 0.6rem; font-size: 0.75rem;">Sorularınız için: <a href="mailto:eryilmaz2000meliksah@gmail.com">eryilmaz2000meliksah@gmail.com</a></p>
   </footer>
 
 </body>
