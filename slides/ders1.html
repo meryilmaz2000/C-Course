@@ -379,6 +379,125 @@
       opacity: 0.4;
       cursor: not-allowed;
     }
+
+    /* ==============================================================
+       MOBİL VE TABLET UYUMLULUK KATMANI (DESKTOP ASLA BOZULMAZ)
+       ============================================================== */
+    @media (max-width: 900px) {
+      .slider-main {
+        margin: 1.2rem auto;
+        padding: 0 1rem;
+      }
+      .slide-title {
+        font-size: 1.5rem;
+      }
+      .slide-desc {
+        font-size: 0.88rem;
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Header: Geri butonu üstte, sekmeler altta yatay kaydırılabilir */
+      header {
+        padding: 0.6rem 1rem;
+      }
+      .nav-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+      }
+      .brand-back {
+        align-self: flex-start;
+      }
+      .topic-tabs {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+      }
+      .topic-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .topic-btn {
+        flex: 0 0 auto;
+        font-size: 0.78rem;
+        padding: 0.45rem 0.8rem;
+      }
+
+      /* Giriş Sahnelerindeki Grid Yapılarını Dikey Akışa Çevirme */
+      #slide-0-1 div[style*="grid-template-columns: 1fr auto 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        margin: 1rem 0 !important;
+      }
+      #slide-0-1 div[style*="font-size:1.8rem"] {
+        transform: rotate(90deg);
+        margin: 0.2rem 0;
+      }
+
+      #slide-0-2 div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+      }
+      #slide-0-2 div[style*="display:flex; justify-content:space-around"] {
+        flex-direction: column;
+        gap: 0.4rem;
+        font-size: 0.75rem !important;
+      }
+
+      #slide-0-3 div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.85rem !important;
+        margin: 1rem 0 !important;
+      }
+
+      /* Kod Blokları & Tablo */
+      pre code {
+        font-size: 0.8rem;
+        padding: 1rem;
+      }
+      .info-card {
+        padding: 1rem;
+      }
+      .op-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* RAM Kutuları */
+      .ram-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
+      }
+      .ram-cell {
+        padding: 0.65rem;
+      }
+
+      /* Footer Kontrolleri */
+      footer {
+        padding: 0.75rem 1rem;
+      }
+      .slide-counter {
+        font-size: 0.78rem;
+      }
+      .btn-slide {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.78rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slide-title {
+        font-size: 1.3rem;
+      }
+      #slide-0-2 div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
