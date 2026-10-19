@@ -955,7 +955,7 @@
           <li><a href="#alistirmalar">Alıştırmalar</a></li>
 		  <li><a href="#proje">Rover Projesi</a></li>
           <li><a href="#referanslar">Referanslar</a></li>
-          <li><a href="#kurulum">Dev-C++</a></li>
+          <li><a href="#kurulum">Geliştirme Ortamı</a></li>
           <li><a href="#iletisim">İletişim</a></li>
         </ul>
       </nav>
@@ -1405,7 +1405,7 @@
 
         <a href="https://www.youtube.com/results?search_query=ieee+hacettepe+c+e%C4%9Fitimi" target="_blank" class="ref-card">
           <div>
-            <h4>Dev-C++ Ders Videoları↗</h4>
+            <h4>C++ Ders Videoları↗</h4>
             <p>IEEE Hacettepe'de geçmişte verilen C Eğitim videoları için link</p>
           </div>
           <span>Video Linki →</span>
@@ -1416,36 +1416,45 @@
     <!-- DEV-C++ KURULUM VE TEST (YENİLENMİŞ DÜZEN) -->
     <section id="kurulum">
       <div class="section-head">
-        <h3 class="section-title">⚙️ Geliştirme Ortamı: Dev-C++</h3>
+        <h3 class="section-title">⚙️ Geliştirme Ortamı</h3>
         <p class="section-desc">Ders öncesinde derleyicinizin sorunsuz çalıştığından emin olmak için aşağıdaki adımları tamamlayıp test edin.</p>
       </div>
 
       <div class="setup-layout">
-        <!-- Kurulum Adımları & İndirme Butonu -->
+<!-- Kurulum Adımları & İndirme Butonları -->
         <div class="setup-info-box">
           <div>
-            <h3>🛠️ Dev-C++ Kurulumu</h3>
+            <h3>🛠️ Geliştirme Ortamı Kurulumu</h3>
             <p>
-              C++ kodlarımızı yerel olarak derlemek için hafif ve MinGW/GCC ile paketli gelen Dev-C++ ortamını kullanacağız.
+              C++ kodlarımızı derlemek için işletim sisteminize uygun olan geliştirme ortamını seçip kurabilirsiniz:
             </p>
 
             <div class="step-item">
               <span class="step-num">1</span>
-              <div>Aşağıdaki butona tıklayarak SourceForge üzerinden kurulum dosyasını indirin ve kurun.</div>
+              <div>
+                <b>Windows:</b> Hafif ve dahili MinGW/GCC ile hazır gelen <b>Dev-C++</b> veya profesyonel <b>CLion</b> tercih edebilirsiniz.<br>
+                <b>macOS & Linux:</b> Dev-C++ desteklenmez. Üniversite e-postasıyla ücretsiz tam lisans alabileceğiniz <b>JetBrains CLion</b> önerilir.
+              </div>
             </div>
             <div class="step-item">
               <span class="step-num">2</span>
-              <div>Programı açıp <code>File -&gt; New -&gt; Source File</code> (<b>Ctrl + N</b>) ile boş bir kaynak dosyası oluşturun.</div>
+              <div>Programı açıp yeni bir C++ kaynak dosyası (<b>.cpp</b>) oluşturun.</div>
             </div>
             <div class="step-item">
               <span class="step-num">3</span>
-              <div>Sağdaki test kodunu editöre yapıştırıp <b>F11</b> (Compile & Run) tuşuna basarak çalıştırın.</div>
+              <div>Sağdaki test kodunu editöre yapıştırıp derleyerek çalıştığını doğrulayın.</div>
             </div>
           </div>
 
-          <a href="https://sourceforge.net/projects/orwelldevcpp/" target="_blank" class="setup-download-btn">
-            ⬇️ Dev-C++ İndir (SourceForge) ↗
-          </a>
+          <!-- İndirme Butonları -->
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="https://sourceforge.net/projects/orwelldevcpp/" target="_blank" class="setup-download-btn" style="flex: 1; min-width: 200px; margin-top: 0; background: linear-gradient(135deg, #1e293b, #0f172a); border-color: rgba(255, 255, 255, 0.2);">
+              🪟 Dev-C++ İndir (Windows) ↗
+            </a>
+            <a href="https://www.jetbrains.com/clion/download/" target="_blank" class="setup-download-btn" style="flex: 1; min-width: 200px; margin-top: 0; background: linear-gradient(135deg, #1e293b, #0f172a); border-color: rgba(255, 255, 255, 0.2);">
+              💻 CLion İndir (Win / Mac / Linux) ↗
+            </a>
+          </div>
         </div>
 
         <!-- IDE / Test Ekranı Görünümü -->
