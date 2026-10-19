@@ -822,8 +822,7 @@
   <header>
     <div class="nav-container">
       <a href="#" class="brand-group">
-        <img class="brand-logo-img" src="https://ieeehacettepe.com/static/media/logo.54877cfc.png" alt="IEEE Hacettepe" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='inline-block';">
-        <span id="logo-fallback" style="display:none; font-weight:800; color:#38bdf8; font-size:1.2rem;">IEEE</span>
+	  <img class="brand-logo-img" src="assets/logo.png" alt="IEEE Hacettepe" style="height: 42px; width: auto; border-radius: 8px;">
         <div class="brand-text">
           <h1>IEEE Hacettepe <span class="badge-event">Programmix V</span></h1>
           <p>C++ Programlama Eğitimi</p>
@@ -833,6 +832,7 @@
         <ul>
           <li><a href="#mufredat">Müfredat</a></li>
           <li><a href="#alistirmalar">Alıştırmalar</a></li>
+		  <li><a href="#proje">Rover Projesi</a></li>
           <li><a href="#referanslar">Referanslar</a></li>
           <li><a href="#kurulum">Dev-C++</a></li>
           <li><a href="#iletisim">İletişim</a></li>
@@ -928,18 +928,18 @@
               <td>
                 <div class="part-item">
                   <span class="part-badge">PART 1</span>
-                  <span class="part-txt">C++ Mimarisi, Bellek & Derleme Mantığı, Veritipleri, <code>sizeof</code>, Standart I/O (<code>cin</code> / <code>cout</code>)</span>
+                  <span class="part-txt">C++ Mimarisi, Bellek & Derleme Mantığı, Veritipleri, sizeof, Standart I/O, Aritmetik & Mantık Operatörleri, Casting</span>
                 </div>
                 <div class="part-item">
                   <span class="part-badge">PART 2</span>
-                  <span class="part-txt">Aritmetik & Mantık Operatörleri, Casting, Koşullu İfadeler (<code>if-else</code>), <code>switch-case</code> Kullanımı</span>
+                  <span class="part-txt">Koşullu İfadeler, Döngü Yapıları, <code>break</code> ve <code>continue</code> ile Akış Denetimi</span>
                 </div>
               </td>
               <td style="text-align: right;">
-                <div class="btn-row">
-                  <a href="slides/ders1.html" class="btn btn-primary">📑 Slayt 1</a>
-                  <a href="#hafta-1" class="btn btn-accent">🎯 Alıştırmalar</a>
-                </div>
+				<div class="btn-row">
+				  <a href="slides/ders1.html" target="_blank" class="btn btn-primary">📑 Slayt 1</a>
+				  <a href="#hafta-1" class="btn btn-accent">🎯 Alıştırmalar</a>
+				</div>
               </td>
             </tr>
 
@@ -952,11 +952,11 @@
               <td>
                 <div class="part-item">
                   <span class="part-badge">PART 1</span>
-                  <span class="part-txt">Döngü Yapıları (<code>while</code>, <code>do-while</code>, <code>for</code>), <code>break</code> ve <code>continue</code> Akış Denetimi</span>
+                  <span class="part-txt">Fonksiyonlar, Parametre Aktarımı, return Yapısı, Dizilere (Arrays) Giriş</span>
                 </div>
                 <div class="part-item">
                   <span class="part-badge">PART 2</span>
-                  <span class="part-txt">Fonksiyonlar, Parametre Aktarımı, <code>return</code> Yapısı, Kapsamlı Uygulama (Fibonacci Serisi)</span>
+                  <span class="part-txt">Bellekte Dizilme, Karakter Dizileri (C-String vs. string), Çok Boyutlu Diziler (Matrisler), Fonksiyonlara Parametre Olarak Dizi ve Karakter Dizisi Gönderme</span>
                 </div>
               </td>
               <td style="text-align: right;">
@@ -976,11 +976,11 @@
               <td>
                 <div class="part-item">
                   <span class="part-badge">PART 1</span>
-                  <span class="part-txt">Dizilere (Arrays) Giriş, Bellekte Dizilme, Karakter Dizileri (C-String vs. <code>string</code>)</span>
+                  <span class="part-txt">Bellek Adresleri ve Pointer Mantığı, Call by Value vs. Call by Reference</span>
                 </div>
                 <div class="part-item">
                   <span class="part-badge">PART 2</span>
-                  <span class="part-txt">Çok Boyutlu Diziler (Matrisler), Fonksiyonlara Parametre Olarak Dizi ve Karakter Dizisi Gönderme</span>
+                  <span class="part-txt">Diziler ile Pointer İlişkisi, Pointer Aritmetiği, Stringler ve Pointerlar, Dönüş Tipi Pointer Olan Fonksiyonlar</span>
                 </div>
               </td>
               <td style="text-align: right;">
@@ -1000,11 +1000,11 @@
               <td>
                 <div class="part-item">
                   <span class="part-badge">PART 1</span>
-                  <span class="part-txt">Bellek Adresleri & Pointer Mantığı (<code>&</code>, <code>*</code>), <i>Call by Value</i> vs. <i>Call by Reference</i></span>
+                  <span class="part-txt">Yapılar, İç İçe Yapılar, Structure Dizi Tanımları</span>
                 </div>
                 <div class="part-item">
                   <span class="part-badge">PART 2</span>
-                  <span class="part-txt">Diziler ile Pointer İlişkisi, Pointer Aritmetiği, Stringler ve Pointerlar, Dönüş Tipi Pointer Olan Fonksiyonlar</span>
+                  <span class="part-txt">Fonksiyonlar ve Yapılar, Pointerlar ve Yapı İlişkisi, Referansla Yapı Gönderme, OOP Giriş</span>
                 </div>
               </td>
               <td style="text-align: right;">
@@ -1024,11 +1024,11 @@
               <td>
                 <div class="part-item">
                   <span class="part-badge">PART 1</span>
-                  <span class="part-txt">Yapılar (<code>struct</code> Mantığı), Bellekte Hizalama, İç İçe Yapılar, Structure Dizi Tanımları</span>
+                  <span class="part-txt">Class yapıları, Erişim belirleyiciler (public / private / protected), Constructor ve Destructor</span>
                 </div>
                 <div class="part-item">
                   <span class="part-badge">PART 2</span>
-                  <span class="part-txt">Fonksiyonlar ve Yapılar, Pointerlar ve Yapı İlişkisi (<code>-&gt;</code> Operatörü), Referansla Yapı Gönderme & Mini Proje</span>
+                  <span class="part-txt">Kalıtım (Inheritance: Base Class & Derived Class Mantığı), Bundan sonra neler var?</span>
                 </div>
               </td>
               <td style="text-align: right;">
@@ -1055,7 +1055,7 @@
         <div class="exercise-week-header">
           <div class="exercise-week-title">
             <span>📌 1. Hafta Alıştırmaları</span>
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Temel Tipler, Giriş/Çıkış ve Koşullar)</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Temel Tipler, Giriş/Çıkış, Koşullar ve Döngüler)</span>
           </div>
           <span class="exercise-week-date">22 Ekim 2026</span>
         </div>
@@ -1068,8 +1068,8 @@
                 <span class="exercise-badge">GÖREV 1.1</span>
                 <span class="diff-badge diff-easy">Kolay</span>
               </div>
-              <h4 class="exercise-title">Tamsayı Bölmesi & Casting</h4>
-              <p class="exercise-desc">Kullanıcıdan iki tamsayı alıp tamsayı bölme sonucunu ve tür dönüşümü (float cast) ile hassas kesirli sonucunu ekrana yazdırın.</p>
+              <h4 class="exercise-title">Kullanıcı ile Etkileşim</h4>
+              <p class="exercise-desc">Kullanıcıdan bazı bilgiler alarak ekrana düzenli bir formatta bastırın.</p>
             </div>
             <div class="exercise-actions">
               <button onclick="copyTemplateCode('hafta1_1', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
@@ -1084,7 +1084,7 @@
                 <span class="exercise-badge">GÖREV 1.2</span>
                 <span class="diff-badge diff-easy">Kolay</span>
               </div>
-              <h4 class="exercise-title">Sensör Sıcaklık Kontrolü</h4>
+              <h4 class="exercise-title">Sıcaklığa Göre Motor Kontrolü</h4>
               <p class="exercise-desc">Girilen sıcaklık değerine göre motor çalışma seviyesini <code>if - else if - else</code> blokları ile belirleyip konsola bildirin.</p>
             </div>
             <div class="exercise-actions">
@@ -1100,8 +1100,8 @@
                 <span class="exercise-badge">GÖREV 1.3</span>
                 <span class="diff-badge diff-med">Orta</span>
               </div>
-              <h4 class="exercise-title">Hesap Makinesi (Switch-Case)</h4>
-              <p class="exercise-desc">İki reel sayı ve işlem kodu alarak çalışan, sıfıra bölme hatasını kontrol eden menülü bir hesap makinesi tasarlayın.</p>
+              <h4 class="exercise-title">Delta ve Kök Analizi</h4>
+              <p class="exercise-desc">2. dereceden ax² + bx + c = 0 denkleminin diskriminantını (Δ = b² - 4ac) hesaplayarak köklerin reel/çakışık durumunu raporlayın.</p>
             </div>
             <div class="exercise-actions">
               <button onclick="copyTemplateCode('hafta1_3', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
@@ -1116,8 +1116,8 @@
                 <span class="exercise-badge">GÖREV 1.4</span>
                 <span class="diff-badge diff-hard">Meydan Okuma</span>
               </div>
-              <h4 class="exercise-title">Delta ve Kök Analizi</h4>
-              <p class="exercise-desc">2. dereceden ax² + bx + c = 0 denkleminin diskriminantını (Δ = b² - 4ac) hesaplayarak köklerin reel/çakışık durumunu raporlayın.</p>
+              <h4 class="exercise-title">Sayı Tahmin Oyunu</h4>
+              <p class="exercise-desc">Random üretilen gizli sayıyı bulması için kullanıcıya bir oyun hazırlayın.</p>
             </div>
             <div class="exercise-actions">
               <button onclick="copyTemplateCode('hafta1_4', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
@@ -1128,298 +1128,128 @@
       </div>
 
       <!-- HAFTA 2 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-2">
-        <div class="exercise-week-header">
+      <div class="exercise-week-container" id="hafta-2" style="opacity: 0.75;">
+        <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
           <div class="exercise-week-title">
             <span>📌 2. Hafta Alıştırmaları</span>
             <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Döngüler, Akış Kontrolü ve Fonksiyonlar)</span>
           </div>
-          <span class="exercise-week-date">29 Ekim 2026</span>
-        </div>
-
-        <div class="exercise-grid-scroll">
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 2.1</span>
-                <span class="diff-badge diff-easy">Kolay</span>
-              </div>
-              <h4 class="exercise-title">Basamaklar Toplamı (Do-While)</h4>
-              <p class="exercise-desc">Kullanıcıdan alınan pozitif bir tam sayının rakamları toplamını <code>do-while</code> döngüsü ve mod operatörü kullanarak bulun.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 2.2</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">Fibonacci Üreteci</h4>
-              <p class="exercise-desc">İlk N terimi üreten bir fonksiyon yazın. Döngü değişkenlerini doğru güncelleyerek ekrana seriyi yazdırın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 2.3</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">Aralıktaki Asalları Filtrele</h4>
-              <p class="exercise-desc">Verilen iki sınır arasındaki asal sayıları tespit eden ve <code>continue</code> ile çiftleri atlayan bir fonksiyon kurgulayın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 2.4</span>
-                <span class="diff-badge diff-hard">Meydan Okuma</span>
-              </div>
-              <h4 class="exercise-title">Özyinelemeli (Recursive) Üs</h4>
-              <p class="exercise-desc">Döngü kullanmadan, taban ve üs parametrelerini özyinelemeli (recursive) çağıran bir C++ fonksiyonu geliştirin.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
+          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
+            ⏳ Dersten Önce Yayınlanacak
+          </span>
         </div>
       </div>
 
       <!-- HAFTA 3 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-3">
-        <div class="exercise-week-header">
+      <div class="exercise-week-container" id="hafta-3" style="opacity: 0.75;">
+        <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
           <div class="exercise-week-title">
             <span>📌 3. Hafta Alıştırmaları</span>
             <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Diziler, Karakter Dizileri ve Matrisler)</span>
           </div>
-          <span class="exercise-week-date">5 Kasım 2026</span>
-        </div>
-
-        <div class="exercise-grid-scroll">
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 3.1</span>
-                <span class="diff-badge diff-easy">Kolay</span>
-              </div>
-              <h4 class="exercise-title">Dizi İstatistikleri</h4>
-              <p class="exercise-desc">N elemanlı bir dizideki en büyük, en küçük elemanı ve ortalamayı tek geçişte hesaplayan fonksiyonu doldurun.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 3.2</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">Palindrom String Kontrolü</h4>
-              <p class="exercise-desc">Karakter dizisini tersten inceleyerek kelimenin tersten okunuşunun aynı olup olmadığını kontrol edin.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 3.3</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">Matris Transpozu</h4>
-              <p class="exercise-desc">İki boyutlu 3x3'lük matrisin satır ve sütunlarını yer değiştirerek transpozunu ekrana yazdırın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 3.4</span>
-                <span class="diff-badge diff-hard">Meydan Okuma</span>
-              </div>
-              <h4 class="exercise-title">Matris Çarpımı Fonksiyonu</h4>
-              <p class="exercise-desc">İki matrisi parametre olarak alıp çarpım matrisini üreten 3 seviyeli döngü algoritmasını tamamlayın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
+          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
+            ⏳ Dersten Önce Yayınlanacak
+          </span>
         </div>
       </div>
 
       <!-- HAFTA 4 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-4">
-        <div class="exercise-week-header">
+      <div class="exercise-week-container" id="hafta-4" style="opacity: 0.75;">
+        <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
           <div class="exercise-week-title">
             <span>📌 4. Hafta Alıştırmaları</span>
             <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(İşaretçiler, Bellek ve Call by Reference)</span>
           </div>
-          <span class="exercise-week-date">12 Kasım 2026</span>
-        </div>
-
-        <div class="exercise-grid-scroll">
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 4.1</span>
-                <span class="diff-badge diff-easy">Kolay</span>
-              </div>
-              <h4 class="exercise-title">Değer Takası (Swap)</h4>
-              <p class="exercise-desc">İki değişkenin değerini adreslerini (pointer) veya referanslarını kullanarak takas eden fonksiyonu yazın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 4.2</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">Pointer Aritmetiğiyle Dizi</h4>
-              <p class="exercise-desc">Köşeli parantez `[]` kullanmadan, sadece `*(ptr + i)` aritmetiğiyle bir diziyi dolaşıp elemanları ikiye katlayın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 4.3</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">Kendi String Boyut Fonksiyonun</h4>
-              <p class="exercise-desc">`strlen` kullanmadan, `char*` işaretçisi `'\0'` görene kadar ilerleyerek karakter dizisi uzunluğunu hesaplayın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 4.4</span>
-                <span class="diff-badge diff-hard">Meydan Okuma</span>
-              </div>
-              <h4 class="exercise-title">Adres Döndüren Fonksiyon</h4>
-              <p class="exercise-desc">Bir dizideki maksimum elemanın bellekteki adresini işaretçi olarak döndüren güvenli arama fonksiyonunu yazın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
+          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
+            ⏳ Dersten Önce Yayınlanacak
+          </span>
         </div>
       </div>
 
       <!-- HAFTA 5 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-5">
-        <div class="exercise-week-header">
+      <div class="exercise-week-container" id="hafta-5" style="opacity: 0.75;">
+        <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
           <div class="exercise-week-title">
             <span>📌 5. Hafta Alıştırmaları</span>
             <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Yapılar / Structs ve Nesnel Temeller)</span>
           </div>
-          <span class="exercise-week-date">19 Kasım 2026</span>
-        </div>
-
-        <div class="exercise-grid-scroll">
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 5.1</span>
-                <span class="diff-badge diff-easy">Kolay</span>
-              </div>
-              <h4 class="exercise-title">Öğrenci Kayıt Yapısı</h4>
-              <p class="exercise-desc">İsim, numara ve notlar içeren bir `struct Ogrenci` tipi oluşturup kullanıcıdan 3 öğrenci kaydı alın.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 5.2</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">Ok Operatörü (->) ile Erişim</h4>
-              <p class="exercise-desc">Fonksiyona parametre olarak yapı işaretçisi (`Ogrenci*`) gönderip alanları `->` ile güncelleyin.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 5.3</span>
-                <span class="diff-badge diff-med">Orta</span>
-              </div>
-              <h4 class="exercise-title">İç İçe Yapılar (Sensör Paketi)</h4>
-              <p class="exercise-desc">Zaman damgası, koordinat yapısı ve telemetri verilerini iç içe `struct` hiyerarşisiyle modelleyin.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
-
-          <div class="exercise-card">
-            <div>
-              <div class="card-top">
-                <span class="exercise-badge">GÖREV 5.4</span>
-                <span class="diff-badge diff-hard">Mini Proje</span>
-              </div>
-              <h4 class="exercise-title">Envanter Takip Sistemi</h4>
-              <p class="exercise-desc">Ürün ekleme, listeleme, stok sorgulama ve ortalama fiyat hesaplama yapabilen menülü konsol uygulaması.</p>
-            </div>
-            <div class="exercise-actions">
-              <button onclick="copyTemplateCode('default', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
-              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
-            </div>
-          </div>
+          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
+            ⏳ Dersten Önce Yayınlanacak
+          </span>
         </div>
       </div>
     </section>
 
+<!-- DÖNEM PROJESİ: ROVER SİMÜLASYONU (KOMPAKT) -->
+    <section id="proje" style="padding-top: 1rem;">
+      <div class="section-head" style="margin-bottom: 1.25rem;">
+        <h3 class="section-title">🛰️ Otonom Keşif Rover'ı Projesi</h3>
+        <p class="section-desc">Eğitim boyunca 5 haftalık etaplarla geliştireceğimiz dönem projesinin aşama yönergeleri.</p>
+      </div>
+
+      <div class="exercise-week-container" style="background: linear-gradient(180deg, var(--surface) 0%, #0d1527 100%); border-color: rgba(56, 189, 248, 0.25); padding: 1.25rem;">
+        <!-- 5 Kolonlu Kompakt Grid -->
+        <div class="exercise-grid-scroll" style="grid-template-columns: repeat(5, minmax(180px, 1fr)); gap: 1rem; padding-bottom: 0.25rem;">
+          
+          <!-- Faz 1 -->
+          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; border-color: rgba(56, 189, 248, 0.35); gap: 0.75rem;">
+            <div>
+              <span class="exercise-badge" style="color:var(--accent); display:inline-block; margin-bottom: 0.35rem;">1. HAFTA</span>
+              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 1</h4>
+            </div>
+            <a href="docs/rover_faz1.pdf" target="_blank" class="btn btn-primary" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+              📄 FAZ-1 (PDF) ↗
+            </a>
+          </div>
+
+          <!-- Faz 2 -->
+          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
+            <div>
+              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">2. HAFTA</span>
+              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 2</h4>
+            </div>
+            <a href="docs/rover_faz2.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+              📄 FAZ-2 (PDF)
+            </a>
+          </div>
+
+          <!-- Faz 3 -->
+          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
+            <div>
+              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">3. HAFTA</span>
+              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 3</h4>
+            </div>
+            <a href="docs/rover_faz3.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+              📄 FAZ-3 (PDF)
+            </a>
+          </div>
+
+          <!-- Faz 4 -->
+          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
+            <div>
+              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">4. HAFTA</span>
+              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 4</h4>
+            </div>
+            <a href="docs/rover_faz4.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+              📄 FAZ-4 (PDF)
+            </a>
+          </div>
+
+          <!-- Faz 5 -->
+          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
+            <div>
+              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">5. HAFTA</span>
+              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 5</h4>
+            </div>
+            <a href="docs/rover_faz5.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+              📄 FAZ-5 (PDF)
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+	
     <!-- FAYDALI KAYNAKLAR & REFERANSLAR -->
     <section id="referanslar">
       <div class="section-head">
@@ -1452,12 +1282,12 @@
           <span>Sözlüğü Aç →</span>
         </a>
 
-        <a href="https://sourceforge.net/projects/orwelldevcpp/" target="_blank" class="ref-card">
+        <a href="https://www.youtube.com/results?search_query=ieee+hacettepe+c+e%C4%9Fitimi" target="_blank" class="ref-card">
           <div>
-            <h4>Orwell Dev-C++ ↗</h4>
-            <p>Derslerimizde kullandığımız hafif, pratik ve TDM-GCC derleyicisi entegre açık kaynaklı C/C++ geliştirme ortamı.</p>
+            <h4>Dev-C++ Ders Videoları↗</h4>
+            <p>IEEE Hacettepe'de geçmişte verilen C Eğitim videoları için link</p>
           </div>
-          <span>İndirme Sayfası →</span>
+          <span>Video Linki →</span>
         </a>
       </div>
     </section>
@@ -1473,9 +1303,9 @@
         <!-- Kurulum Adımları & İndirme Butonu -->
         <div class="setup-info-box">
           <div>
-            <h3>🛠️ Orwell Dev-C++ Kurulumu</h3>
+            <h3>🛠️ Dev-C++ Kurulumu</h3>
             <p>
-              C++ kodlarımızı yerel olarak derlemek için hafif ve MinGW/GCC ile paketli gelen Orwell Dev-C++ ortamını kullanacağız.
+              C++ kodlarımızı yerel olarak derlemek için hafif ve MinGW/GCC ile paketli gelen Dev-C++ ortamını kullanacağız.
             </p>
 
             <div class="step-item">
@@ -1493,7 +1323,7 @@
           </div>
 
           <a href="https://sourceforge.net/projects/orwelldevcpp/" target="_blank" class="setup-download-btn">
-            ⬇️ Orwell Dev-C++ İndir (SourceForge) ↗
+            ⬇️ Dev-C++ İndir (SourceForge) ↗
           </a>
         </div>
 
@@ -1569,24 +1399,26 @@
   <!-- Panoya Kopyalama Scripti -->
   <script>
     const templates = {
-      hafta1_1: `// IEEE Hacettepe - C++ Egitimi: Hafta 1 Gorev 1.1
-// Tamsayi Bolmesi ve Tip Donusumu (Casting)
+      hafta1_1: 
+	  `
+/* GOREV 1.1 : Kullanicidan ayri ayri ad - soyad - yas - kilo bilgilerini alip ekrana bastiralim.*/
 #include <iostream>
+#include <string> //string tanimlamak icin gerekli kutuphane
 
 using namespace std;
 
-int main() {
-    int sayi1, sayi2;
-    cout << "Birinci sayiyi giriniz: ";
-    cin >> sayi1;
-    cout << "Ikinci sayiyi giriniz: ";
-    cin >> sayi2;
+int main(){
+	/*TODO : Degiskenleri tanimlayiniz (ad , soyad , yas , kilo icin toplamda 4 tane) - DIKKAT : kilo bilgisi kesirli sayi olabilir. */
 
-    // TODO: sayi1 / sayi2 tamsayi bolmesini hesaplayip yazdirin
-    // TODO: (float)sayi1 / sayi2 donusumu ile kesirli sonucu yazdirin
+	/*TODO : Kullanicidan bilgileri sirasiyla aliniz*/
 
-    return 0;
-}`,
+	/*TODO : Bilgileri ekrana alt alta bastiriniz */
+
+	cout << "------------------------------" << endl;
+	
+	return 0;
+}
+	  `,
       hafta1_2: `// IEEE Hacettepe - C++ Egitimi: Hafta 1 Gorev 1.2
 // Sensor Sicaklik Kontrol Sistemi
 #include <iostream>
@@ -1605,38 +1437,68 @@ int main() {
 
     return 0;
 }`,
-      hafta1_3: `// IEEE Hacettepe - C++ Egitimi: Hafta 1 Gorev 1.3
-// Hesap Makinesi (switch-case)
+      hafta1_3:`
+/* GOREV 1.3 : ax^2 + bx + c = 0 denklemi icin delta hesabi yaparak kokleri bulalim */
 #include <iostream>
+#include <cmath>
+
+/*IPUCU : sqrt(value) ifadesinde value degerinin karekokunu alma islemi yapilir.*/
 
 using namespace std;
 
 int main() {
-    float s1, s2;
-    int islem;
-    cout << "Iki sayi giriniz: ";
-    cin >> s1 >> s2;
-    cout << "Islem seciniz (1: +, 2: -, 3: *, 4: /): ";
-    cin >> islem;
 
-    // TODO: switch(islem) yapisini kurunuz
-    // TODO: 4. secenekte sifira bolme kontrolu (s2 == 0) ekleyiniz
+    /* TODO : Kullanicidan a, b ve c katsayilarini aliniz */
 
+    /* TODO : Delta degerini (b^2 - 4ac) hesaplayiniz ve ekrana bastiriniz*/
+    
+    /* TODO : 
+       - Delta > 0 ise iki farkli gercek kok vardir. Kokleri hesaplayip ekrana yazdiriniz.
+       - Delta = 0 ise cakisik tek bir gercek kok vardir. Koku hesaplayip ekrana yazdiriniz.
+       - Delta < 0 ise gercek kok yoktur, ekrana 'Gercek kok yoktur.' yazdiriniz.
+    */
+    
     return 0;
 }`,
-      hafta1_4: `// IEEE Hacettepe - C++ Egitimi: Hafta 1 Gorev 1.4
-// 2. Dereceden Denklem Delta Analizi
+      hafta1_4: `
+/* 
+ * GOREV 1.4 : Rastgele Sayi Tahmin Oyunu
+ * 
+ * SENARYO:
+ * Program calistiginda 1 ile 100 arasinda rastgele bir hedef sayi uretilir.
+ * Kullanicidan surekli tahmin alinir:
+ * - Tahmin kucukse: "Daha BUYUK bir sayi giriniz!"
+ * - Tahmin buyukse: "Daha KUCUK bir sayi giriniz!"
+ * - Tahmin dogruysa: "Tebrikler X. denemede bildiniz!" denilerek dongu sonlanir.
+ * 
+ * ORNEK AKIS: (Random uretilen sayi 37 olsun.)
+ * Tahmininizi giriniz: 50 -> Daha KUCUK bir sayi giriniz!
+ * Tahmininizi giriniz: 25 -> Daha BUYUK bir sayi giriniz!
+ * Tahmininizi giriniz: 37 -> Tebrikler! 3. denemede bildiniz!
+ */
+
 #include <iostream>
+#include <cstdlib> // rand() ve srand() icin
+#include <ctime>   // time() fonksiyonu icin
 
 using namespace std;
 
 int main() {
-    float a, b, c;
-    cout << "ax^2 + bx + c = 0 icin a, b, c degerlerini giriniz: ";
-    cin >> a >> b >> c;
+    srand(time(0)); // Her calismada farkli sayi uretmesi icin sistem saatini tohum (seed) olarak veriyoruz.
+    int hedefSayi = (rand() % 100) + 1; // 1 ile 100 arasinda rastgele tam sayi
 
-    // TODO: delta = b*b - 4*a*c formulunu hesaplayiniz
-    // TODO: delta > 0, delta == 0 ve delta < 0 durumlarini ekrana yazdiriniz
+    int tahmin = 0;
+    int denemeSayisi = 0;
+    cout << "1 ile 100 arasinda rastgele bir sayi tuttum. Tahmin et!" << endl;
+
+    // TODO 1: tahmin degeri hedefSayi'ya esit OLMADIGI surece calisacak bir while dongusu kurunuz.
+
+    // TODO 2: Kullanicidan bir tahmin aliniz (cin >> tahmin) ve denemeSayisi'ni 1 artiriniz.
+
+    // TODO 3: Kosullu yapi (if else ile)
+    //         - tahmin < hedefSayi ise -> "Daha BUYUK bir sayi giriniz!"
+    //         - tahmin > hedefSayi ise -> "Daha KUCUK bir sayi giriniz!"
+    //         - tahmin = hedefSayi ise -> "Tebrikler! X. denemede bildiniz!" yazdiriniz.
 
     return 0;
 }`,

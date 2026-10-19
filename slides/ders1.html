@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ders 1: C++ Temelleri & Operatörler | IEEE Hacettepe</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --surface: #0f172a;
+      --surface-card: #131d35;
+      --surface-border: #1e293b;
+      --primary: #0284c7;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --code-bg: #030712;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    code, pre {
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Üst Navigasyon & 4 Konu Butonu */
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .nav-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--surface-border);
+      transition: all 0.2s;
+    }
+
+    .brand-back:hover {
+      color: #fff;
+      border-color: var(--accent);
+      background: rgba(2, 132, 199, 0.15);
+    }
+
+    .topic-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .topic-btn {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid var(--surface-border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .topic-btn:hover {
+      color: #fff;
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .topic-btn.active {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
+    }
+
+    .topic-btn.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    /* Slayt Konteyner Alanı */
+    .slider-main {
+      flex: 1;
+      max-width: 1150px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .topic-group {
+      display: none;
+    }
+    .topic-group.active {
+      display: block;
+    }
+
+    .slide {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Kod Penceresi */
+    .code-window {
+      background: var(--code-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+      margin-bottom: 1.5rem;
+    }
+
+    .code-topbar {
+      background: #111a2e;
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .c-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .cd-red { background: #ef4444; }
+    .cd-yellow { background: #f59e0b; }
+    .cd-green { background: #10b981; }
+
+    .c-filename {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-left: 0.5rem;
+    }
+
+    pre code {
+      display: block;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .kw { color: #c084fc; font-weight: 600; }
+    .inc { color: #f472b6; }
+    .str { color: #4ade80; }
+    .cmt { color: #64748b; font-style: italic; }
+    .fn { color: #38bdf8; }
+    .num { color: #fbbf24; }
+
+    /* Bilgi & RAM Kutuları */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .info-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+
+    .ram-cell {
+      background: #111a2e;
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 0.85rem;
+      text-align: center;
+    }
+
+    .ram-type {
+      font-family: 'Fira Code', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .ram-size {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin: 0.25rem 0 0.5rem;
+    }
+
+    .bytes-visual {
+      display: flex;
+      gap: 3px;
+      justify-content: center;
+    }
+
+    .byte-box {
+      width: 12px;
+      height: 18px;
+      background: #0284c7;
+      border-radius: 2px;
+    }
+
+    /* Tablo */
+    .op-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .op-table th, .op-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--surface-border);
+      text-align: left;
+    }
+
+    .op-table th {
+      background: #111a2e;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Terminal Çıktı Kutusu */
+    .term-box {
+      background: #02040a;
+      border: 1px solid #162035;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: #4ade80;
+      margin-top: 1rem;
+    }
+
+    .term-lbl {
+      color: #64748b;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    /* Alt Navigasyon & Kontrol Çubuğu */
+    footer {
+      background: #0b1120;
+      border-top: 1px solid var(--surface-border);
+      padding: 1rem 1.5rem;
+    }
+
+    .controls-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .slide-counter {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .nav-btns {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-slide {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid var(--surface-border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-slide:hover:not(:disabled) {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-slide:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ÜST HEADER: 4 Ana Konu Butonu -->
+  <header>
+    <div class="nav-wrapper">
+      <a href="../index.html" class="brand-back">
+        ← Ana Portala Dön
+      </a>
+
+      <!-- 4 Konu Butonu -->
+      <div class="topic-tabs">
+		<button class="topic-btn active" id="tab-btn-0" onclick="switchTopic(0)">
+		  0. Giriş: Koddan Donanıma
+		</button>
+        <button class="topic-btn" id="tab-btn-1" onclick="switchTopic(1)">
+          1. Veritipleri &amp; Temeller
+        </button>
+        <button class="topic-btn" id="tab-btn-2" onclick="switchTopic(2)">
+          2. Operatörler &amp; Casting
+        </button>
+		<button class="topic-btn" id="tab-btn-3" onclick="switchTopic(3)">
+		  3. Koşullu İfadeler
+		</button>
+		<button class="topic-btn" id="tab-btn-4" onclick="switchTopic(4)">
+		  4. Döngüler
+		</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SLAYT ALANI -->
+  <main class="slider-main">
+
+	<!-- ======================================================== -->
+    <!-- KONU 0: GİRİŞ - GÖRSEL VE ANALOJİ AĞIRLIKLI (3 Slayt)     -->
+    <!-- ======================================================== -->
+    <div class="topic-group active" id="topic-group-0">
+
+      <!-- 0.1: Tercüman Analojisi -->
+      <div class="slide active" id="slide-0-1">
+        <span class="slide-badge">Giriş / Slayt 1</span>
+        <h2 class="slide-title">İki Farklı Dünya</h2>
+        <p class="slide-desc">Bilgisayar insan dilinden anlamaz, insan da saf elektrik voltajlarını okuyamaz.</p>
+        
+        <!-- Görsel Karşılaştırma Köprüsü -->
+        <div style="display:grid; grid-template-columns: 1fr auto 1fr; gap:1.25rem; align-items:center; margin: 2rem 0;">
+          
+          <!-- Sol: İnsan -->
+          <div style="background:#0f172a; border:2px solid #38bdf8; border-radius:16px; padding:1.75rem; text-align:center; box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);">
+            <div style="font-size:3.5rem; margin-bottom:0.5rem;">👨‍💻</div>
+            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:0.25rem;">İnsan Mantığı</h3>
+            <span style="font-size:0.75rem; color:#38bdf8; font-weight:700; text-transform:uppercase;">Yüksek Seviyeli Dil (C++)</span>
+            <div style="background:#1e293b; border-radius:8px; padding:0.6rem; margin-top:1rem; font-family:'Fira Code'; font-size:0.85rem; color:#4ade80;">
+              cout &lt;&lt; "Selam";
+            </div>
+            <p style="font-size:0.78rem; color:#94a3b8; margin-top:0.6rem;">Anlamlı, soyut ve okunabilir.</p>
+          </div>
+
+          <!-- Orta: Çeviri Köprüsü -->
+          <div style="text-align:center; padding:0 0.5rem;">
+            <div style="background:rgba(56, 189, 248, 0.15); border:1px dashed #38bdf8; color:#38bdf8; padding:0.5rem 0.9rem; border-radius:999px; font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">
+              ⚡ COMPILER
+            </div>
+            <div style="font-size:1.8rem; color:#38bdf8;">➔ ➔</div>
+            <span style="font-size:0.7rem; color:#64748b; font-weight:600;">(Tercüme Süreci)</span>
+          </div>
+
+          <!-- Sağ: İşlemci (CPU) -->
+          <div style="background:#0f172a; border:2px solid #f59e0b; border-radius:16px; padding:1.75rem; text-align:center; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);">
+            <div style="font-size:3.5rem; margin-bottom:0.5rem;">🔲</div>
+            <h3 style="color:#fff; font-size:1.2rem; margin-bottom:0.25rem;">İşlemci (CPU)</h3>
+            <span style="font-size:0.75rem; color:#f59e0b; font-weight:700; text-transform:uppercase;">Makine Dili (Binary)</span>
+            <div style="background:#1e293b; border-radius:8px; padding:0.6rem; margin-top:1rem; font-family:'Fira Code'; font-size:0.85rem; color:#fbbf24; letter-spacing: 2px;">
+              01001000 01100101
+            </div>
+            <p style="font-size:0.78rem; color:#94a3b8; margin-top:0.6rem;">Saf voltaj: 5V (1) ve 0V (0)</p>
+          </div>
+
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1rem 1.5rem; text-align:center;">
+          <p style="font-size:0.95rem; color:#cbd5e1;">
+            💡 <b>Özet Analoji:</b> İngilizce bilmeyen birine derdinizi anlatmak için <b>arada bir tercümana</b> ihtiyacınız vardır. C++'ta o tercüman <b>Derleyicidir (Compiler)</b>.
+          </p>
+        </div>
+      </div>
+
+      <!-- 0.2: Fabrika Üretim Hattı (Pipeline) -->
+      <div class="slide" id="slide-0-2">
+        <span class="slide-badge">Giriş / Slayt 2</span>
+        <h2 class="slide-title">Dört Önemli İstasyon</h2>
+        <p class="slide-desc">Yazdığın kod donanıma ulaşana kadar bir montaj bandından geçer.</p>
+
+        <!-- 4 Adımlı Yatay Süreç Şeması -->
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; margin: 2rem 0; position:relative;">
+          
+          <!-- İstasyon 1 -->
+          <div style="background:#111a2e; border:1px solid #1e293b; border-top:4px solid #38bdf8; border-radius:12px; padding:1.2rem; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:0.4rem;">📝</div>
+            <span style="font-size:0.7rem; color:#38bdf8; font-weight:700; text-transform:uppercase;">1. İstasyon</span>
+            <h4 style="color:#fff; font-size:1.05rem; margin:0.3rem 0;">C++ Kodu</h4>
+            <div style="background:#070b14; padding:0.4rem; border-radius:6px; font-family:'Fira Code'; font-size:0.75rem; color:#cbd5e1; margin-top:0.6rem;">
+              main.cpp
+            </div>
+            <p style="font-size:0.72rem; color:#64748b; margin-top:0.6rem;">Hammadde (Kaynak Kod)</p>
+          </div>
+
+          <!-- İstasyon 2 -->
+          <div style="background:#111a2e; border:1px solid #1e293b; border-top:4px solid #c084fc; border-radius:12px; padding:1.2rem; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:0.4rem;">⚙️</div>
+            <span style="font-size:0.7rem; color:#c084fc; font-weight:700; text-transform:uppercase;">2. İstasyon</span>
+            <h4 style="color:#fff; font-size:1.05rem; margin:0.3rem 0;">Assembly</h4>
+            <div style="background:#070b14; padding:0.4rem; border-radius:6px; font-family:'Fira Code'; font-size:0.75rem; color:#c084fc; margin-top:0.6rem;">
+              MOV, ADD, SUB
+            </div>
+            <p style="font-size:0.72rem; color:#64748b; margin-top:0.6rem;">İşlemci Komut Taslağı</p>
+          </div>
+
+          <!-- İstasyon 3 -->
+          <div style="background:#111a2e; border:1px solid #1e293b; border-top:4px solid #f59e0b; border-radius:12px; padding:1.2rem; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:0.4rem;">📦</div>
+            <span style="font-size:0.7rem; color:#f59e0b; font-weight:700; text-transform:uppercase;">3. İstasyon</span>
+            <h4 style="color:#fff; font-size:1.05rem; margin:0.3rem 0;">Nesne Kodu</h4>
+            <div style="background:#070b14; padding:0.4rem; border-radius:6px; font-family:'Fira Code'; font-size:0.75rem; color:#f59e0b; margin-top:0.6rem;">
+              main.obj / .o
+            </div>
+            <p style="font-size:0.72rem; color:#64748b; margin-top:0.6rem;">0-1 İkili Parçalar</p>
+          </div>
+
+          <!-- İstasyon 4 -->
+          <div style="background:#111a2e; border:1px solid #1e293b; border-top:4px solid #10b981; border-radius:12px; padding:1.2rem; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:0.4rem;">🚀</div>
+            <span style="font-size:0.7rem; color:#10b981; font-weight:700; text-transform:uppercase;">4. İstasyon</span>
+            <h4 style="color:#fff; font-size:1.05rem; margin:0.3rem 0;">Uygulama (.exe)</h4>
+            <div style="background:#070b14; padding:0.4rem; border-radius:6px; font-family:'Fira Code'; font-size:0.75rem; color:#4ade80; margin-top:0.6rem;">
+              program.exe
+            </div>
+            <p style="font-size:0.72rem; color:#64748b; margin-top:0.6rem;">Çalıştırılabilir Nihai Ürün</p>
+          </div>
+
+        </div>
+
+        <!-- Ara Araçlar Şeridi -->
+        <div style="display:flex; justify-content:space-around; background:rgba(15, 23, 42, 0.6); padding:0.75rem; border-radius:10px; border:1px solid #1e293b; font-size:0.8rem; color:#94a3b8;">
+          <span>🔧 <b>Compiler (g++)</b>: Kod ➔ Assembly</span>
+          <span>🔩 <b>Assembler (as)</b>: Assembly ➔ Binary</span>
+          <span>🔗 <b>Linker (ld)</b>: Binary + Kütüphaneler ➔ .exe</span>
+        </div>
+      </div>
+
+      <!-- 0.3: Mikroskop Altında Kod -->
+      <div class="slide" id="slide-0-3">
+        <span class="slide-badge">Giriş / Slayt 3</span>
+        <h2 class="slide-title">Basit(!) Bir Toplama İşlemi: <code>5 + 3</code></h2>
+        <p class="slide-desc">İnsandan donanıma giden yol.</p>
+
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.25rem; margin: 2rem 0;">
+          
+          <!-- Seviye 1 -->
+          <div style="background:#111827; border:1px solid rgba(56, 189, 248, 0.3); border-radius:14px; padding:1.5rem; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:0.5rem;">👁️</div>
+            <h4 style="color:#38bdf8; font-size:1.1rem; margin-bottom:0.25rem;">İnsan Gözü</h4>
+            <span style="font-size:0.72rem; color:#64748b;">(C++ Kodu)</span>
+            <div style="background:#070b14; padding:1rem; border-radius:8px; margin-top:1rem; font-family:'Fira Code'; font-size:0.95rem; color:#4ade80;">
+              int x = 5 + 3;
+            </div>
+            <p style="font-size:0.75rem; color:#94a3b8; margin-top:0.75rem;">Beynimizin en rahat kavradığı form.</p>
+          </div>
+
+          <!-- Seviye 2 -->
+          <div style="background:#111827; border:1px solid rgba(192, 132, 252, 0.3); border-radius:14px; padding:1.5rem; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:0.5rem;">🔬</div>
+            <h4 style="color:#c084fc; font-size:1.1rem; margin-bottom:0.25rem;">Mühendis Gözü</h4>
+            <span style="font-size:0.72rem; color:#64748b;">(Assembly)</span>
+            <div style="background:#070b14; padding:1rem; border-radius:8px; margin-top:1rem; font-family:'Fira Code'; font-size:0.85rem; color:#cbd5e1; text-align:left;">
+              MOV eax, 5<br>
+              ADD eax, 3
+            </div>
+            <p style="font-size:0.75rem; color:#94a3b8; margin-top:0.75rem;">İşlemciye adım adım verilen emirler.</p>
+          </div>
+
+          <!-- Seviye 3 -->
+          <div style="background:#111827; border:1px solid rgba(245, 158, 11, 0.3); border-radius:14px; padding:1.5rem; text-align:center;">
+            <div style="font-size:2rem; margin-bottom:0.5rem;">⚡</div>
+            <h4 style="color:#f59e0b; font-size:1.1rem; margin-bottom:0.25rem;">İşlemci (Donanım) Gözü</h4>
+            <span style="font-size:0.72rem; color:#64748b;">(Hex / Binary)</span>
+            <div style="background:#070b14; padding:1rem; border-radius:8px; margin-top:1rem; font-family:'Fira Code'; font-size:0.85rem; color:#f59e0b; word-break:break-all;">
+              B8 05 00 00 00<br>
+              83 C0 03
+            </div>
+            <p style="font-size:0.75rem; color:#94a3b8; margin-top:0.75rem;">Donanımın yürüttüğü byte dizilimi.</p>
+          </div>
+
+        </div>
+
+        <div style="text-align:center;">
+          <span style="font-size:0.9rem; color:#38bdf8; font-weight:700;">
+            🚀 C++ öğrenmek, bu üç seviyenin tüm kontrolünü eline almaktır!
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <!-- ======================================================== -->
+    <!-- KONU 1: VERİTİPLERİ VE TEMELLER (5 Slayt)                  -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-1">
+
+      <!-- 1.1: Yorum Satırları & İskelet -->
+      <div class="slide active" id="slide-1-1">
+        <span class="slide-badge">Konu 1 / Slayt 1</span>
+        <h2 class="slide-title">Yorum Satırları &amp; C++ Temel İskeleti</h2>
+        <p class="slide-desc">Geliştiricinin açıklama amacıyla koyduğu, derleyici (compiler) tarafından dikkate alınmayan kısımlardır.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp</span></div>
+          <pre><code><span class="cmt">// Tek Satirli Yorum Satiri : Gelistiricinin aciklama amacli koydugu , compiler tarafindan dikkate alinmayan kisimlardir.</span>
+<span class="cmt">/*
+Cok Satirli Yorum Satiri
+...
+...
+...
+*/</span>
+
+<span class="inc">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="inc">#include</span> <span class="str">&lt;string&gt;</span>
+
+<span class="kw">using namespace</span> std;
+
+<span class="kw">int</span> <span class="fn">main</span>(){
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- 1.2: Tipler & Bellek -->
+      <div class="slide" id="slide-1-2">
+        <span class="slide-badge">Konu 1 / Slayt 2</span>
+        <h2 class="slide-title">Değişkenler &amp; Bellek (RAM) Hücreleri</h2>
+        <p class="slide-desc"><b>Sözdizimi:</b> <code>degiskenTipi degiskenAdi (= deger atamasi);</code></p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Değişkenler</span></div>
+          <pre><code><span class="cmt">// Degiskenler</span>
+<span class="cmt">// Degisken tanimlama : degiskenTipi + degiskenAdi (= deger atamasi);</span>
+
+<span class="kw">int</span> myInt = <span class="num">12</span>;            <span class="cmt">// tamsayi tutar -4 byte 32 bit</span>
+<span class="kw">char</span> myChar = <span class="str">'c'</span>;          <span class="cmt">// karakter tutar -1 byte 8 bit</span>
+<span class="kw">long long</span> myLong = <span class="num">-5</span>;     <span class="cmt">// 8 byte'a kadar tamsayi tutar</span>
+<span class="kw">short</span> myShort = <span class="num">21</span>;         <span class="cmt">// 2 byte'a kadar tamsayi tutar</span>
+<span class="kw">float</span> myFloat = <span class="num">3.4f</span>;       <span class="cmt">// kesirli</span>
+<span class="kw">double</span> myDouble = <span class="num">4.234235</span>; <span class="cmt">// kesirli , uzun sayilar</span>
+
+cout &lt;&lt; myLong &lt;&lt; endl;</code></pre>
+        </div>
+        <div class="info-card">
+          <div class="info-title">🧠 Bellek (RAM) Üzerinde Kaplanan Alanlar</div>
+          <div class="ram-grid">
+            <div class="ram-cell"><div class="ram-type">char</div><div class="ram-size">1 Byte (8 bit)</div><div class="bytes-visual"><div class="byte-box"></div></div></div>
+            <div class="ram-cell"><div class="ram-type">short</div><div class="ram-size">2 Byte (16 bit)</div><div class="bytes-visual"><div class="byte-box"></div><div class="byte-box"></div></div></div>
+            <div class="ram-cell"><div class="ram-type">int / float</div><div class="ram-size">4 Byte (32 bit)</div><div class="bytes-visual"><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div></div></div>
+            <div class="ram-cell"><div class="ram-type">long long / double</div><div class="ram-size">8 Byte (64 bit)</div><div class="bytes-visual"><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div><div class="byte-box"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.3: C vs C++ String -->
+      <div class="slide" id="slide-1-3">
+        <span class="slide-badge">Konu 1 / Slayt 3</span>
+        <h2 class="slide-title">Metin Temsili: C-String vs. C++ String</h2>
+        <p class="slide-desc">C dilinde dizi olarak tutulurken, C++'ta <code>std::string</code> sınıfı kullanılır.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Metin Tipleri</span></div>
+          <pre><code><span class="cmt">//"Ahmet"</span>
+<span class="kw">char</span> isim[<span class="num">10</span>] = <span class="str">"Ahmet"</span>; <span class="cmt">// C de </span>
+<span class="kw">string</span> isim2 = <span class="str">"Ahmet"</span>;  <span class="cmt">// C++ de</span></code></pre>
+        </div>
+      </div>
+
+      <!-- 1.4: cin / cout -->
+      <div class="slide" id="slide-1-4">
+        <span class="slide-badge">Konu 1 / Slayt 4</span>
+        <h2 class="slide-title">Kullanıcı ile Etkileşim: <code>cout</code> &amp; <code>cin</code></h2>
+        <p class="slide-desc">Standart çıkış akışı (ekrana yazma) ve standart giriş akışı (klavyeden okuma).</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Standart I/O</span></div>
+          <pre><code><span class="cmt">//Kullanici ile etkilesim - veri yazdirma</span>
+cout &lt;&lt; <span class="str">"Selam IEEE Hacettepe !"</span> &lt;&lt; endl;
+
+<span class="cmt">//Kullanici ile etkilesim - veri alma</span>
+<span class="kw">int</span> input;
+cout &lt;&lt; <span class="str">"Yasinizi giriniz : "</span>;
+cin &gt;&gt; input;
+cout &lt;&lt; <span class="str">"Yasiniz : "</span> &lt;&lt; input &lt;&lt; endl;</code></pre>
+        </div>
+      </div>
+
+      <!-- 1.5: sizeof -->
+      <div class="slide" id="slide-1-5">
+        <span class="slide-badge">Konu 1 / Slayt 5</span>
+        <h2 class="slide-title">Bellek Boyutlarını Öğrenme: <code>sizeof</code></h2>
+        <p class="slide-desc">Tiplerin bellekte kaç byte yer tuttuğunu derleme anında öğreniriz.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - sizeof Analizi</span></div>
+          <pre><code><span class="cmt">//sizeof</span>
+cout &lt;&lt; <span class="str">"char degiskeni : "</span> &lt;&lt; <span class="kw">sizeof</span>(<span class="kw">char</span>) &lt;&lt; <span class="str">" byte"</span> &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"int degiskeni : "</span> &lt;&lt; <span class="kw">sizeof</span>(<span class="kw">int</span>) &lt;&lt; <span class="str">" byte"</span> &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"double degiskeni : "</span> &lt;&lt; <span class="kw">sizeof</span>(<span class="kw">double</span>) &lt;&lt; <span class="str">" byte"</span> &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"float degiskeni : "</span> &lt;&lt; <span class="kw">sizeof</span>(<span class="kw">float</span>) &lt;&lt; <span class="str">" byte"</span> &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"long degiskeni : "</span> &lt;&lt; <span class="kw">sizeof</span>(<span class="kw">long</span>) &lt;&lt; <span class="str">" byte"</span> &lt;&lt; endl; <span class="cmt">//Isletim sistemi optimizasyonu vardir. 4-8 byte</span>
+cout &lt;&lt; <span class="str">"long long degiskeni : "</span> &lt;&lt; <span class="kw">sizeof</span>(<span class="kw">long long</span>) &lt;&lt; <span class="str">" byte"</span> &lt;&lt; endl; <span class="cmt">//8 byte </span>
+cout &lt;&lt; <span class="str">"short degiskeni : "</span> &lt;&lt; <span class="kw">sizeof</span>(<span class="kw">short</span>) &lt;&lt; <span class="str">" byte"</span> &lt;&lt; endl;</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- KONU 2: OPERATÖRLER & TYPE CASTING (5 Slayt)               -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-2">
+
+      <!-- 2.1: Toplama, Çıkarma, Çarpma -->
+      <div class="slide active" id="slide-2-1">
+        <span class="slide-badge">Konu 2 / Slayt 1</span>
+        <h2 class="slide-title">Temel Aritmetik: Toplama, Çıkarma, Çarpma</h2>
+        <p class="slide-desc">İki tamsayı değişkeni üzerinde <code>+</code>, <code>-</code> ve <code>*</code> operatörlerinin uygulanması.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Aritmetik</span></div>
+          <pre><code><span class="cmt">//Toplama - Cikarma - Carpma</span>
+<span class="kw">int</span> sayi1 = <span class="num">10</span>;
+<span class="kw">int</span> sayi2 = <span class="num">3</span>;
+
+cout &lt;&lt; <span class="str">"Topla : "</span> &lt;&lt; sayi1 + sayi2 &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"Cikar : "</span> &lt;&lt; sayi1 - sayi2 &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"Carp  : "</span> &lt;&lt; sayi1 * sayi2 &lt;&lt; endl;</code></pre>
+        </div>
+        <div class="term-box">
+          <div class="term-lbl">Konsol Çıktısı</div>
+          <p>Topla : 13</p>
+          <p>Cikar : 7</p>
+          <p>Carp  : 30</p>
+        </div>
+      </div>
+
+      <!-- 2.2: Bölme ve Mod Alma -->
+      <div class="slide" id="slide-2-2">
+        <span class="slide-badge">Konu 2 / Slayt 2</span>
+        <h2 class="slide-title">Bölme &amp; Mod Alma (Kalan)</h2>
+        <p class="slide-desc">İki tamsayı bölündüğünde sonucun ondalık kısmı atılır! Kalanı bulmak için mod (<code>%</code>) operatörü kullanılır.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Bolme ve Mod</span></div>
+          <pre><code><span class="cmt">//Bolme - Mod</span>
+cout &lt;&lt; <span class="str">"Bolme : "</span> &lt;&lt; sayi1 / sayi2 &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"Mod   : "</span> &lt;&lt; sayi1 % sayi2 &lt;&lt; endl; <span class="cmt">// bolumunden kalan kisim</span></code></pre>
+        </div>
+        <div class="info-card">
+          <div class="info-title">⚠️ Kritik Dikkat: Integer Division (Tamsayı Bölmesi)</div>
+          <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+            <code>10 / 3</code> işleminin sonucu matematiksel olarak <code>3.333...</code> olmasına rağmen C++ konsolda <b>3</b> basar. Çünkü işlem integer / integer'dır. Kesirli sonucu almak için tür dönüşümü (casting) gerekir!
+          </p>
+        </div>
+        <div class="term-box">
+          <div class="term-lbl">Konsol Çıktısı</div>
+          <p>Bolme : 3</p>
+          <p>Mod   : 1</p>
+        </div>
+      </div>
+
+      <!-- 2.3: Type Casting -->
+      <div class="slide" id="slide-2-3">
+        <span class="slide-badge">Konu 2 / Slayt 3</span>
+        <h2 class="slide-title">Tür Dönüşümü (Type Casting)</h2>
+        <p class="slide-desc">C-Tarzı dönüşüm <code>(float)</code> yerine modern C++ standartlarında güvenli olan <code>static_cast&lt;float&gt;</code> yapısı tercih edilir.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Type Casting</span></div>
+          <pre><code><span class="cmt">//type casting</span>
+cout &lt;&lt; <span class="str">"Tip Donusturup Bol (C): "</span> &lt;&lt; (<span class="kw">float</span>)sayi1 / (<span class="kw">float</span>)sayi2 &lt;&lt; endl; <span class="cmt">//C Formatinda</span>
+cout &lt;&lt; <span class="str">"Tip Donusturup Bol (C++): "</span> &lt;&lt; <span class="kw">static_cast</span>&lt;<span class="kw">float</span>&gt;(sayi1) / <span class="kw">static_cast</span>&lt;<span class="kw">float</span>&gt;(sayi2) &lt;&lt; endl; <span class="cmt">//C++ Formatinda</span></code></pre>
+        </div>
+        <div class="term-box">
+          <div class="term-lbl">Konsol Çıktısı</div>
+          <p>Tip Donusturup Bol (C): 3.33333</p>
+          <p>Tip Donusturup Bol (C++): 3.33333</p>
+        </div>
+      </div>
+
+      <!-- 2.4: Atamalar, Postfix & Prefix -->
+      <div class="slide" id="slide-2-4">
+        <span class="slide-badge">Konu 2 / Slayt 4</span>
+        <h2 class="slide-title">Atamalar &amp; Artırma/Azaltma (Postfix / Prefix)</h2>
+        <p class="slide-desc">Birleşik atama operatörleri ve birer birer artırma işlemleri.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Atamalar</span></div>
+          <pre><code><span class="cmt">//Atamalar :</span>
+<span class="cmt">/*  ++  --  +=  -=  *=  /=  */</span>
+<span class="kw">int</span> sayi3 = <span class="num">15</span>;
+sayi3 += <span class="num">5</span>;
+cout &lt;&lt; <span class="str">"sayi 3 degeri : "</span> &lt;&lt; sayi3 &lt;&lt; endl;
+sayi3 -= <span class="num">3</span>;
+cout &lt;&lt; <span class="str">"sayi 3 degeri : "</span> &lt;&lt; sayi3 &lt;&lt; endl;
+sayi3++;
+cout &lt;&lt; <span class="str">"sayi 3 degeri : "</span> &lt;&lt; sayi3 &lt;&lt; endl;
+++sayi3;
+cout &lt;&lt; <span class="str">"sayi 3 degeri : "</span> &lt;&lt; sayi3 &lt;&lt; endl;
+
+<span class="cmt">//ODEV : postfix , prefix arastirma</span></code></pre>
+        </div>
+        <div class="info-card">
+          <div class="info-title">💡 Postfix (x++) vs. Prefix (++x) Nüansı</div>
+          <table class="op-table">
+            <thead><tr><th>İfade</th><th>Çalışma Sırası</th><th>Bellek Durumu</th></tr></thead>
+            <tbody>
+              <tr><td><code>sayi3++</code></td><td>Önce mevcut değeri kullanır, <b>sonra</b> 1 artırır.</td><td>Geçici kopyalama yapar.</td></tr>
+              <tr><td><code>++sayi3</code></td><td><b>Önce</b> değeri 1 artırır, sonra yeni değeri kullanır.</td><td>Doğrudan referans döner, daha hızlıdır.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2.5: Mantıksal Operatörler & Bool -->
+      <div class="slide" id="slide-2-5">
+        <span class="slide-badge">Konu 2 / Slayt 5</span>
+        <h2 class="slide-title">Mantıksal &amp; Karşılaştırma Operatörleri</h2>
+        <p class="slide-desc">Karşılaştırma operatörlerinin sonuçları boolean (<code>true</code> / <code>false</code>) bir değer üretir.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp - Mantıksal İfadeler</span></div>
+          <pre><code><span class="cmt">//Mantiksal operatorler :</span>
+<span class="cmt">// &gt; , &lt; , == , &lt;= , &gt;= </span>
+<span class="cmt">//sonuclari boolean bir ifade olacaktir. True / False</span>
+<span class="kw">bool</span> sonuc = <span class="num">3</span> &lt; <span class="num">4</span>;
+cout &lt;&lt; sonuc &lt;&lt; endl; <span class="cmt">//true = 1</span>
+sonuc = <span class="num">3</span> &gt; <span class="num">4</span>;
+cout &lt;&lt; sonuc &lt;&lt; endl; <span class="cmt">//false = 0</span></code></pre>
+        </div>
+        <div class="term-box">
+          <div class="term-lbl">Konsol Çıktısı</div>
+          <p>1 <span style="color:#64748b;">(true demektir)</span></p>
+          <p>0 <span style="color:#64748b;">(false demektir)</span></p>
+        </div>
+      </div>
+
+    </div>
+
+<!-- ======================================================== -->
+    <!-- KONU 3: KOŞULLU İFADELER (5 Slayt)                       -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-3">
+
+      <!-- 3.1: if - else Syntax -->
+      <div class="slide active" id="slide-3-1">
+        <span class="slide-badge">Konu 3 / Slayt 1</span>
+        <h2 class="slide-title">Şart Yapıları: <code>if - else if - else</code></h2>
+        <p class="slide-desc">Programın belirli bir koşulun sonucuna (<code>true</code> veya <code>false</code>) göre farklı kod bloklarını çalıştırmasını sağlar.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">syntax_if_else.cpp</span></div>
+          <pre><code><span class="cmt">// sart yapilari :</span>
+<span class="cmt">// if-else-else if</span>
+<span class="cmt">/*
+(condition degerimiz true veya false donmelidir. Yani bool)
+if(condition) {
+    ....
+}
+else if(condition2){
+    ....
+}
+...
+...
+else{
+    ...
+}
+*/</span></code></pre>
+        </div>
+        <div class="info-card">
+          <div class="info-title">💡 Çalışma Mantığı</div>
+          <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+            İlk doğru çıkan (<code>true</code> olan) koşulun bloğu çalıştırılır ve ardından bütün <code>if-else</code> zincirinden çıkılır. Eğer hiçbir koşul sağlanmazsa en sondaki <code>else</code> bloğu devreye girer.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3.2: Bağlaçlar & Truth Table -->
+      <div class="slide" id="slide-3-2">
+        <span class="slide-badge">Konu 3 / Slayt 2</span>
+        <h2 class="slide-title">Mantıksal Bağlaçlar &amp; Doğruluk Tablosu</h2>
+        <p class="slide-desc">Birden fazla koşul ifadesini birbirine bağlamamızı sağlar: <code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>!</code> (NOT).</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">baglaclar.cpp</span></div>
+          <pre><code><span class="cmt">// baglaclar : kosul ifadelerini baglamamizi saglar</span>
+<span class="cmt">// && (and)    || (or)     ! (not)</span></code></pre>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">📊 Doğruluk Tablosu (Truth Table)</div>
+          <table class="op-table">
+            <thead>
+              <tr>
+                <th>Koşul A</th>
+                <th>Koşul B</th>
+                <th>A &amp;&amp; B (VE)</th>
+                <th>A || B (VEYA)</th>
+                <th>!A (DEĞİL)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>true (1)</code></td>
+                <td><code>true (1)</code></td>
+                <td style="color:#4ade80;">true (1)</td>
+                <td style="color:#4ade80;">true (1)</td>
+                <td style="color:#f87171;">false (0)</td>
+              </tr>
+              <tr>
+                <td><code>true (1)</code></td>
+                <td><code>false (0)</code></td>
+                <td style="color:#f87171;">false (0)</td>
+                <td style="color:#4ade80;">true (1)</td>
+                <td style="color:#f87171;">false (0)</td>
+              </tr>
+              <tr>
+                <td><code>false (0)</code></td>
+                <td><code>true (1)</code></td>
+                <td style="color:#f87171;">false (0)</td>
+                <td style="color:#4ade80;">true (1)</td>
+                <td style="color:#4ade80;">true (1)</td>
+              </tr>
+              <tr>
+                <td><code>false (0)</code></td>
+                <td><code>false (0)</code></td>
+                <td style="color:#f87171;">false (0)</td>
+                <td style="color:#f87171;">false (0)</td>
+                <td style="color:#4ade80;">true (1)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3.3: Örnek 1 (Karşılaştırma) -->
+      <div class="slide" id="slide-3-3">
+        <span class="slide-badge">Konu 3 / Slayt 3</span>
+        <h2 class="slide-title">Örnek 1: İki Sayının Karşılaştırılması</h2>
+        <p class="slide-desc">Kullanıcıdan alınan iki sayının büyüklük, küçüklük veya eşitlik durumunun incelenmesi.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">ornek1_karsilastirma.cpp</span></div>
+          <pre><code><span class="cmt">// Ornek 1</span>
+<span class="kw">int</span> num1 = <span class="num">0</span>, num2 = <span class="num">0</span>;
+cout &lt;&lt; <span class="str">"Numara 1 : "</span>; cin &gt;&gt; num1;
+cout &lt;&lt; <span class="str">"Numara 2 : "</span>; cin &gt;&gt; num2;
+cout &lt;&lt; <span class="str">"Num1 : "</span> &lt;&lt; num1 &lt;&lt; <span class="str">"    num2 : "</span> &lt;&lt; num2 &lt;&lt; endl;
+
+<span class="kw">if</span> (num1 &lt; num2) {
+    cout &lt;&lt; <span class="str">"Num1 &lt; Num2"</span> &lt;&lt; endl;
+}
+<span class="kw">else if</span> (num1 == num2) {
+    cout &lt;&lt; <span class="str">"Num1 = Num2"</span> &lt;&lt; endl;
+}
+<span class="kw">else</span> {
+    cout &lt;&lt; <span class="str">"Num1 &gt; Num2"</span> &lt;&lt; endl;
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- 3.4: switch-case Syntax -->
+      <div class="slide" id="slide-3-4">
+        <span class="slide-badge">Konu 3 / Slayt 4</span>
+        <h2 class="slide-title">Çoklu Seçim: <code>switch - case</code></h2>
+        <p class="slide-desc">Bir değişkenin sabit değerlere göre dallanmasını sağlar. Menü yapılarında okunabilirliği artırır.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">syntax_switch_case.cpp</span></div>
+          <pre><code><span class="cmt">// Switch-case :</span>
+<span class="cmt">/*
+switch(islem){
+case islem: ...
+    ...
+    break;
+case islem: ...
+    ...
+    break;
+...
+default : .....
+    ...
+    break;
+}
+*/</span></code></pre>
+        </div>
+        <div class="info-card">
+          <div class="info-title">⚠️ Kritik Not: break Deyimi</div>
+          <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+            Her <code>case</code> bloğunun sonuna <b><code>break;</code></b> koyulmazsa, C++ alttaki case'lerin koşuluna bakmaksızın onları da çalıştırır (<i>fall-through</i> etkisi). Eşleşen hiçbir durum yoksa <b><code>default:</code></b> bloğu devreye girer.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3.5: Örnek 3 (Hesap Makinesi) -->
+      <div class="slide" id="slide-3-5">
+        <span class="slide-badge">Konu 3 / Slayt 5</span>
+        <h2 class="slide-title">Örnek 2: Hesap Makinesi</h2>
+        <p class="slide-desc"><code>switch-case</code> ile 4 işlem menüsü ve bölme işleminde sıfıra bölme kontrolü (<code>sayi2 != 0</code>).</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">ornek3_hesap_makinasi.cpp</span></div>
+          <pre><code><span class="cmt">// Ornek 3 - Hesap makinasi :</span>
+<span class="kw">int</span> islemNumarasi;
+<span class="kw">float</span> sayi1, sayi2;
+cout &lt;&lt; <span class="str">"Sayi 1 : "</span>; cin &gt;&gt; sayi1;
+cout &lt;&lt; <span class="str">"Sayi 2 : "</span>; cin &gt;&gt; sayi2;
+cout &lt;&lt; <span class="str">"---------------------"</span> &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"Toplama =&gt; 1 \nCikarma =&gt; 2\nCarpma =&gt; 3\nBolme =&gt;4"</span> &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"Islem no : "</span>; cin &gt;&gt; islemNumarasi;
+cout &lt;&lt; <span class="str">"---------------------"</span> &lt;&lt; endl;
+
+<span class="kw">switch</span> (islemNumarasi) {
+<span class="kw">case</span> <span class="num">1</span>:
+    cout &lt;&lt; <span class="str">"Toplama : "</span> &lt;&lt; sayi1 + sayi2 &lt;&lt; endl;
+    <span class="kw">break</span>;
+<span class="kw">case</span> <span class="num">2</span>:
+    cout &lt;&lt; <span class="str">"Cikarma : "</span> &lt;&lt; sayi1 - sayi2 &lt;&lt; endl;
+    <span class="kw">break</span>;
+<span class="kw">case</span> <span class="num">3</span>:
+    cout &lt;&lt; <span class="str">"Carpma : "</span> &lt;&lt; sayi1 * sayi2 &lt;&lt; endl;
+    <span class="kw">break</span>;
+<span class="kw">case</span> <span class="num">4</span>:
+    <span class="kw">if</span> (sayi2 != <span class="num">0</span>) {
+        cout &lt;&lt; <span class="str">"Bolme : "</span> &lt;&lt; sayi1 / sayi2 &lt;&lt; endl;
+    }
+    <span class="kw">else</span> {
+        cout &lt;&lt; <span class="str">"Gecersiz Input !"</span> &lt;&lt; endl;
+    }
+    <span class="kw">break</span>;
+<span class="kw">default</span>:
+    cout &lt;&lt; <span class="str">"GECERSIZ ISLEM NUMARASI ! "</span> &lt;&lt; endl;
+    <span class="kw">break</span>;
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+<!-- ======================================================== -->
+    <!-- KONU 4: DÖNGÜLER (6 Slayt)                               -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-4">
+
+      <!-- 4.1: while Syntax & Sonsuz Döngü -->
+      <div class="slide active" id="slide-4-1">
+        <span class="slide-badge">Konu 4 / Slayt 1</span>
+        <h2 class="slide-title">While Döngüsü &amp; Sonsuz Döngü (Infinite Loop)</h2>
+        <p class="slide-desc">Belirtilen koşul <code>true</code> olduğu sürece bloğu tekrarlar. Koşul en başta kontrol edilir.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">while_syntax.cpp</span></div>
+          <pre><code><span class="cmt">//Donguler :</span>
+<span class="cmt">//--------- WHILE DONGUSU -------------</span>
+<span class="cmt">/*
+while(condition){
+...
+...
+...
+(UNUTMA : gerekirse condition degeri guncellenmeli)
+}
+*/</span>
+<span class="kw">int</span> i = <span class="num">0</span>;
+<span class="kw">while</span> (i &lt;= <span class="num">10</span>) {
+    cout &lt;&lt; <span class="str">"iterasyon -"</span> &lt;&lt; i &lt;&lt; endl;
+    i++;
+}</code></pre>
+        </div>
+        <div class="info-card">
+          <div class="info-title">⚠️ Kritik Uyarı: Sonsuz Döngü (Infinite Loop)</div>
+          <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+            Döngü bloğu içinde koşul değişkeni (<code>i++</code>) güncellenmezse koşul her zaman <code>0 &lt;= 10</code> (yani <code>true</code>) kalır. Program sonsuz döngüye girer, CPU kilitlenir veya terminal durmaksızın çıktı üretir!
+          </p>
+        </div>
+      </div>
+
+      <!-- 4.2: while ile Faktöriyel -->
+      <div class="slide" id="slide-4-2">
+        <span class="slide-badge">Konu 4 / Slayt 2</span>
+        <h2 class="slide-title">While Örneği: Faktöriyel Hesaplama</h2>
+        <p class="slide-desc">Girilen sayının faktöriyelini (N!) hesaplayan program. 0! ve 1! durumları ile negatif sayılar kontrol edilir.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">faktoriyel.cpp</span></div>
+          <pre><code><span class="cmt">//ORNEK : faktoriyel hesaplama</span>
+<span class="kw">int</span> sayi;
+cout &lt;&lt; <span class="str">"Sayi gir : "</span>;
+cin &gt;&gt; sayi;
+<span class="kw">int</span> carpim = <span class="num">1</span>;
+
+<span class="kw">if</span>(sayi == <span class="num">0</span> || sayi == <span class="num">1</span>){
+    cout &lt;&lt; <span class="str">"Sonuc : "</span> &lt;&lt; <span class="num">1</span> &lt;&lt; endl;
+}
+<span class="kw">else if</span>(sayi &gt; <span class="num">1</span>){
+    <span class="kw">int</span> i = <span class="num">1</span>;
+    <span class="kw">while</span>(i &lt;= sayi){
+        carpim = carpim * i;
+        i++;
+    }
+    cout &lt;&lt; sayi &lt;&lt; <span class="str">"! = "</span> &lt;&lt; carpim &lt;&lt; endl;
+}
+<span class="kw">else</span>{
+    cout &lt;&lt; <span class="str">"Faktoriyeli bulunamadi ...\n"</span>;
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- 4.3: do-while Syntax & Sensör Reset Örneği -->
+      <div class="slide" id="slide-4-3">
+        <span class="slide-badge">Konu 4 / Slayt 3</span>
+        <h2 class="slide-title">Do-While Döngüsü &amp; Sensör Reset Örneği</h2>
+        <p class="slide-desc">Farkı: Önce işi yapar, sonra kontrol eder. Koşul baştan yanlış (<code>false</code>) olsa bile <b>en az bir kez çalışması garantidir</b>.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">do_while_syntax.cpp</span></div>
+          <pre><code><span class="cmt">//--------------- DO-WHILE ---------------------</span>
+<span class="cmt">//farki once isi yapar sonra kontrol eder.</span>
+<span class="cmt">// yapisi :</span>
+<span class="cmt">/*
+do{
+..
+..
+}
+while(condition);
+*/</span>
+
+<span class="cmt">//ORNEK </span>
+<span class="kw">int</span> x = <span class="num">450</span>;
+<span class="kw">do</span>{
+    cout &lt;&lt; <span class="str">"Sensor Reset !"</span> &lt;&lt; endl;
+    x++;
+}
+<span class="kw">while</span>(x &lt; <span class="num">0</span>);</code></pre>
+        </div>
+        <div class="term-box">
+          <div class="term-lbl">Konsol Çıktısı (Koşul 450 &lt; 0 Yanlış Olmasına Rağmen)</div>
+          <p>Sensor Reset !</p>
+        </div>
+      </div>
+
+      <!-- 4.4: do-while Örneği: Rakamlar Toplamı -->
+      <div class="slide" id="slide-4-4">
+        <span class="slide-badge">Konu 4 / Slayt 4</span>
+        <h2 class="slide-title">Do-While Örneği: Rakamları Toplamı Bulma</h2>
+        <p class="slide-desc">Pozitif sayının birler basamağı mod (<code>% 10</code>) ile alınır, sayı 10'a bölünerek basamak eksiltilir.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">rakamlar_toplami.cpp</span></div>
+          <pre><code><span class="cmt">//ORNEK : pozitif sayi gir. sayinin rakamlari toplami bul.</span>
+<span class="kw">int</span> girilenSayi, toplam = <span class="num">0</span>;
+cout &lt;&lt; <span class="str">"Pozitif sayi giriniz : "</span>;
+cin &gt;&gt; girilenSayi;
+
+<span class="kw">do</span> {
+    toplam += (girilenSayi % <span class="num">10</span>);
+    girilenSayi = girilenSayi / <span class="num">10</span>;
+} <span class="kw">while</span> (girilenSayi &gt; <span class="num">0</span>);
+
+cout &lt;&lt; <span class="str">"Toplam : "</span> &lt;&lt; toplam &lt;&lt; endl;</code></pre>
+        </div>
+      </div>
+
+      <!-- 4.5: for Döngüsü Yapısı -->
+      <div class="slide" id="slide-4-5">
+        <span class="slide-badge">Konu 4 / Slayt 5</span>
+        <h2 class="slide-title">For Döngüsü: 1'den 10'a Kadar Yazdırma</h2>
+        <p class="slide-desc">Başlangıç değeri, devam şartı ve her adımda yapılacak artırma/azaltma işlemi tek satırda toplanır.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">for_syntax.cpp</span></div>
+          <pre><code><span class="cmt">//--------------- FOR DONGUSU --------------- </span>
+<span class="cmt">/*
+for(baslangic degeri ; sart ; artirma,azaltma(atama)){
+..
+..
+}
+*/</span>
+
+<span class="cmt">// ORNEK : 1 den 10'a kadar olan sayilari yan yana yazdir.</span>
+<span class="kw">int</span> s;
+<span class="kw">for</span> (s = <span class="num">1</span>; s &lt;= <span class="num">10</span>; s++) {
+    cout &lt;&lt; s &lt;&lt; <span class="str">" "</span>;
+}
+cout &lt;&lt; endl;</code></pre>
+        </div>
+        <div class="term-box">
+          <div class="term-lbl">Konsol Çıktısı</div>
+          <p>1 2 3 4 5 6 7 8 9 10 </p>
+        </div>
+      </div>
+
+      <!-- 4.6: break ve continue & Son Örnek -->
+      <div class="slide" id="slide-4-6">
+        <span class="slide-badge">Konu 4 / Slayt 6</span>
+        <h2 class="slide-title">Akış Kesiciler (<code>break</code> / <code>continue</code>) &amp; Kapsamlı Örnek</h2>
+        <p class="slide-desc"><b>Break:</b> Döngüyü tamamen bitirir. <b>Continue:</b> Alt satırları çalıştırmadan o anki adımı atlayıp döngüyü sürdürür.</p>
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">break_continue_ornek.cpp</span></div>
+          <pre><code><span class="cmt">//BREAK VE CONT. DEYIMLERI : </span>
+<span class="cmt">//Break = donguyu sonlandiriyor. altinda kalan kodlar calismaz.</span>
+<span class="cmt">//Continue = donguyu devam ettiriyor. altindakiler calistirilmadan.</span>
+
+<span class="cmt">// ORNEK : baslangic ve bitis degerleri kullanicidan alinir. Araliktaki tek sayilarin toplami bulunur.</span>
+<span class="kw">int</span> total = <span class="num">0</span>;
+<span class="kw">int</span> m;
+<span class="kw">int</span> baslangicDegeri;
+<span class="kw">int</span> bitisDegeri;
+<span class="kw">int</span> sinirDegeri;
+
+cout &lt;&lt; <span class="str">"Baslangic degeri : "</span>;
+cin &gt;&gt; baslangicDegeri;
+cout &lt;&lt; <span class="str">"Bitis degeri : "</span>;
+cin &gt;&gt; bitisDegeri;
+cout &lt;&lt; <span class="str">"Sinir degeri : "</span>;
+cin &gt;&gt; sinirDegeri;
+
+<span class="kw">for</span>(m = baslangicDegeri; m &lt; bitisDegeri; m++){
+    <span class="kw">if</span>(m &gt;= sinirDegeri){
+        <span class="kw">break</span>;
+    }
+    <span class="kw">if</span>(m % <span class="num">2</span> == <span class="num">0</span>){
+        <span class="kw">continue</span>;
+    }
+    total += m;
+    cout &lt;&lt; m &lt;&lt; endl;
+}
+cout &lt;&lt; <span class="str">"Toplam : "</span> &lt;&lt; total &lt;&lt; endl;</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ALT KONTROL ÇUBUĞU (Önceki / Sonraki) -->
+  <footer>
+    <div class="controls-wrapper">
+      <span class="slide-counter" id="slide-num">Slayt 1 / 5</span>
+      <div class="nav-btns">
+        <button class="btn-slide" id="btn-prev" onclick="changeSlide(-1)" disabled>← Önceki Slayt</button>
+        <button class="btn-slide" id="btn-next" onclick="changeSlide(1)">Sonraki Slayt →</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slayt ve Konu Değiştirme Scripti -->
+  <script>
+    let activeTopic = 0; // Sayfa ilk açıldığında Giriş sekmesiyle başlasın
+    let currentSlide = 1;
+    const topicSlideCounts = {
+      0: 3, // Giriş: 3 Slayt
+      1: 5, // Veritipleri: 5 Slayt
+      2: 5, // Operatörler: 5 Slayt
+      3: 5, // Koşullar: 5 Slayt
+      4: 6  // Döngüler: 6 Slayt
+    };
+
+    function switchTopic(topicNum) {
+      activeTopic = topicNum;
+      currentSlide = 1;
+
+      // Konu butonlarını güncelle
+      document.querySelectorAll('.topic-btn').forEach((btn) => {
+        btn.classList.remove('active');
+      });
+      const activeBtn = document.getElementById(`tab-btn-${topicNum}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      // Konu gruplarını aç/kapa
+      document.querySelectorAll('.topic-group').forEach((group) => {
+        group.classList.remove('active');
+      });
+      const activeGroup = document.getElementById(`topic-group-${topicNum}`);
+      if (activeGroup) activeGroup.classList.add('active');
+
+      updateSlideView();
+    }
+
+    function updateSlideView() {
+      const totalSlides = topicSlideCounts[activeTopic];
+
+      // Aktif konu içindeki slaytları aç/kapa
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${activeTopic}-${i}`);
+        if (slide) {
+          slide.classList.toggle('active', i === currentSlide);
+        }
+      }
+
+      // Butonları ve sayacı güncelle
+      const topicName = activeTopic === 0 ? 'Giriş' : `Konu ${activeTopic}`;
+      document.getElementById('slide-num').innerText = `${topicName} • Slayt ${currentSlide} / ${totalSlides}`;
+      document.getElementById('btn-prev').disabled = (currentSlide === 1);
+      document.getElementById('btn-next').disabled = (currentSlide === totalSlides);
+    }
+
+    function changeSlide(direction) {
+      const totalSlides = topicSlideCounts[activeTopic];
+      const target = currentSlide + direction;
+      if (target >= 1 && target <= totalSlides) {
+        currentSlide = target;
+        updateSlideView();
+      }
+    }
+
+    // Klavye Kısayolları (Sağ/Sol Ok ve Boşluk)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+      }
+    });
+  </script>
+
+</body>
+</html>
