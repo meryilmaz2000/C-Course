@@ -1081,10 +1081,10 @@
                 </div>
               </td>
               <td>
-                <div class="btn-row">
-                  <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 2</a>
-                  <a href="#hafta-2" class="btn btn-accent">🎯 Alıştırmalar</a>
-                </div>
+				<div class="btn-row">
+				  <a href="slides/ders2.html" target="_blank" class="btn btn-primary">📑 Slayt 2</a>
+				  <a href="#hafta-2" class="btn btn-accent">🎯 Alıştırmalar</a>
+				</div>
               </td>
             </tr>
 
@@ -1249,15 +1249,78 @@
       </div>
 
       <!-- HAFTA 2 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-2" style="opacity: 0.75;">
+      <div class="exercise-week-container" id="hafta-2">
         <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
           <div class="exercise-week-title">
             <span>📌 2. Hafta Alıştırmaları</span>
             <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Fonksiyonlar, String, Diziler, Matrisler)</span>
           </div>
-          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
-            ⏳ Dersten Önce Yayınlanacak
-          </span>
+		  <span class="exercise-week-date">29 Ekim 2026</span>
+        </div>
+		<div class="exercise-grid-scroll">
+          <!-- Ödev 1 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Hesap Makinesi</h4>
+              <p class="exercise-desc">Fonksiyonlarla temel işlemleri yapan bir hesap makinası yapın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta2_1', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Ödev 2 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Standart Sapma & Aritmetik Ortalama</h4>
+              <p class="exercise-desc">Bir dizinin elemanlarının aritmetik ortalaması ve standart sapmasını hesaplayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta2_2', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Ödev 3 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.3</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Matris Tanımlama</h4>
+              <p class="exercise-desc">C++'da basit bir matris tanımlayıp ekrana bastırın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta2_3', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Ödev 4 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 2.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">Simetrik Matris Mi ?</h4>
+              <p class="exercise-desc">Girdi olarak verilen matrisin simetrik olup olmadığını bulan fonksiyonu yazın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta2_4', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1629,6 +1692,140 @@ int main() {
     //         - tahmin < hedefSayi ise -> "Daha BUYUK bir sayi giriniz!"
     //         - tahmin > hedefSayi ise -> "Daha KUCUK bir sayi giriniz!"
     //         - tahmin = hedefSayi ise -> "Tebrikler! X. denemede bildiniz!" yazdiriniz.
+
+    return 0;
+}`,
+
+      hafta2_1: `/* GOREV 2.1 : Fonksiyonlar ile Moduler Hesap Makinesi (5 Islem) */
+#include <iostream>
+
+using namespace std;
+
+float topla(float a, float b) {
+    // TODO: Toplamı return ediniz
+    return 0.0f;
+}
+
+float cikar(float a, float b) {
+    // TODO: Farkı return ediniz
+    return 0.0f;
+}
+
+float carp(float a, float b) {
+    // TODO: Çarpımı return ediniz
+    return 0.0f;
+}
+
+float bol(float a, float b) {
+    // TODO: Bölümü return ediniz (b == 0 kontrolü ekleyebilirsiniz)
+    return 0.0f;
+}
+
+int modAl(int a, int b) {
+    // TODO: Kalanı return ediniz
+    return 0;
+}
+
+int main() {
+    int secim;
+    float s1, s2;
+
+    do {
+        cout << "================ HESAP MAKINESI ================" << endl;
+        cout << "1. Toplama" << endl;
+        cout << "2. Cikarma" << endl;
+        cout << "3. Carpma" << endl;
+        cout << "4. Bolme" << endl;
+        cout << "5. Mod Alma" << endl;
+        cout << "0. Cikis" << endl;
+        cout << "Seciminiz: ";
+        cin >> secim;
+
+        if (secim == 0) {
+            cout << "Cikis yapiliyor..." << endl;
+            break;
+        }
+
+        // TODO: s1 ve s2 degerlerini aliniz.
+        // switch-case ile secilen fonksiyonu cagirip sonucu ekrana basiniz.
+
+    } while (secim != 0);
+
+    return 0;
+}`,
+
+      hafta2_2: `/* GOREV 2.2 : Dizi Istatistik Analizi (Toplam, Ortalama, Standart Sapma) */
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    const int BOYUT = 5;
+    float dizi[BOYUT];
+    float toplam = 0.0f;
+    float ortalama = 0.0f;
+    float standartSapma = 0.0f;
+
+    // TODO 1: Dongu ile 5 elemani kullanicidan alip diziye kaydediniz.
+
+    // TODO 2: Elemanlarin toplamini ve ortalamasini bulunuz.
+
+    // TODO 3: Standart sapmayi hesaplayiniz: sqrt(Toplam((dizi[i] - ortalama)^2) / BOYUT)
+
+    cout << "Toplam         : " << toplam << endl;
+    cout << "Ortalama       : " << ortalama << endl;
+    cout << "Standart Sapma : " << standartSapma << endl;
+
+    return 0;
+}`,
+
+      hafta2_3: `/* GOREV 2.3 : 2 Boyutlu Matris Doldurma ve Tablo Olarak Yazdirma */
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    const int SATIR = 3;
+    const int SUTUN = 3;
+    int matris[SATIR][SUTUN];
+
+    // TODO 1: Ic ice dongu kurarak kullanicidan matrisin elemanlarini aliniz.
+
+    // TODO 2: Ic ice dongu kurarak matrisi ekrana satir ve sutun duzeninde bastiriniz.
+    cout << "--- MATRIS GORUNUMU ---" << endl;
+
+    return 0;
+}`,
+
+      hafta2_4: `/* GOREV 2.4 : Matris Simetri Kontrolu (Challenge) */
+#include <iostream>
+
+using namespace std;
+
+const int BOYUT = 3;
+
+// TODO 1: Matris simetrik ise true, degilse false donen fonksiyonu yaziniz.
+bool simetrikMi(int matris[][BOYUT], int boyut) {
+    // TODO: Kodunuzu buraya yaziniz
+    return true;
+}
+
+int main() {
+    int testMatris1[BOYUT][BOYUT] = {
+        { 1, 2, 3 },
+        { 2, 5, 6 },
+        { 3, 6, 9 }
+    };
+
+    
+    int testMatris2[BOYUT][BOYUT] = {
+        { 1, 4, 3 },
+        { 2, 5, 6 },
+        { 3, 6, 9 }
+    };
+    
+    // TODO 2: Fonksiyonu cagirip ekrana simetrik olup olmadiklarini yazdiriniz.
 
     return 0;
 }`,
