@@ -1105,10 +1105,10 @@
                 </div>
               </td>
               <td>
-                <div class="btn-row">
-                  <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 3</a>
-                  <a href="#hafta-3" class="btn btn-accent">🎯 Alıştırmalar</a>
-                </div>
+				<div class="btn-row">
+				  <a href="slides/ders3.html" target="_blank" class="btn btn-primary">📑 Slayt 3</a>
+				  <a href="#hafta-3" class="btn btn-accent">🎯 Alıştırmalar</a>
+				</div>
               </td>
             </tr>
 
@@ -1324,16 +1324,80 @@
         </div>
       </div>
 
-      <!-- HAFTA 3 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-3" style="opacity: 0.75;">
-        <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
+<!-- HAFTA 3 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-3">
+        <div class="exercise-week-header">
           <div class="exercise-week-title">
             <span>📌 3. Hafta Alıştırmaları</span>
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Pointer, Call by Value, Call by Reference)</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(İşaretçiler, Bellek Yönetimi &amp; Aritmetik)</span>
           </div>
-          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
-            ⏳ Dersten Önce Yayınlanacak
-          </span>
+          <span class="exercise-week-date">5 Kasım 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <!-- Görev 3.1 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Pointer ile Değer Takası</h4>
+              <p class="exercise-desc">Call by Reference yaklaşımıyla işaretçileri fonksiyona aktarıp orijinal değişkenleri bellek üzerinden manipüle edin.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta3_1', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 3.2 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Pointer Aritmetiği &amp; Ters Dizi</h4>
+              <p class="exercise-desc">Köşeli parantez kullanmadan, dizinin başı ve sonuna iki pointer koyarak diziyi yerinde tersine çevirin.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta3_2', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 3.3 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.3</span>
+                <span class="diff-badge diff-med">Orta / Zor</span>
+              </div>
+              <h4 class="exercise-title">Pointer Döndüren Fonksiyon</h4>
+              <p class="exercise-desc">Dizideki en büyük elemanın değerini değil RAM adresini dönüp, bu adres üzerinden elemanı sıfırlayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta3_3', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 3.4 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 3.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">Karakter Analizi &amp; Null Pointer</h4>
+              <p class="exercise-desc">C-String üzerinde null karakterine kadar pointer kaydırarak metin uzunluğu ve sesli harf analizi yapın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta3_4', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1387,15 +1451,15 @@
           </div>
 
           <!-- Faz 2 -->
-          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
-            <div>
-              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">2. HAFTA</span>
-              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 2</h4>
-            </div>
-            <a href="docs/rover_faz2.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
-              📄 FAZ-2 (PDF)
-            </a>
-          </div>
+			<div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; border-color: rgba(56, 189, 248, 0.35); gap: 0.75rem;">
+			  <div>
+				<span class="exercise-badge" style="color:var(--accent); display:inline-block; margin-bottom: 0.35rem;">2. HAFTA</span>
+				<h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 2</h4>
+			  </div>
+			  <a href="docs/rover_faz2.pdf" target="_blank" class="btn btn-primary" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+				📄 FAZ-2 (PDF) ↗
+			  </a>
+			</div>
 
           <!-- Faz 3 -->
           <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
@@ -1826,6 +1890,84 @@ int main() {
     };
     
     // TODO 2: Fonksiyonu cagirip ekrana simetrik olup olmadiklarini yazdiriniz.
+
+    return 0;
+}`,
+	hafta3_1: `/* GOREV 3.1 : Pointer ile Degisken Manipulasyonu */
+#include <iostream>
+
+using namespace std;
+
+void ikiKatiYap(int* ptr) {
+    // TODO: Adresteki degeri 2 katiyla guncelleyiniz
+}
+
+void degerDegistir(int* a, int* b) {
+    // TODO: Iki pointer'in gosterdigi degerleri takas ediniz
+}
+
+int main() {
+    int x = 10, y = 25;
+
+    cout << "Baslangic: x = " << x << ", y = " << y << endl;
+
+    // TODO: Fonksiyonlari cagirip test ediniz.
+
+    return 0;
+}`,
+
+      hafta3_2: `/* GOREV 3.2 : Pointer Aritmetigi ile Dizi Ters Cevirme */
+#include <iostream>
+
+using namespace std;
+
+const int BOYUT = 5;
+
+void diziyiTersCevir(int* dizi, int boyut) {
+    // TODO: Koseli parantez kullanmadan bas ve son pointerlari ile diziyi ters ceviriniz.
+}
+
+int main() {
+    int sayilar[BOYUT] = { 10, 20, 30, 40, 50 };
+
+    // TODO: diziyiTersCevir fonksiyonunu cagirip sonucu yazdiriniz.
+
+    return 0;
+}`,
+
+      hafta3_3: `/* GOREV 3.3 : Pointer Donduren Fonksiyon */
+#include <iostream>
+
+using namespace std;
+
+int* maksimumAdres(int dizi[], int boyut) {
+    // TODO: En buyuk elemanin adresini dondurunuz
+    return nullptr;
+}
+
+int main() {
+    int skorlar[6] = { 24, 88, 15, 92, 45, 63 };
+
+    // TODO: Fonksiyonu cagirip donen adres uzerinden o degeri 0 yapiniz.
+
+    return 0;
+}`,
+
+      hafta3_4: `/* GOREV 3.4 : Pointer ile C-String Analizi (Challenge) */
+#include <iostream>
+
+using namespace std;
+
+void metinAnalizi(const char* str, int* uzunluk, int* sesliSayisi) {
+    // TODO: *str != '\\0' dongusu ile uzunluk ve sesli harf sayisini hesaplayiniz.
+}
+
+int main() {
+    char cumle[] = "hacettepe ieee programmix";
+    int toplamKarakter = 0;
+    int sesliHarfler = 0;
+
+    // TODO: metinAnalizi cagirip sonuclari bastiriniz.
 
     return 0;
 }`,
