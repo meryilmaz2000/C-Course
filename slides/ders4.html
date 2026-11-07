@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ders 4: Yapılar (Structs) & OOP Giriş | IEEE Hacettepe</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --surface: #0f172a;
+      --surface-card: #131d35;
+      --surface-border: #1e293b;
+      --primary: #0284c7;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --code-bg: #030712;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --purple: #c084fc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    code, pre { font-family: 'Fira Code', monospace; }
+
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .nav-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--surface-border);
+      transition: all 0.2s;
+    }
+
+    .brand-back:hover {
+      color: #fff;
+      border-color: var(--accent);
+      background: rgba(2, 132, 199, 0.15);
+    }
+
+    .topic-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .topic-btn {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid var(--surface-border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .topic-btn:hover { color: #fff; border-color: rgba(56, 189, 248, 0.4); }
+
+    .topic-btn.active {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
+    }
+
+    .slider-main {
+      flex: 1;
+      max-width: 1150px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .topic-group { display: none; }
+    .topic-group.active { display: block; }
+    .slide { display: none; animation: fadeIn 0.3s ease-in-out; }
+    .slide.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-window {
+      background: var(--code-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+      margin-bottom: 1.5rem;
+    }
+
+    .code-topbar {
+      background: #111a2e;
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .c-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .cd-red { background: #ef4444; }
+    .cd-yellow { background: #f59e0b; }
+    .cd-green { background: #10b981; }
+
+    .c-filename { font-size: 0.75rem; color: #64748b; margin-left: 0.5rem; }
+
+    pre code {
+      display: block;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .kw { color: #c084fc; font-weight: 600; }
+    .inc { color: #f472b6; }
+    .str { color: #4ade80; }
+    .cmt { color: #64748b; font-style: italic; }
+    .fn { color: #38bdf8; }
+    .num { color: #fbbf24; }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .info-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    footer {
+      background: #0b1120;
+      border-top: 1px solid var(--surface-border);
+      padding: 1rem 1.5rem;
+    }
+
+    .controls-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .slide-counter {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .nav-btns { display: flex; gap: 0.5rem; }
+
+    .btn-slide {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid var(--surface-border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-slide:hover:not(:disabled) { background: var(--primary); border-color: var(--primary); }
+    .btn-slide:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    @media (max-width: 768px) {
+      header { padding: 0.6rem 1rem; }
+      .nav-wrapper { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+      .brand-back { align-self: flex-start; }
+      .topic-tabs {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+      }
+      .topic-tabs::-webkit-scrollbar { display: none; }
+      .topic-btn { flex: 0 0 auto; font-size: 0.78rem; padding: 0.45rem 0.8rem; }
+      .slider-main { margin: 1.2rem auto; padding: 0 1rem; }
+      .slide-title { font-size: 1.4rem; }
+      pre code { font-size: 0.78rem; padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ÜST HEADER: 4. Hafta Konu Sekmeleri -->
+  <header>
+    <div class="nav-wrapper">
+      <a href="../index.html" class="brand-back">
+        ← Ana Portala Dön
+      </a>
+
+      <div class="topic-tabs">
+        <button class="topic-btn active" id="tab-btn-1" onclick="switchTopic(1)">
+          1. Yapı (Struct) Mantığı
+        </button>
+        <button class="topic-btn" id="tab-btn-2" onclick="switchTopic(2)">
+          2. İç İçe Yapılar &amp; Diziler
+        </button>
+        <button class="topic-btn" id="tab-btn-3" onclick="switchTopic(3)">
+          3. Pointer &amp; Struct (. vs ->)
+        </button>
+        <button class="topic-btn" id="tab-btn-4" onclick="switchTopic(4)">
+          4. OOP'ye Sözel Giriş
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="slider-main">
+
+    <!-- ======================================================== -->
+    <!-- KONU 1: STRUCT TEMELLERİ (2 Slayt)                       -->
+    <!-- ======================================================== -->
+    <div class="topic-group active" id="topic-group-1">
+
+      <!-- 1.1: Neden Struct? -->
+      <div class="slide active" id="slide-1-1">
+        <span class="slide-badge">Konu 1 / Slayt 1</span>
+        <h2 class="slide-title">Yapı (Struct) Nedir? Neden İhtiyaç Duyarız?</h2>
+        <p class="slide-desc">Diziler sadece <b>aynı türden</b> verileri tutabilir (tümü int, tümü float gibi). Farklı türdeki verileri tek bir mantıksal varlık altında toplamak için <b>struct</b> kullanırız.</p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; margin-bottom:1.5rem;">
+          <div style="background:#111a2e; border:1px solid #ef4444; border-radius:12px; padding:1.2rem;">
+            <h4 style="color:#ef4444; font-size:0.95rem; margin-bottom:0.5rem;">❌ Dağınık ve Karmaşık Değişkenler</h4>
+            <p style="font-size:0.83rem; color:#cbd5e1; line-height:1.5;">
+              <code>string ogrAd = "Ahmet";</code><br>
+              <code>int ogrNo = 221045;</code><br>
+              <code>float ogrOrtalama = 3.42;</code><br><br>
+              <i>100 öğrenci olduğunda 300 ayrı değişken veya 3 ayrı dizi yönetmek imkansız hale gelir!</i>
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border:1px solid #10b981; border-radius:12px; padding:1.2rem;">
+            <h4 style="color:#10b981; font-size:0.95rem; margin-bottom:0.5rem;">✔️ Tek Çatı: Struct (Veri Paketi)</h4>
+            <p style="font-size:0.83rem; color:#cbd5e1; line-height:1.5;">
+              <code>struct Ogrenci {</code><br>
+              &emsp;<code>string ad;</code><br>
+              &emsp;<code>int no;</code><br>
+              &emsp;<code>float ortalama;</code><br>
+              <code>};</code><br>
+              <i>Artık kendi özel veri tipimizi oluşturduk!</i>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">💡 RAM Görünümü</div>
+          <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.6;">
+            Bir struct tanımlandığında, içindeki elemanlar RAM üzerinde <b>birbirini takip eden bitişik bellek bloklarında</b> tek bir paket halinde yerleşir.
+          </p>
+        </div>
+      </div>
+
+      <!-- 1.2: Struct Tanımlama ve Nokta (.) Operatörü -->
+      <div class="slide" id="slide-1-2">
+        <span class="slide-badge">Konu 1 / Slayt 2</span>
+        <h2 class="slide-title">Struct Tanımlama &amp; Nokta (<code>.</code>) Operatörü</h2>
+        <p class="slide-desc">Struct bir kalıptır. Kalıptan nesne türettikten sonra alanlarına <b>nokta (.)</b> operatörü ile erişiriz.</p>
+
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">struct_temel.cpp</span></div>
+          <pre><code><span class="inc">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="cmt">// 1. Yapı Tanımı (Kalıp oluşturma)</span>
+<span class="kw">struct</span> <span class="fn">Ogrenci</span> {
+    string ad;
+    <span class="kw">int</span> no;
+    <span class="kw">float</span> gpa;
+}; <span class="cmt">// &lt;-- Noktalı virgülü UNUTMAYIN!</span>
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="cmt">// 2. Değişken üretme ve değer atama (Nokta operatörü)</span>
+    Ogrenci ogr1;
+    ogr1.ad = <span class="str">"Meliksah"</span>;
+    ogr1.no = <span class="num">101</span>;
+    ogr1.gpa = <span class="num">3.75f</span>;
+
+    <span class="cmt">// Pratik ilk değer atama (Direct Initialization)</span>
+    Ogrenci ogr2 = { <span class="str">"Zeynep"</span>, <span class="num">102</span>, <span class="num">3.90f</span> };
+
+    cout &lt;&lt; ogr1.ad &lt;&lt; <span class="str">" - No: "</span> &lt;&lt; ogr1.no &lt;&lt; <span class="str">" - GPA: "</span> &lt;&lt; ogr1.gpa &lt;&lt; endl;
+    cout &lt;&lt; ogr2.ad &lt;&lt; <span class="str">" - No: "</span> &lt;&lt; ogr2.no &lt;&lt; <span class="str">" - GPA: "</span> &lt;&lt; ogr2.gpa &lt;&lt; endl;
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- KONU 2: İÇ İÇE STRUCT & DİZİLER (2 Slayt)                -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-2">
+
+      <!-- 2.1: İç İçe Struct (Nested Structs) -->
+      <div class="slide active" id="slide-2-1">
+        <span class="slide-badge">Konu 2 / Slayt 1</span>
+        <h2 class="slide-title">İç İçe Yapılar (Nested Structs)</h2>
+        <p class="slide-desc">Bir struct'ın üyesi, daha önce tanımlanmış başka bir struct tipi olabilir. Tıpkı gerçek hayatta bir adresin il ve ilçe barındırması gibi.</p>
+
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">nested_struct.cpp</span></div>
+          <pre><code><span class="kw">struct</span> <span class="fn">Konum</span> {
+    <span class="kw">int</span> x;
+    <span class="kw">int</span> y;
+};
+
+<span class="kw">struct</span> <span class="fn">Rover</span> {
+    string model;
+    <span class="kw">int</span> batarya;
+    Konum koordinat; <span class="cmt">// İç içe yapı</span>
+};
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    Rover merakli;
+    merakli.model = <span class="str">"Curiosity"</span>;
+    merakli.batarya = <span class="num">100</span>;
+    
+    <span class="cmt">// Alt struct elemanına ardışık nokta (.) ile erişilir:</span>
+    merakli.koordinat.x = <span class="num">12</span>;
+    merakli.koordinat.y = <span class="num">-4</span>;
+
+    cout &lt;&lt; merakli.model &lt;&lt; <span class="str">" Konumu: ("</span> 
+         &lt;&lt; merakli.koordinat.x &lt;&lt; <span class="str">", "</span> &lt;&lt; merakli.koordinat.y &lt;&lt; <span class="str">")"</span> &lt;&lt; endl;
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- 2.2: Struct Dizileri -->
+      <div class="slide" id="slide-2-2">
+        <span class="slide-badge">Konu 2 / Slayt 2</span>
+        <h2 class="slide-title">Yapı Dizileri (Array of Structs)</h2>
+        <p class="slide-desc">Birden fazla nesneyi yönetmek için struct tipinde bir dizi tanımlayabilir ve döngüyle kolayca listeleyebiliriz.</p>
+
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">struct_dizisi.cpp</span></div>
+          <pre><code><span class="kw">struct</span> <span class="fn">Urun</span> {
+    string ad;
+    <span class="kw">float</span> fiyat;
+};
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="cmt">// 3 elemanlı Urun dizisi</span>
+    Urun sepet[<span class="num">3</span>] = {
+        { <span class="str">"Direnç 10k"</span>, <span class="num">1.5f</span> },
+        { <span class="str">"Kondansatör"</span>, <span class="num">3.0f</span> },
+        { <span class="str">"STM32 Kartı"</span>, <span class="num">250.0f</span> }
+    };
+
+    cout &lt;&lt; <span class="str">"--- SEPET LISTESI ---"</span> &lt;&lt; endl;
+    <span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; <span class="num">3</span>; i++) {
+        cout &lt;&lt; i + <span class="num">1</span> &lt;&lt; <span class="str">". "</span> &lt;&lt; sepet[i].ad 
+             &lt;&lt; <span class="str">" -&gt; "</span> &lt;&lt; sepet[i].fiyat &lt;&lt; <span class="str">" TL"</span> &lt;&lt; endl;
+    }
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- KONU 3: POINTER & STRUCT İLİŞKİSİ (2 Slayt)              -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-3">
+
+      <!-- 3.1: . vs -> Operatörü -->
+      <div class="slide active" id="slide-3-1">
+        <span class="slide-badge">Konu 3 / Slayt 1</span>
+        <h2 class="slide-title">İki Kritik Sembol: Nokta (<code>.</code>) vs Ok (<code>-&gt;</code>)</h2>
+        <p class="slide-desc">Geçen hafta gördüğümüz pointer mantığını struct'a uygularken C++ bize çok şık bir kısayol sunar.</p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; margin-bottom:1.5rem;">
+          <div style="background:#111a2e; border-top:4px solid #38bdf8; border-radius:12px; padding:1.25rem;">
+            <div style="font-size:1.8rem; margin-bottom:0.4rem;">📍</div>
+            <h4 style="color:#38bdf8; font-size:1.1rem; margin-bottom:0.3rem;">Nokta (<code>.</code>) Operatörü</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+              Elinizdeki şey <b>değişkenin doğrudan kendisi (nesne)</b> ise kullanılır.
+            </p>
+            <div style="background:#070b14; padding:0.5rem; border-radius:6px; font-family:'Fira Code'; font-size:0.8rem; color:#38bdf8; margin-top:0.75rem;">
+              Ogrenci ogr;<br>
+              ogr.ad = "Ali";
+            </div>
+          </div>
+
+          <div style="background:#111a2e; border-top:4px solid #c084fc; border-radius:12px; padding:1.25rem;">
+            <div style="font-size:1.8rem; margin-bottom:0.4rem;">🎯</div>
+            <h4 style="color:#c084fc; font-size:1.1rem; margin-bottom:0.3rem;">Ok (<code>-&gt;</code>) Operatörü</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+              Elinizdeki şey <b>bir bellek adresi (Pointer)</b> ise kullanılır.
+            </p>
+            <div style="background:#070b14; padding:0.5rem; border-radius:6px; font-family:'Fira Code'; font-size:0.8rem; color:#c084fc; margin-top:0.75rem;">
+              Ogrenci* ptr = &amp;ogr;<br>
+              ptr-&gt;ad = "Ali";
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">💡 Ok Operatörünün Matematiksel Eşiti</div>
+          <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.6;">
+            <code>ptr-&gt;ad</code> yazımı, aslında <code>(*ptr).ad</code> yazımının daha okunaklı ve estetik halidir. Önce adrese gider (dereference <code>*</code>), sonra o kutunun içindeki <code>ad</code> alanına erişir.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3.2: Pointer ile Struct Manipülasyonu -->
+      <div class="slide" id="slide-3-2">
+        <span class="slide-badge">Konu 3 / Slayt 2</span>
+        <h2 class="slide-title">Hızlı Kod Örneği: Ok (<code>-&gt;</code>) Operatörü</h2>
+        <p class="slide-desc">Gömülü sistemler ve oyun motorlarında devasa yapıları taşımak yerine sadece adreslerini (pointer) gezdirir ve <code>-&gt;</code> ile okuruz.</p>
+
+        <div class="code-window">
+          <div class="code-topbar"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">struct_pointer.cpp</span></div>
+          <pre><code><span class="kw">struct</span> <span class="fn">SensorVerisi</span> {
+    <span class="kw">int</span> id;
+    <span class="kw">float</span> sicaklik;
+};
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    SensorVerisi s1 = { <span class="num">1</span>, <span class="num">24.5f</span> };
+
+    <span class="cmt">// Struct pointer'ı oluşturup s1'in adresini veriyoruz</span>
+    SensorVerisi* sPtr = &amp;s1;
+
+    <span class="cmt">// Değeri pointer (ok operatörü) üzerinden güncelliyoruz:</span>
+    sPtr-&gt;sicaklik = <span class="num">28.9f</span>;
+
+    <span class="cmt">// Orijinal nesne güncellendi mi?</span>
+    cout &lt;&lt; <span class="str">"s1 Sicaklik: "</span> &lt;&lt; s1.sicaklik &lt;&lt; endl; <span class="cmt">// 28.9 basar!</span>
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- KONU 4: OOP'YE SÖZEL GİRİŞ (3 Slayt)                     -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-4">
+
+      <!-- 4.1: Prosedürel vs Nesne Yönelimli -->
+      <div class="slide active" id="slide-4-1">
+        <span class="slide-badge">Konu 4 / Slayt 1</span>
+        <h2 class="slide-title">Yazılımda Devrim: Prosedürel vs. OOP</h2>
+        <p class="slide-desc">Bugüne kadar C tarzı <b>Prosedürel (İşlemsel)</b> kod yazdık. Peki modern dünyayı yöneten <b>OOP (Nesne Yönelimli Programlama)</b> felsefesi nedir?</p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; margin-top:1rem;">
+          <div style="background:#111a2e; border:1px solid #1e293b; border-radius:12px; padding:1.25rem;">
+            <h4 style="color:#f59e0b; font-size:1.05rem; margin-bottom:0.5rem;">📜 Prosedürel Programlama (C Yaklaşımı)</h4>
+            <p style="font-size:0.85rem; color:#94a3b8; line-height:1.6;">
+              • Program bir tarif listesi gibidir (Adım 1, Adım 2, Adım 3).<br>
+              • <b>Veri</b> ile o veriyi işleyen <b>Fonksiyonlar</b> birbirinden tamamen ayrı dünyalardadır.<br>
+              • Proje büyüdükçe kimin hangi veriyi değiştirdiğini takip etmek zorlaşır.
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border:1px solid #1e293b; border-radius:12px; padding:1.25rem;">
+            <h4 style="color:#10b981; font-size:1.05rem; margin-bottom:0.5rem;">🧱 Nesne Yönelimli Programlama (C++ Yaklaşımı)</h4>
+            <p style="font-size:0.85rem; color:#94a3b8; line-height:1.6;">
+              • Program birbirleriyle konuşan <b>canlı nesneler</b> topluluğudur.<br>
+              • Veri ve o veriye ait fonksiyonlar <b>tek bir kapsülün içine</b> konur.<br>
+              • Kod güvenliği, yeniden kullanılabilirlik ve bakım çok kolaylaşır.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.2: Gerçek Dünyayı Modellemek -->
+      <div class="slide" id="slide-4-2">
+        <span class="slide-badge">Konu 4 / Slayt 2</span>
+        <h2 class="slide-title">Gerçek Dünyayı Kodla Modellemek</h2>
+        <p class="slide-desc">Etrafınızdaki her şeyi iki temel soruyla yazılıma aktarabilirsiniz: <b>"Neyi var?"</b> ve <b>"Ne yapabilir?"</b></p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; margin-bottom:1.5rem;">
+          <div style="background:#111a2e; border-left:4px solid #38bdf8; border-radius:12px; padding:1.2rem;">
+            <h4 style="color:#38bdf8; font-size:1rem; margin-bottom:0.4rem;">1. Özellikler (Attributes / Data)</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+              Nesnenin durumu ve taşıdığı bilgilerdir (Değişkenler).<br><br>
+              <b>Örnek (Rover):</b><br>
+              • Batarya: %80<br>
+              • Konum: (10, 20)<br>
+              • Model: "Perseverance"
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border-left:4px solid #c084fc; border-radius:12px; padding:1.2rem;">
+            <h4 style="color:#c084fc; font-size:1rem; margin-bottom:0.4rem;">2. Davranışlar (Methods / Functions)</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+              Nesnenin yapabildiği eylemlerdir (Fonksiyonlar).<br><br>
+              <b>Örnek (Rover):</b><br>
+              • <code>hareketEt()</code><br>
+              • <code>fotografCek()</code><br>
+              • <code>sarjOl()</code>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">🎯 Ana Felsefe</div>
+          <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.6;">
+            Dışarıdan bir fonksiyon çağırıp <code>roveriHareketEttir(rover)</code> demek yerine, doğrudan nesnenin kendisine emir veririz: <b><code>rover.hareketEt()</code></b>!
+          </p>
+        </div>
+      </div>
+
+      <!-- 4.3: 5. Haftaya Köprü -->
+      <div class="slide" id="slide-4-3">
+        <span class="slide-badge">Konu 4 / Slayt 3</span>
+        <h2 class="slide-title">5. Haftaya Köprü: Struct'tan Sınıfa (Class)</h2>
+        <p class="slide-desc">Gelecek hafta göreceğimiz <b>Class</b> dünyasına adım atarken aklınızda kalması gereken sır.</p>
+
+        <div style="background:#111a2e; border:1px solid var(--surface-border); border-radius:14px; padding:1.5rem; line-height:1.7;">
+          <h4 style="color:#f59e0b; margin-bottom:0.75rem; font-size:1.1rem;">C++'ta Struct ile Class Arasındaki Tek Fark Nedir?</h4>
+          <p style="font-size:0.9rem; color:#cbd5e1;">
+            C++ dilinde <code>struct</code> ile <code>class</code> teknik olarak neredeyse ikiz kardeştir! İkisi de hem değişken hem fonksiyon tutabilir.<br><br>
+            Aralarındaki tek fark <b>Güvenlik Duvarıdır (Erişim Belirteci)</b>:
+          </p>
+          <ul style="margin-left:1.5rem; margin-top:0.5rem; font-size:0.86rem; color:#94a3b8;">
+            <li><b>Struct:</b> İçindeki her şey varsayılan olarak herkese <b>açıktır (public)</b>. Herkes istediği gibi değiştirebilir.</li>
+            <li><b>Class:</b> İçindeki her şey varsayılan olarak dışarıya <b>kapalıdır (private)</b>. Veriyi korur, kapsüller (Encapsulation).</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ALT KONTROL ÇUBUĞU -->
+  <footer>
+    <div class="controls-wrapper">
+      <span class="slide-counter" id="slide-num">Konu 1 • Slayt 1 / 2</span>
+      <div class="nav-btns">
+        <button class="btn-slide" id="btn-prev" onclick="changeSlide(-1)" disabled>← Önceki Slayt</button>
+        <button class="btn-slide" id="btn-next" onclick="changeSlide(1)">Sonraki Slayt →</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let activeTopic = 1;
+    let currentSlide = 1;
+    const topicSlideCounts = {
+      1: 2, // Struct Mantığı
+      2: 2, // İç İçe Yapılar & Diziler
+      3: 2, // Pointer & Struct (. vs ->)
+      4: 3  // OOP'ye Sözel Giriş
+    };
+
+    function switchTopic(topicNum) {
+      activeTopic = topicNum;
+      currentSlide = 1;
+
+      document.querySelectorAll('.topic-btn').forEach((btn) => {
+        btn.classList.remove('active');
+      });
+      const activeBtn = document.getElementById(`tab-btn-${topicNum}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.querySelectorAll('.topic-group').forEach((group) => {
+        group.classList.remove('active');
+      });
+      const activeGroup = document.getElementById(`topic-group-${topicNum}`);
+      if (activeGroup) activeGroup.classList.add('active');
+
+      updateSlideView();
+    }
+
+    function updateSlideView() {
+      const totalSlides = topicSlideCounts[activeTopic] || 1;
+
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${activeTopic}-${i}`);
+        if (slide) {
+          slide.classList.toggle('active', i === currentSlide);
+        }
+      }
+
+      document.getElementById('slide-num').innerText = `Konu ${activeTopic} • Slayt ${currentSlide} / ${totalSlides}`;
+      document.getElementById('btn-prev').disabled = (currentSlide === 1);
+      document.getElementById('btn-next').disabled = (currentSlide === totalSlides);
+    }
+
+    function changeSlide(direction) {
+      const totalSlides = topicSlideCounts[activeTopic] || 1;
+      const target = currentSlide + direction;
+      if (target >= 1 && target <= totalSlides) {
+        currentSlide = target;
+        updateSlideView();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+      }
+    });
+  </script>
+
+</body>
+</html>

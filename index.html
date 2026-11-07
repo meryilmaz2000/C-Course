@@ -1129,10 +1129,10 @@
                 </div>
               </td>
               <td>
-                <div class="btn-row">
-                  <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 4</a>
-                  <a href="#hafta-4" class="btn btn-accent">🎯 Alıştırmalar</a>
-                </div>
+				<div class="btn-row">
+				  <a href="slides/ders4.html" target="_blank" class="btn btn-primary">📑 Slayt 4</a>
+				  <a href="#hafta-4" class="btn btn-accent">🎯 Alıştırmalar</a>
+				</div>
               </td>
             </tr>
 
@@ -1401,16 +1401,80 @@
         </div>
       </div>
 
-      <!-- HAFTA 4 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-4" style="opacity: 0.75;">
-        <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
+<!-- HAFTA 4 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-4">
+        <div class="exercise-week-header">
           <div class="exercise-week-title">
             <span>📌 4. Hafta Alıştırmaları</span>
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Yapılar, İç İçe Yapılar)</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Yapılar, İç İçe Yapılar &amp; Ok Operatörü)</span>
           </div>
-          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
-            ⏳ Dersten Önce Yayınlanacak
-          </span>
+          <span class="exercise-week-date">12 Kasım 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <!-- Görev 4.1 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Kitap Kayıt Modeli</h4>
+              <p class="exercise-desc">Temel struct yapısını tanımlayarak nokta (.) operatörü ile farklı veri tiplerini tek çatı altında yönetin.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta4_1', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 4.2 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">İç İçe İHA Telemetrisi</h4>
+              <p class="exercise-desc">Koordinat ve Drone yapılarını iç içe (nested) kurgulayarak irtifa ve batarya takibi gerçekleştirin.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta4_2', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 4.3 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.3</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Ok (->) Operatörü &amp; Pointer</h4>
+              <p class="exercise-desc">Struct pointerı kullanarak nesnenin alanlarına ok operatörüyle erişip bellekte doğrudan güncelleme yapın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta4_3', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 4.4 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 4.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">Personel Havuzu &amp; Filtre</h4>
+              <p class="exercise-desc">Struct dizisi üzerinde döngü kurarak toplam gideri, ortalamayı ve en yüksek maaşlı personeli analiz edin.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta4_4', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1462,15 +1526,15 @@
 			</div>
 
           <!-- Faz 3 -->
-          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
-            <div>
-              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">3. HAFTA</span>
-              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 3</h4>
-            </div>
-            <a href="docs/rover_faz3.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
-              📄 FAZ-3 (PDF)
-            </a>
-          </div>
+			<div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; border-color: rgba(56, 189, 248, 0.35); gap: 0.75rem;">
+			  <div>
+				<span class="exercise-badge" style="color:var(--accent); display:inline-block; margin-bottom: 0.35rem;">3. HAFTA</span>
+				<h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 3</h4>
+			  </div>
+			  <a href="docs/rover_faz3.pdf" target="_blank" class="btn btn-primary" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+				📄 FAZ-3 (PDF) ↗
+			  </a>
+			</div>
 
           <!-- Faz 4 -->
           <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
@@ -1971,6 +2035,85 @@ int main() {
 
     return 0;
 }`,
+hafta4_1: `/* GOREV 4.1 : Kitap Kayit Sistemi (Temel Struct) */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// TODO 1: Kitap struct yapisini tanimlayiniz (baslik, yazar, sayfaSayisi, fiyat)
+
+
+int main() {
+    // TODO 2: Bir nesneyi nokta (.) ile, digerini { ... } ile tanimlayiniz.
+    
+    // TODO 3: Bilgileri ekrana yazdiriniz.
+
+    return 0;
+}`,
+
+      hafta4_2: `/* GOREV 4.2 : Ic Ice Yapilar ile Drone Telemetrisi */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// TODO 1: Koordinat struct'ini tanimlayiniz (float x, y, z)
+
+// TODO 2: Drone struct'ini tanimlayiniz (string model, int batarya, Koordinat konum)
+
+int main() {
+    // TODO 3: Drone olusturup z irtifasini 50 birim artiriniz ve ekrana basiniz.
+
+    return 0;
+}`,
+
+      hafta4_3: `/* GOREV 4.3 : Struct Pointeri ve Ok (->) Operatoru */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Karakter {
+    string isim;
+    int can;
+    int kalkan;
+};
+
+int main() {
+    Karakter kahraman = { "Savasci", 100, 50 };
+
+    // TODO 1: Karakter* tipinde bir pointer tanimlayip kahraman'in adresini veriniz.
+
+    // TODO 2: Yalnizca ok (->) operatorunu kullanarak kalkanı 20 azaltip cani 10 artiriniz.
+
+    // TODO 3: Orijinal degiskenin guncellendigini ekrana basarak dogrulayiniz.
+
+    return 0;
+}`,
+
+      hafta4_4: `/* GOREV 4.4 : Personel Veri Havuzu & Maas Filtreleme (Challenge) */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Calisan {
+    int id;
+    string ad;
+    string departman;
+    double maas;
+};
+
+int main() {
+    const int KAPASITE = 4;
+    // TODO 1: 4 elemanli Calisan dizisi olusturunuz.
+
+    // TODO 2: Dongu kurarak toplam gideri, ortalamayi ve en yuksek maasli calisani bulunuz.
+
+    return 0;
+}`,
+
       default: `// IEEE Hacettepe - C++ Egitimi Gorev Sablonu
 #include <iostream>
 
