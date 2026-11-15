@@ -1153,10 +1153,10 @@
                 </div>
               </td>
               <td>
-                <div class="btn-row">
-                  <a href="#" class="btn btn-primary btn-disabled">📑 Slayt 5</a>
-                  <a href="#hafta-5" class="btn btn-accent">🎯 Alıştırmalar</a>
-                </div>
+				<div class="btn-row">
+				  <a href="slides/ders5.html" target="_blank" class="btn btn-primary">📑 Slayt 5</a>
+				  <a href="#hafta-5" class="btn btn-accent">🎯 Alıştırmalar</a>
+				</div>
               </td>
             </tr>
           </tbody>
@@ -1169,8 +1169,31 @@
       <div class="section-head">
         <h3 class="section-title">🎯 Haftalık Alıştırmalar ve Görevler</h3>
         <p class="section-desc">Her hafta için hazırlanan alıştırma şablonlarını kopyalayıp doğrudan tarayıcı üzerinden online derleyicide veya Dev-C++ üzerinden çalıştırabilirsiniz. TODO kısımlarını doldurarak beklenen OUTPUT'u elde etmeye çalışabilirsiniz.</p>
-      </div>
+	  </div>
+<div style="
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.95), rgba(19, 29, 53, 0.95));
+  border: 1px solid #1e293b;
+  border-left: 3px solid #38bdf8;
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1.5rem;
+">
+  <div style="display: flex; align-items: center; gap: 0.75rem;">
+    <span style="font-size: 1.1rem;">💡</span>
+    <span style="color: #cbd5e1; font-size: 0.88rem;">
+      Görevleri denedikten sonra tüm haftaların <b>referans C++ çözümlerini</b> buradan inceleyebilirsiniz.
+    </span>
+  </div>
 
+  <button onclick="openSolutionsModal()" class="btn btn-accent" style="cursor: pointer; font-size: 0.82rem; padding: 0.5rem 1rem;">
+    🔑 Tüm Alıştırma Çözümleri
+  </button>
+</div>
       <!-- HAFTA 1 ALIŞTIRMALARI -->
       <div class="exercise-week-container" id="hafta-1">
         <div class="exercise-week-header">
@@ -1478,16 +1501,80 @@
         </div>
       </div>
 
-      <!-- HAFTA 5 ALIŞTIRMALARI -->
-      <div class="exercise-week-container" id="hafta-5" style="opacity: 0.75;">
-        <div class="exercise-week-header" style="margin-bottom: 0; border-bottom: none;">
+<!-- HAFTA 5 ALIŞTIRMALARI -->
+      <div class="exercise-week-container" id="hafta-5">
+        <div class="exercise-week-header">
           <div class="exercise-week-title">
             <span>📌 5. Hafta Alıştırmaları</span>
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Classlar, Erişim Belirteçleri, Inheritance)</span>
+            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:normal;">(Class, Kapsülleme, :: Operatörü, Constructor/Destructor &amp; Kalıtım)</span>
           </div>
-          <span class="exercise-week-date" style="display:flex; align-items:center; gap:0.5rem; color:#f59e0b;">
-            ⏳ Dersten Önce Yayınlanacak
-          </span>
+          <span class="exercise-week-date">19 Kasım 2026</span>
+        </div>
+
+        <div class="exercise-grid-scroll">
+          <!-- Görev 5.1 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.1</span>
+                <span class="diff-badge diff-easy">Kolay</span>
+              </div>
+              <h4 class="exercise-title">Akıllı Termostat Kontrolcüsü</h4>
+              <p class="exercise-desc">private/public erişim belirleyicileri ve :: operatörü ile güvenli sıcaklık sınırlarını koruyan bir sınıf yazın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta5_1', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 5.2 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.2</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Uçuş Kara Kutu (BlackBox)</h4>
+              <p class="exercise-desc">Constructor ve Destructor yaşam döngüsünü kullanarak uçuş kayıtlarını otomatik başlatıp mühürleyin.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta5_2', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 5.3 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.3</span>
+                <span class="diff-badge diff-med">Orta</span>
+              </div>
+              <h4 class="exercise-title">Otonom Araç Filosu Kalıtımı</h4>
+              <p class="exercise-desc">Arac temel sınıfından ElektrikliArac sınıfını türeterek protected üyeler ve miras yapısını uygulayın.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta5_3', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
+
+          <!-- Görev 5.4 -->
+          <div class="exercise-card">
+            <div>
+              <div class="card-top">
+                <span class="exercise-badge">GÖREV 5.4</span>
+                <span class="diff-badge diff-hard">Meydan Okuma</span>
+              </div>
+              <h4 class="exercise-title">OOP Rover Sondaj Modülü</h4>
+              <p class="exercise-desc">Constructor zinciri, termal koruma, enerji yönetimi ve kalıtımı birleştirerek Rover alt sistemi geliştirin.</p>
+            </div>
+            <div class="exercise-actions">
+              <button onclick="copyTemplateCode('hafta5_4', this)" class="btn btn-copy">📋 Kodu Kopyala</button>
+              <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" class="btn btn-compiler">🚀 Çöz</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1536,27 +1623,29 @@
 			  </a>
 			</div>
 
-          <!-- Faz 4 -->
-          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
-            <div>
-              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">4. HAFTA</span>
-              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 4</h4>
-            </div>
-            <a href="docs/rover_faz4.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
-              📄 FAZ-4 (PDF)
-            </a>
-          </div>
 
-          <!-- Faz 5 -->
-          <div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; gap: 0.75rem; opacity: 0.8;">
-            <div>
-              <span class="exercise-badge" style="display:inline-block; margin-bottom: 0.35rem;">5. HAFTA</span>
-              <h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 5</h4>
-            </div>
-            <a href="docs/rover_faz5.pdf" target="_blank" class="btn btn-primary btn-disabled" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
-              📄 FAZ-5 (PDF)
-            </a>
-          </div>
+
+			<!-- FAZ 4 KARTI (AKTİF) -->
+			<div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; border-color: rgba(56, 189, 248, 0.35); gap: 0.75rem;">
+			  <div>
+				<span class="exercise-badge" style="color:var(--accent); display:inline-block; margin-bottom: 0.35rem;">4. HAFTA</span>
+				<h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 4</h4>
+			  </div>
+			  <a href="docs/rover_faz4_yonerge.pdf" target="_blank" class="btn btn-primary" style="justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+				📄 FAZ-4 (PDF) ↗
+			  </a>
+			</div>
+
+			<!-- FAZ 5 KARTI (AKTİF - FİNAL) -->
+			<div class="exercise-card" style="min-height: auto; padding: 1rem; text-align: center; border-color: rgba(16, 185, 129, 0.45); gap: 0.75rem;">
+			  <div>
+				<span class="exercise-badge" style="color:#10b981; display:inline-block; margin-bottom: 0.35rem;">5. HAFTA (FİNAL)</span>
+				<h4 style="font-size: 1rem; color: #fff; font-weight: 700;">Faz 5</h4>
+			  </div>
+			  <a href="docs/rover_faz5_yonerge.pdf" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #059669, #10b981); border-color:#10b981; justify-content:center; padding: 0.45rem 0.6rem; font-size: 0.8rem;">
+				🚀 FAZ-5 (PDF) ↗
+			  </a>
+			</div>
 
         </div>
       </div>
@@ -2113,6 +2202,95 @@ int main() {
 
     return 0;
 }`,
+hafta5_1: `/* GOREV 5.1 : Akilli Iklimlendirme Kontrolcusu (Class, Kapsulleme & :: Operatoru) */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Termostat {
+private:
+    string odaAdi;
+    float hedefSicaklik;
+    bool klimaAcikMi;
+
+public:
+    // TODO 1: Metot imzalarini yaziniz (kurulumYap, sicaklikAyarla, dereceDegistir, durumRaporu)
+};
+
+// TODO 2: Sinif disinda '::' operatoru ile metot govdelerini yaziniz (Guvenli aralik: 16.0 - 30.0 C).
+
+int main() {
+    Termostat labKlima;
+
+    // TODO 3: Kurulumu "E4-Lab" ve 22.0 C ile yapiniz, 35.0 C deneyiniz, +2.5 C artirip rapor basiniz.
+
+    return 0;
+}`,
+
+      hafta5_2: `/* GOREV 5.2 : Ucus Kara Kutu Kayit Modulu (Constructor & Destructor) */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class KaraKutu {
+private:
+    string ucusKodu;
+    int kayitSayisi;
+    bool oturumAcik;
+
+public:
+    // TODO 1: KaraKutu(string kod), ~KaraKutu() ve olayKaydet(string olay) imzalarini yaziniz.
+};
+
+// TODO 2: Sinif disinda '::' ile Constructor, Destructor ve olayKaydet govdelerini yaziniz.
+
+int main() {
+    cout << "=== KULE SISTEMI BASLATILDI ===" << endl;
+
+    // TODO 3: "ANK-01" nesnesi olusturup olay kaydediniz ve ic blokta "TEST-99" yasam dongusunu test ediniz.
+
+    return 0;
+}`,
+
+      hafta5_3: `/* GOREV 5.3 : Otonom Arac Filosu (Inheritance & protected Erisimi) */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// TODO 1: Arac (Base Class) sinifini tanimlayiniz (protected: plaka, toplamKm)
+
+// TODO 2: ElektrikliArac : public Arac (Derived Class) sinifini tanimlayiniz (private: bataryaYuzdesi)
+
+// TODO 3: Metot govdelerini '::' ile yaziniz (Her 10 km icin %2 sarj tuketimi).
+
+int main() {
+    ElektrikliArac teslimatAraci;
+
+    // TODO 4: Plaka ve batarya tanimlayip 100 km ve 200 km surus testleri yapiniz.
+
+    return 0;
+}`,
+
+      hafta5_4: `/* GOREV 5.4 : OOP Rover Sondaj Modulu (Challenge) */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// TODO 1: RoverModulu (Base Class) sinifini tanimlayiniz (protected: modulAdi, enerjiYuzdesi, aktifMi)
+
+// TODO 2: SondajKolu : public RoverModulu (Derived Class) sinifini tanimlayiniz (private: toplananNumune, matkapSicakligi)
+
+// TODO 3: Constructor zinciri ve metot govdelerini '::' ile yaziniz (Kazi: %15 enerji, +35 C isi; Limit: 80 C).
+
+int main() {
+    // TODO 4: "Geolojik-Matkap-01" (%60 enerji) olusturup guc, kazi ve sogutma senaryosunu test ediniz.
+
+    return 0;
+}`,
 
       default: `// IEEE Hacettepe - C++ Egitimi Gorev Sablonu
 #include <iostream>
@@ -2166,6 +2344,810 @@ int main() {
       });
     }
   </script>
+	<!-- ==================== ALIŞTIRMA ÇÖZÜMLERİ MODALI ==================== -->
+<style>
+  .sol-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 7, 18, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    padding: 1.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .sol-modal-overlay.active { display: flex; }
 
+  .sol-modal-box {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    max-width: 1020px;
+    width: 100%;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+    overflow: hidden;
+  }
+
+  .sol-modal-header {
+    flex-shrink: 0;
+    padding: 1.15rem 1.5rem;
+    background: #131d35;
+    border-bottom: 1px solid #1e293b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sol-close-btn {
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .sol-close-btn:hover { color: #fff; background: #ef4444; border-color: #ef4444; }
+
+  .sol-tabs {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.5rem;
+    background: #0b1120;
+    border-bottom: 1px solid #1e293b;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .sol-tabs::-webkit-scrollbar { height: 4px; }
+  .sol-tabs::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+  .sol-tab-btn {
+    flex-shrink: 0;
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .sol-tab-btn:hover { color: #fff; border-color: #38bdf8; }
+  .sol-tab-btn.active {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: #fff;
+    border-color: #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+  }
+
+  .sol-modal-body {
+    flex: 1;
+    min-height: 0;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: block; /* Kartların ezilmesini engeller */
+  }
+
+  .sol-item {
+    background: #030712;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  }
+  .sol-item:last-child { margin-bottom: 0; }
+
+  .sol-item-top {
+    background: #111a2e;
+    padding: 0.7rem 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .sol-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sol-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .sol-dot-r { background: #ef4444; }
+  .sol-dot-y { background: #f59e0b; }
+  .sol-dot-g { background: #10b981; margin-right: 0.35rem; }
+
+  .sol-item-title { font-size: 0.9rem; font-weight: 700; color: #38bdf8; }
+
+  .sol-copy-btn {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .sol-copy-btn:hover { background: #10b981; color: #fff; border-color: #10b981; }
+
+  .sol-pre {
+    margin: 0;
+    padding: 1.2rem 1.35rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.83rem;
+    line-height: 1.65;
+    color: #e2e8f0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* C++ Renklendirme Sınıfları */
+  .cpp-inc { color: #f472b6; font-weight: 500; }
+  .cpp-kw  { color: #c084fc; font-weight: 600; }
+  .cpp-fn  { color: #38bdf8; }
+  .cpp-str { color: #4ade80; }
+  .cpp-num { color: #fbbf24; }
+  .cpp-cmt { color: #64748b; font-style: italic; }
+</style>
+
+<div class="sol-modal-overlay" id="solutionsModal" onclick="if(event.target===this) closeSolutionsModal()">
+  <div class="sol-modal-box">
+    <div class="sol-modal-header">
+      <div>
+        <h3 style="color:#fff; font-size:1.15rem; font-weight:800;">🔑 Programmix V — Alıştırma Çözüm Anahtarı</h3>
+        <p style="color:#94a3b8; font-size:0.8rem; margin-top:2px;">Hafta seçerek tüm görevlerin referans C++ çözümlerini inceleyebilir ve kopyalayabilirsiniz.</p>
+      </div>
+      <button class="sol-close-btn" onclick="closeSolutionsModal()">✕ Kapat</button>
+    </div>
+
+    <div class="sol-tabs">
+      <button class="sol-tab-btn active" onclick="renderSolutionWeek(1, this)">1. Hafta Çözümleri</button>
+      <button class="sol-tab-btn" onclick="renderSolutionWeek(2, this)">2. Hafta Çözümleri</button>
+      <button class="sol-tab-btn" onclick="renderSolutionWeek(3, this)">3. Hafta Çözümleri</button>
+      <button class="sol-tab-btn" onclick="renderSolutionWeek(4, this)">4. Hafta Çözümleri</button>
+      <button class="sol-tab-btn" onclick="renderSolutionWeek(5, this)">5. Hafta Çözümleri</button>
+    </div>
+
+    <div class="sol-modal-body" id="solutionsModalContainer"></div>
+  </div>
+</div>
+
+<script>
+  const allExerciseSolutions = {
+    1: [
+      {
+        title: "Görev 1.1: Kullanıcı ile Etkileşim",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string ad, soyad;
+    int yas;
+    float kilo;
+
+    cout << "Adinizi giriniz: "; cin >> ad;
+    cout << "Soyadinizi giriniz: "; cin >> soyad;
+    cout << "Yasinizi giriniz: "; cin >> yas;
+    cout << "Kilonuzu giriniz: "; cin >> kilo;
+
+    cout << "------------------------------\\n";
+    cout << "Ad Soyad : " << ad << " " << soyad << "\\n";
+    cout << "Yas      : " << yas << "\\n";
+    cout << "Kilo     : " << kilo << " kg\\n";
+    return 0;
+}`
+      },
+      {
+        title: "Görev 1.2: Sıcaklığa Göre Motor Kontrolü",
+        code: `#include <iostream>
+using namespace std;
+
+int main() {
+    float sicaklik;
+    cout << "Sensor Sicaklik Degerini Giriniz (C): ";
+    cin >> sicaklik;
+
+    if (sicaklik > 70)
+        cout << "Motorlar hizli calissin" << endl;
+    else if (sicaklik >= 50 && sicaklik <= 70)
+        cout << "Motorlar normal calissin" << endl;
+    else
+        cout << "Motorlar dursun" << endl;
+
+    return 0;
+}`
+      },
+      {
+        title: "Görev 1.3: Delta ve Kök Analizi",
+        code: `#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    double a, b, c;
+    cout << "a, b ve c katsayilarini giriniz: ";
+    cin >> a >> b >> c;
+
+    double delta = (b * b) - (4 * a * c);
+    cout << "Delta: " << delta << endl;
+
+    if (delta > 0) {
+        double x1 = (-b + sqrt(delta)) / (2 * a);
+        double x2 = (-b - sqrt(delta)) / (2 * a);
+        cout << "Iki gercek kok: x1 = " << x1 << ", x2 = " << x2 << endl;
+    } else if (delta == 0) {
+        cout << "Tek kok: x = " << (-b / (2 * a)) << endl;
+    } else {
+        cout << "Gercek kok yoktur." << endl;
+    }
+    return 0;
+}`
+      },
+      {
+        title: "Görev 1.4: Sayı Tahmin Oyunu",
+        code: `#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(0));
+    int hedef = (rand() % 100) + 1, tahmin = 0, deneme = 0;
+
+    while (tahmin != hedef) {
+        cout << "Tahmininiz (1-100): ";
+        cin >> tahmin;
+        deneme++;
+        if (tahmin < hedef) cout << "Daha BUYUK!\\n";
+        else if (tahmin > hedef) cout << "Daha KUCUK!\\n";
+        else cout << "Tebrikler! " << deneme << ". denemede bildiniz!\\n";
+    }
+    return 0;
+}`
+      }
+    ],
+    2: [
+      {
+        title: "Görev 2.1: Modüler Hesap Makinesi",
+        code: `#include <iostream>
+using namespace std;
+
+float topla(float a, float b) { return a + b; }
+float cikar(float a, float b) { return a - b; }
+float carp(float a, float b)  { return a * b; }
+float bol(float a, float b)   { return (b != 0) ? (a / b) : 0.0f; }
+int modAl(int a, int b)       { return (b != 0) ? (a % b) : 0; }
+
+int main() {
+    int secim; float s1, s2;
+    do {
+        cout << "\\n[1]Topla [2]Cikar [3]Carp [4]Bol [5]Mod [0]Cikis\\nSecim: ";
+        cin >> secim;
+        if (secim == 0) break;
+        cout << "Iki sayi giriniz: "; cin >> s1 >> s2;
+        switch (secim) {
+            case 1: cout << "Sonuc: " << topla(s1, s2) << endl; break;
+            case 2: cout << "Sonuc: " << cikar(s1, s2) << endl; break;
+            case 3: cout << "Sonuc: " << carp(s1, s2) << endl; break;
+            case 4: cout << "Sonuc: " << bol(s1, s2) << endl; break;
+            case 5: cout << "Sonuc: " << modAl((int)s1, (int)s2) << endl; break;
+        }
+    } while (secim != 0);
+    return 0;
+}`
+      },
+      {
+        title: "Görev 2.2: Standart Sapma & Aritmetik Ortalama",
+        code: `#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    const int N = 5;
+    float dizi[N], toplam = 0.0f, varyansToplam = 0.0f;
+
+    cout << N << " adet sayi giriniz: ";
+    for (int i = 0; i < N; i++) {
+        cin >> dizi[i];
+        toplam += dizi[i];
+    }
+    float ort = toplam / N;
+    for (int i = 0; i < N; i++) {
+        varyansToplam += pow(dizi[i] - ort, 2);
+    }
+    cout << "Ortalama: " << ort << " | Standart Sapma: " << sqrt(varyansToplam / N) << endl;
+    return 0;
+}`
+      },
+      {
+        title: "Görev 2.3: Matris Tanımlama ve Yazdırma",
+        code: `#include <iostream>
+using namespace std;
+
+int main() {
+    int matris[3][3];
+    cout << "3x3 matris elemanlarini giriniz:\\n";
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            cin >> matris[i][j];
+
+    cout << "--- MATRIS ---\\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++)
+            cout << matris[i][j] << "\\t";
+        cout << endl;
+    }
+    return 0;
+}`
+      },
+      {
+        title: "Görev 2.4: Simetrik Matris Kontrolü",
+        code: `#include <iostream>
+using namespace std;
+
+const int N = 3;
+bool simetrikMi(int m[][N], int boyut) {
+    for (int i = 0; i < boyut; i++)
+        for (int j = 0; j < boyut; j++)
+            if (m[i][j] != m[j][i]) return false;
+    return true;
+}
+
+int main() {
+    int matris[N][N] = { {1, 2, 3}, {2, 5, 6}, {3, 6, 9} };
+    cout << "Simetrik mi? " << (simetrikMi(matris, N) ? "Evet" : "Hayir") << endl;
+    return 0;
+}`
+      }
+    ],
+    3: [
+      {
+        title: "Görev 3.1: Pointer ile Değer Değişimi & Katlama",
+        code: `#include <iostream>
+using namespace std;
+
+void ikiKatiYap(int* ptr) {
+    if (ptr != nullptr) *ptr *= 2;
+}
+
+void degerDegistir(int* a, int* b) {
+    int gecici = *a;
+    *a = *b;
+    *b = gecici;
+}
+
+int main() {
+    int x = 10, y = 25;
+    ikiKatiYap(&x);
+    degerDegistir(&x, &y);
+    cout << "x: " << x << ", y: " << y << endl;
+    return 0;
+}`
+      },
+      {
+        title: "Görev 3.2: Pointer Aritmetiği ile Dizi Ters Çevirme",
+        code: `#include <iostream>
+using namespace std;
+
+void diziyiTersCevir(int* dizi, int boyut) {
+    int* bas = dizi;
+    int* son = dizi + boyut - 1;
+    while (bas < son) {
+        int temp = *bas;
+        *bas = *son;
+        *son = temp;
+        bas++; son--;
+    }
+}
+
+int main() {
+    int s[5] = {10, 20, 30, 40, 50};
+    diziyiTersCevir(s, 5);
+    for (int i = 0; i < 5; i++) cout << s[i] << " ";
+    return 0;
+}`
+      },
+      {
+        title: "Görev 3.3: En Büyük Elemanın Adresini Döndürme & Sıfırlama",
+        code: `#include <iostream>
+using namespace std;
+
+int* maksimumAdres(int dizi[], int boyut) {
+    int* maxPtr = &dizi[0];
+    for (int i = 1; i < boyut; i++)
+        if (dizi[i] > *maxPtr) maxPtr = &dizi[i];
+    return maxPtr;
+}
+
+int main() {
+    int skorlar[6] = {24, 88, 15, 92, 45, 63};
+    int* enBuyuk = maksimumAdres(skorlar, 6);
+    cout << "En buyuk: " << *enBuyuk << " -> Sifirlaniyor...\\n";
+    *enBuyuk = 0;
+    for (int i = 0; i < 6; i++) cout << skorlar[i] << " ";
+    return 0;
+}`
+      },
+      {
+        title: "Görev 3.4: Pointer ile C-String Uzunluğu ve Sesli Harf Sayımı",
+        code: `#include <iostream>
+using namespace std;
+
+void metinAnalizi(const char* str, int* uzunluk, int* sesli) {
+    *uzunluk = 0; *sesli = 0;
+    while (*str != '\\0') {
+        (*uzunluk)++;
+        char c = *str;
+        if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
+            (*sesli)++;
+        str++;
+    }
+}
+
+int main() {
+    char metin[] = "hacettepe ieee programmix";
+    int uz = 0, ses = 0;
+    metinAnalizi(metin, &uz, &ses);
+    cout << "Uzunluk: " << uz << " | Sesli Harf: " << ses << endl;
+    return 0;
+}`
+      }
+    ],
+    4: [
+      {
+        title: "Görev 4.1: Kitap Kayıt Modeli (Struct & Nokta Operatörü)",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+struct Kitap {
+    string baslik;
+    string yazar;
+    int sayfaSayisi;
+    float fiyat;
+};
+
+int main() {
+    Kitap k1;
+    k1.baslik = "Nutuk"; k1.yazar = "M. K. Ataturk"; k1.sayfaSayisi = 599; k1.fiyat = 120.0f;
+    Kitap k2 = { "C++ Primer", "Stanley Lippman", 976, 450.0f };
+
+    cout << k1.baslik << " - " << k1.yazar << " (" << k1.fiyat << " TL)\\n";
+    cout << k2.baslik << " - " << k2.yazar << " (" << k2.fiyat << " TL)\\n";
+    return 0;
+}`
+      },
+      {
+        title: "Görev 4.2: İç İçe İHA Telemetrisi (Nested Struct)",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+struct Koordinat { float x, y, z; };
+struct Drone { string model; int batarya; Koordinat konum; };
+
+int main() {
+    Drone iha = { "Bayraktar Mini", 92, {39.89f, 32.78f, 120.0f} };
+    iha.konum.z += 50.0f;
+    cout << iha.model << " | Batarya: %" << iha.batarya << " | Irtifa: " << iha.konum.z << "m\\n";
+    return 0;
+}`
+      },
+      {
+        title: "Görev 4.3: Struct Pointerı ve Ok (->) Operatörü",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+struct Karakter { string isim; int can; int kalkan; };
+
+int main() {
+    Karakter kahraman = { "Savasci", 100, 50 };
+    Karakter* ptr = &kahraman;
+
+    ptr->kalkan -= 20;
+    ptr->can += 10;
+
+    cout << kahraman.isim << " -> Can: " << kahraman.can << " | Kalkan: " << kahraman.kalkan << endl;
+    return 0;
+}`
+      },
+      {
+        title: "Görev 4.4: Personel Veri Havuzu & Maaş Filtreleme",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+struct Calisan { int id; string ad; string departman; double maas; };
+
+int main() {
+    Calisan ekip[4] = {
+        {101, "Ahmet", "Yazilim", 62000},
+        {102, "Ayse", "Gomulu", 71000},
+        {103, "Mehmet", "Donanim", 54000},
+        {104, "Selin", "Yapay Zeka", 78000}
+    };
+    double toplam = 0; int maxIdx = 0;
+    for (int i = 0; i < 4; i++) {
+        toplam += ekip[i].maas;
+        if (ekip[i].maas > ekip[maxIdx].maas) maxIdx = i;
+    }
+    cout << "Ortalama Maas: " << (toplam / 4) << " TL\\n";
+    cout << "En Yuksek: " << ekip[maxIdx].ad << " (" << ekip[maxIdx].maas << " TL)\\n";
+    return 0;
+}`
+      }
+    ],
+    5: [
+      {
+        title: "Görev 5.1: Akıllı Termostat Kontrolcüsü (Class & :: Operatörü)",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+class Termostat {
+private:
+    string odaAdi;
+    float hedefSicaklik;
+    bool klimaAcikMi;
+public:
+    void kurulumYap(string ad, float baslangicSicaklik);
+    void sicaklikAyarla(float yeniSicaklik);
+    void dereceDegistir(float fark);
+    void durumRaporu();
+};
+
+void Termostat::kurulumYap(string ad, float baslangicSicaklik) {
+    odaAdi = ad; klimaAcikMi = true;
+    hedefSicaklik = (baslangicSicaklik >= 16.0f && baslangicSicaklik <= 30.0f) ? baslangicSicaklik : 22.0f;
+}
+void Termostat::sicaklikAyarla(float yeniSicaklik) {
+    if (yeniSicaklik >= 16.0f && yeniSicaklik <= 30.0f) hedefSicaklik = yeniSicaklik;
+    else cout << "[UYARI] Guvenli aralik (16-30 C) disina cikilamaz!\\n";
+}
+void Termostat::dereceDegistir(float fark) { sicaklikAyarla(hedefSicaklik + fark); }
+void Termostat::durumRaporu() {
+    cout << "Oda: " << odaAdi << " | Hedef: " << hedefSicaklik << " C | Durum: " << (klimaAcikMi ? "AKTIF" : "KAPALI") << endl;
+}
+
+int main() {
+    Termostat t;
+    t.kurulumYap("E4-Lab", 22.0f);
+    t.sicaklikAyarla(35.0f);
+    t.dereceDegistir(2.5f);
+    t.durumRaporu();
+    return 0;
+}`
+      },
+      {
+        title: "Görev 5.2: Uçuş Kara Kutu Modülü (Constructor & Destructor)",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+class KaraKutu {
+private:
+    string ucusKodu;
+    int kayitSayisi;
+public:
+    KaraKutu(string kod);
+    ~KaraKutu();
+    void olayKaydet(string olay);
+};
+
+KaraKutu::KaraKutu(string kod) {
+    ucusKodu = kod; kayitSayisi = 0;
+    cout << "[KARA KUTU ACILDI] Ucus: " << ucusKodu << endl;
+}
+KaraKutu::~KaraKutu() {
+    cout << "[KARA KUTU MUHURLENDI] Ucus: " << ucusKodu << " | Toplam Kayit: " << kayitSayisi << endl;
+}
+void KaraKutu::olayKaydet(string olay) {
+    kayitSayisi++;
+    cout << "  -> [" << ucusKodu << " #" << kayitSayisi << "]: " << olay << endl;
+}
+
+int main() {
+    KaraKutu ana("ANK-01");
+    ana.olayKaydet("Motorlar ateslendi.");
+    {
+        KaraKutu test("TEST-99");
+        test.olayKaydet("Kalibrasyon tamamlandi.");
+    }
+    return 0;
+}`
+      },
+      {
+        title: "Görev 5.3: Otonom Araç Filosu Kalıtımı (Base & Derived Class)",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+class Arac {
+protected:
+    string plaka;
+    double toplamKm;
+public:
+    void aracTanimla(string p);
+};
+
+class ElektrikliArac : public Arac {
+private:
+    int bataryaYuzdesi;
+public:
+    void bataryaKur(int yuzde);
+    void otonomSurus(double km);
+    void filoRaporu();
+};
+
+void Arac::aracTanimla(string p) { plaka = p; toplamKm = 0.0; }
+void ElektrikliArac::bataryaKur(int yuzde) { bataryaYuzdesi = yuzde; }
+void ElektrikliArac::otonomSurus(double km) {
+    int gereken = (int)((km / 10.0) * 2);
+    if (gereken > bataryaYuzdesi) {
+        cout << "[UYARI] Yetersiz sarj!\\n"; return;
+    }
+    bataryaYuzdesi -= gereken;
+    toplamKm += km;
+    cout << "[SURUS] " << km << " km gidildi. Kalan sarj: %" << bataryaYuzdesi << endl;
+}
+void ElektrikliArac::filoRaporu() {
+    cout << "Plaka: " << plaka << " | Toplam Km: " << toplamKm << " | Batarya: %" << bataryaYuzdesi << endl;
+}
+
+int main() {
+    ElektrikliArac ea;
+    ea.aracTanimla("06 IEEE 2026");
+    ea.bataryaKur(50);
+    ea.otonomSurus(100.0);
+    ea.filoRaporu();
+    return 0;
+}`
+      },
+      {
+        title: "Görev 5.4: OOP Rover Sondaj Modülü (Meydan Okuma)",
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+class RoverModulu {
+protected:
+    string modulAdi;
+    int enerjiYuzdesi;
+    bool aktifMi;
+public:
+    RoverModulu(string ad, int baslangicEnerji);
+    ~RoverModulu();
+    void gucVer(bool durum);
+};
+
+class SondajKolu : public RoverModulu {
+private:
+    int toplananNumune;
+    int matkapSicakligi;
+public:
+    SondajKolu(string ad, int baslangicEnerji);
+    void kaziYap();
+    void sogutmaCalistir();
+    void modulDurumu();
+};
+
+RoverModulu::RoverModulu(string ad, int baslangicEnerji) {
+    modulAdi = ad; enerjiYuzdesi = baslangicEnerji; aktifMi = false;
+}
+RoverModulu::~RoverModulu() {
+    cout << "[KAPATILDI] " << modulAdi << " guvenli moda alindi.\\n";
+}
+void RoverModulu::gucVer(bool durum) { aktifMi = durum; }
+
+SondajKolu::SondajKolu(string ad, int baslangicEnerji) : RoverModulu(ad, baslangicEnerji) {
+    toplananNumune = 0; matkapSicakligi = 25;
+}
+void SondajKolu::kaziYap() {
+    if (!aktifMi) { cout << "[HATA] Modul pasif!\\n"; return; }
+    if (enerjiYuzdesi < 15) { cout << "[HATA] Yetersiz enerji!\\n"; return; }
+    if (matkapSicakligi >= 80) { cout << "[UYARI] Asiri isinma (" << matkapSicakligi << " C)!\\n"; return; }
+    enerjiYuzdesi -= 15; matkapSicakligi += 35; toplananNumune++;
+    cout << "[KAZI] Numune #" << toplananNumune << " alindi! Sicaklik: " << matkapSicakligi << " C\\n";
+}
+void SondajKolu::sogutmaCalistir() {
+    if (enerjiYuzdesi >= 5) { enerjiYuzdesi -= 5; matkapSicakligi = 25; cout << "[SOGUTMA] 25 C'ye dusuruldu.\\n"; }
+}
+void SondajKolu::modulDurumu() {
+    cout << "Modul: " << modulAdi << " | Enerji: %" << enerjiYuzdesi << " | Numune: " << toplananNumune << endl;
+}
+
+int main() {
+    SondajKolu m("Geolojik-Matkap-01", 60);
+    m.gucVer(true);
+    m.kaziYap(); m.kaziYap(); m.kaziYap();
+    m.sogutmaCalistir();
+    m.kaziYap();
+    m.modulDurumu();
+    return 0;
+}`
+      }
+    ]
+  };
+
+  function highlightCpp(raw) {
+    const escaped = raw
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    const tokenRegex = /(\/\/[^\n]*|#include\s+&lt;[^&]*&gt;|#include\s+"[^"]*"|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:int|float|double|char|bool|void|string|struct|class|public|private|protected|if|else|while|do|for|switch|case|break|return|const|using|namespace|std|nullptr|true|false)\b|\b(?:main|cout|cin|endl|sqrt|pow|rand|srand|time)\b|\b\d+(?:\.\d+)?f?\b)/g;
+
+    const keywords = new Set([
+      'int','float','double','char','bool','void','string','struct','class',
+      'public','private','protected','if','else','while','do','for','switch',
+      'case','break','return','const','using','namespace','std','nullptr','true','false'
+    ]);
+    const builtins = new Set(['main','cout','cin','endl','sqrt','pow','rand','srand','time']);
+
+    return escaped.replace(tokenRegex, (match) => {
+      if (match.startsWith('//')) return `<span class="cpp-cmt">${match}</span>`;
+      if (match.startsWith('#include')) return `<span class="cpp-inc">${match}</span>`;
+      if (match.startsWith('"') || match.startsWith("'")) return `<span class="cpp-str">${match}</span>`;
+      if (keywords.has(match)) return `<span class="cpp-kw">${match}</span>`;
+      if (builtins.has(match)) return `<span class="cpp-fn">${match}</span>`;
+      if (/^\d/.test(match)) return `<span class="cpp-num">${match}</span>`;
+      return match;
+    });
+  }
+
+  function openSolutionsModal() {
+    document.getElementById('solutionsModal').classList.add('active');
+    renderSolutionWeek(1, document.querySelector('.sol-tab-btn'));
+  }
+
+  function closeSolutionsModal() {
+    document.getElementById('solutionsModal').classList.remove('active');
+  }
+
+  function renderSolutionWeek(week, btnEl) {
+    document.querySelectorAll('.sol-tab-btn').forEach(b => b.classList.remove('active'));
+    if (btnEl) btnEl.classList.add('active');
+
+    const container = document.getElementById('solutionsModalContainer');
+    const list = allExerciseSolutions[week] || [];
+    container.innerHTML = list.map((item, idx) => `
+      <div class="sol-item">
+        <div class="sol-item-top">
+          <div class="sol-title-wrap">
+            <span class="sol-dot sol-dot-r"></span>
+            <span class="sol-dot sol-dot-y"></span>
+            <span class="sol-dot sol-dot-g"></span>
+            <span class="sol-item-title">${item.title}</span>
+          </div>
+          <button class="sol-copy-btn" onclick="copySolutionCode(${week}, ${idx}, this)">📋 Çözümü Kopyala</button>
+        </div>
+        <pre class="sol-pre"><code>${highlightCpp(item.code)}</code></pre>
+      </div>
+    `).join('');
+    container.scrollTop = 0;
+  }
+
+  function copySolutionCode(week, idx, btn) {
+    const code = allExerciseSolutions[week][idx].code;
+    navigator.clipboard.writeText(code).then(() => {
+      const oldText = btn.innerText;
+      btn.innerText = "✔️ Kopyalandı!";
+      setTimeout(() => btn.innerText = oldText, 1800);
+    });
+  }
+</script>
 </body>
 </html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ders 5: Class, :: Operatörü &amp; Kalıtım | IEEE Hacettepe</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --surface: #0f172a;
+      --surface-card: #131d35;
+      --surface-border: #1e293b;
+      --primary: #0284c7;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --code-bg: #030712;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --purple: #c084fc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    code, pre { font-family: 'Fira Code', monospace; }
+
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .nav-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--surface-border);
+      transition: all 0.2s;
+    }
+
+    .brand-back:hover {
+      color: #fff;
+      border-color: var(--accent);
+      background: rgba(2, 132, 199, 0.15);
+    }
+
+    .topic-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .topic-btn {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid var(--surface-border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .topic-btn:hover { color: #fff; border-color: rgba(56, 189, 248, 0.4); }
+
+    .topic-btn.active {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
+    }
+
+    .slider-main {
+      flex: 1;
+      max-width: 1150px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .topic-group { display: none; }
+    .topic-group.active { display: block; }
+    .slide { display: none; animation: fadeIn 0.3s ease-in-out; }
+    .slide.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-window {
+      background: var(--code-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+      margin-bottom: 1.25rem;
+    }
+
+    .code-topbar {
+      background: #111a2e;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .c-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .cd-red { background: #ef4444; }
+    .cd-yellow { background: #f59e0b; }
+    .cd-green { background: #10b981; }
+
+    .c-filename { font-size: 0.76rem; color: #e2e8f0; margin-left: 0.4rem; font-weight: 600; }
+    .c-tag {
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    pre code {
+      display: block;
+      padding: 1.1rem 1.35rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .kw { color: #c084fc; font-weight: 600; }
+    .inc { color: #f472b6; }
+    .str { color: #4ade80; }
+    .cmt { color: #64748b; font-style: italic; }
+    .fn { color: #38bdf8; }
+    .num { color: #fbbf24; }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 1.15rem 1.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .info-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: #0b1120;
+      border-top: 1px solid var(--surface-border);
+      padding: 1rem 1.5rem;
+    }
+
+    .controls-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .slide-counter {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .nav-btns { display: flex; gap: 0.5rem; }
+
+    .btn-slide {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid var(--surface-border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-slide:hover:not(:disabled) { background: var(--primary); border-color: var(--primary); }
+    .btn-slide:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    @media (max-width: 768px) {
+      header { padding: 0.6rem 1rem; }
+      .nav-wrapper { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+      .brand-back { align-self: flex-start; }
+      .topic-tabs {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+      }
+      .topic-tabs::-webkit-scrollbar { display: none; }
+      .topic-btn { flex: 0 0 auto; font-size: 0.78rem; padding: 0.45rem 0.8rem; }
+      .slider-main { margin: 1.2rem auto; padding: 0 1rem; }
+      .slide-title { font-size: 1.4rem; }
+      pre code { font-size: 0.76rem; padding: 0.9rem; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ÜST HEADER: 5. Hafta Konu Sekmeleri -->
+  <header>
+    <div class="nav-wrapper">
+      <a href="../index.html" class="brand-back">
+        ← Ana Portala Dön
+      </a>
+
+      <div class="topic-tabs">
+        <button class="topic-btn active" id="tab-btn-1" onclick="switchTopic(1)">
+          1. Class, Erişim &amp; :: Operatörü
+        </button>
+        <button class="topic-btn" id="tab-btn-2" onclick="switchTopic(2)">
+          2. Constructor &amp; Destructor
+        </button>
+        <button class="topic-btn" id="tab-btn-3" onclick="switchTopic(3)">
+          3. Kalıtım (Inheritance)
+        </button>
+        <button class="topic-btn" id="tab-btn-4" onclick="switchTopic(4)">
+          4. Bundan Sonra Neler Var?
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="slider-main">
+
+    <!-- ======================================================== -->
+    <!-- KONU 1: CLASS, ERİŞİM BELİRLEYİCİLER & :: OPERATÖRÜ      -->
+    <!-- ======================================================== -->
+    <div class="topic-group active" id="topic-group-1">
+
+      <!-- 1.1: Class ve Erişim Belirleyiciler -->
+      <div class="slide active" id="slide-1-1">
+        <span class="slide-badge">Konu 1 / Slayt 1</span>
+        <h2 class="slide-title">Class Yapısı ve Erişim Belirleyiciler</h2>
+        <p class="slide-desc"><b>Class</b>, verileri (değişkenleri) ve o veriler üzerinde işlem yapan fonksiyonları (metotları) güvenli bir kapsül içinde birleştiren şablondur.</p>
+
+        <div class="grid-3">
+          <div style="background:#111a2e; border-top:4px solid #10b981; border-radius:12px; padding:1.15rem;">
+            <h4 style="color:#10b981; font-size:1rem; margin-bottom:0.4rem;">🔓 public</h4>
+            <p style="font-size:0.84rem; color:#cbd5e1; line-height:1.5;">
+              Herkese açıktır. <code>main()</code> içinden veya dışarıdaki herhangi bir koddan doğrudan erişilebilir.
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border-top:4px solid #ef4444; border-radius:12px; padding:1.15rem;">
+            <h4 style="color:#ef4444; font-size:1rem; margin-bottom:0.4rem;">🔒 private (Varsayılan)</h4>
+            <p style="font-size:0.84rem; color:#cbd5e1; line-height:1.5;">
+              Sadece sınıfın <b>kendi fonksiyonları</b> erişebilir. Dışarıdan <code>nesne.degisken</code> diyerek değiştirilemez.
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border-top:4px solid #f59e0b; border-radius:12px; padding:1.15rem;">
+            <h4 style="color:#f59e0b; font-size:1rem; margin-bottom:0.4rem;">🛡️ protected</h4>
+            <p style="font-size:0.84rem; color:#cbd5e1; line-height:1.5;">
+              Dış dünyaya kapalıdır (<code>private</code> gibidir), ancak bu sınıftan miras alan <b>alt sınıflara (Derived Class)</b> açıktır.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">💡 Neden Veriyi Gizleriz (Encapsulation)?</div>
+          <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.6;">
+            Rover'ın bataryası <code>public</code> olsaydı, yanlışlıkla <code>rover.batarya = -500;</code> yazılabilirdi. Veriyi <code>private</code> yapıp kontrollü bir <code>public</code> fonksiyon üzerinden değiştiririz.
+          </p>
+        </div>
+      </div>
+
+      <!-- 1.2: Scope Resolution (::) Operatörü ve Tek Dosya Düzeni -->
+      <div class="slide" id="slide-1-2">
+        <span class="slide-badge">Konu 1 / Slayt 2</span>
+        <h2 class="slide-title">Sınıf Dışında Metot Yazımı: <code>::</code> Operatörü</h2>
+        <p class="slide-desc">Sınıfın içini kalabalıklaştırmamak için fonksiyon imzalarını sınıf içinde bırakıp, gövdelerini dışarıda <b><code>::</code> (Scope Resolution)</b> ile yazarız.</p>
+
+        <div class="code-window">
+          <div class="code-topbar">
+            <div class="topbar-left"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp</span></div>
+            <span class="c-tag">TEK DOSYA DÜZENİ</span>
+          </div>
+          <pre><code><span class="inc">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="kw">class</span> <span class="fn">Rover</span> {
+<span class="kw">private</span>:
+    <span class="kw">int</span> batarya;
+
+<span class="kw">public</span>:
+    string ad;
+
+    <span class="cmt">// 1. Sınıf içinde sadece fonksiyon imzaları (prototipler) yer alır</span>
+    <span class="kw">void</span> <span class="fn">bataryaAyarla</span>(<span class="kw">int</span> yeniDeger);
+    <span class="kw">void</span> <span class="fn">durumYazdir</span>();
+};
+
+<span class="cmt">// 2. Sınıf dışında '::' operatörü ile fonksiyon gövdeleri yazılır</span>
+<span class="kw">void</span> Rover::<span class="fn">bataryaAyarla</span>(<span class="kw">int</span> yeniDeger) {
+    <span class="kw">if</span> (yeniDeger &gt;= <span class="num">0</span> &amp;&amp; yeniDeger &lt;= <span class="num">100</span>)
+        batarya = yeniDeger;
+    <span class="kw">else</span>
+        cout &lt;&lt; <span class="str">"Gecersiz batarya degeri!"</span> &lt;&lt; endl;
+}
+
+<span class="kw">void</span> Rover::<span class="fn">durumYazdir</span>() {
+    cout &lt;&lt; ad &lt;&lt; <span class="str">" Batarya: %"</span> &lt;&lt; batarya &lt;&lt; endl;
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    Rover r1;
+    r1.ad = <span class="str">"Kasif-1"</span>;
+    <span class="cmt">// r1.batarya = -50; --&gt; DERLEME HATASI! private alana erişilemez.</span>
+    r1.<span class="fn">bataryaAyarla</span>(<span class="num">85</span>);
+    r1.<span class="fn">durumYazdir</span>();
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">🔍 <code>::</code> (Scope Resolution / Kapsam Çözünürlük) Operatörü Nedir?</div>
+          <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.55;">
+            <code>Rover::durumYazdir()</code> ifadesi derleyiciye şunu söyler: <i>"Bu fonksiyon <code>Rover</code> sınıfına aittir; dolayısıyla sınıfın <code>private</code> değişkenlerine erişme yetkisi vardır."</i>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- KONU 2: CONSTRUCTOR & DESTRUCTOR (2 Slayt)               -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-2">
+
+      <!-- 2.1: Constructor ve Destructor Mantığı -->
+      <div class="slide active" id="slide-2-1">
+        <span class="slide-badge">Konu 2 / Slayt 1</span>
+        <h2 class="slide-title">Nesnenin Yaşam Döngüsü: Constructor &amp; Destructor</h2>
+        <p class="slide-desc">Bir nesne bellekte doğarken ve ölürken C++ tarafından <b>otomatik olarak</b> tetiklenen iki özel fonksiyon vardır.</p>
+
+        <div class="grid-2">
+          <div style="background:#111a2e; border-left:4px solid #38bdf8; border-radius:12px; padding:1.25rem;">
+            <h4 style="color:#38bdf8; font-size:1.05rem; margin-bottom:0.5rem;">👶 Constructor (Yapıcı / Kurucu Metot)</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.6;">
+              • Nesne oluşturulduğu anda otomatik çalışır.<br>
+              • <b>Sınıf ile birebir aynı isme</b> sahiptir (<code>Sensor::Sensor</code>).<br>
+              • Dönüş tipi (<code>void</code> bile) <b>yoktur</b>.<br>
+              • Amacı: Değişkenlere güvenli ilk değerleri vermektir.
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border-left:4px solid #c084fc; border-radius:12px; padding:1.25rem;">
+            <h4 style="color:#c084fc; font-size:1.05rem; margin-bottom:0.5rem;">🧹 Destructor (Yıkıcı Metot)</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.6;">
+              • Nesnenin ömrü bittiğinde (fonksiyon/program sonlanırken) otomatik çalışır.<br>
+              • Başına <b>tilda (<code>~</code>)</b> işareti konur: <code>Sensor::~Sensor()</code>.<br>
+              • Parametre almaz, dönüş tipi yoktur.<br>
+              • Amacı: Ayrılan kaynakları/belleği temizlemektir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.2: Constructor & Destructor Kodu (:: ile tek dosyada) -->
+      <div class="slide" id="slide-2-2">
+        <span class="slide-badge">Konu 2 / Slayt 2</span>
+        <h2 class="slide-title">Kod Örneği: Doğum ve Kapanış Anı</h2>
+        <p class="slide-desc">Kurucu ve yıkıcı metotları da sınıf dışında <code>::</code> operatörüyle tanımlayabiliriz.</p>
+
+        <div class="code-window">
+          <div class="code-topbar">
+            <div class="topbar-left"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp</span></div>
+            <span class="c-tag">CTOR &amp; DTOR</span>
+          </div>
+          <pre><code><span class="inc">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="kw">class</span> <span class="fn">Sensor</span> {
+<span class="kw">public</span>:
+    string tip;
+
+    <span class="fn">Sensor</span>(string sensorTipi); <span class="cmt">// Constructor imzası</span>
+    <span class="fn">~Sensor</span>();                  <span class="cmt">// Destructor imzası</span>
+};
+
+<span class="cmt">// Sınıf dışında :: ile tanımlamalar</span>
+Sensor::<span class="fn">Sensor</span>(string sensorTipi) {
+    tip = sensorTipi;
+    cout &lt;&lt; <span class="str">"[ACILDI] "</span> &lt;&lt; tip &lt;&lt; <span class="str">" sensoru aktif!"</span> &lt;&lt; endl;
+}
+
+Sensor::<span class="fn">~Sensor</span>() {
+    cout &lt;&lt; <span class="str">"[KAPANDI] "</span> &lt;&lt; tip &lt;&lt; <span class="str">" guvenle kapatildi."</span> &lt;&lt; endl;
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    cout &lt;&lt; <span class="str">"--- Program Basladi ---"</span> &lt;&lt; endl;
+    Sensor s1(<span class="str">"Lidar"</span>);
+    Sensor s2(<span class="str">"Sicaklik"</span>);
+    cout &lt;&lt; <span class="str">"--- Program Bitiyor ---"</span> &lt;&lt; endl;
+
+    <span class="kw">return</span> <span class="num">0</span>; <span class="cmt">// Önce s2, sonra s1 için Destructor otomatik çalışır!</span>
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- KONU 3: KALITIM / INHERITANCE (2 Slayt)                  -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-3">
+
+      <!-- 3.1: Base Class & Derived Class Mantığı -->
+      <div class="slide active" id="slide-3-1">
+        <span class="slide-badge">Konu 3 / Slayt 1</span>
+        <h2 class="slide-title">Kalıtım (Inheritance): Base &amp; Derived Class</h2>
+        <p class="slide-desc">Ortak özellikleri bir <b>Ana Sınıfta (Base Class)</b> toplayıp yeni sınıflara miras bırakarak kod tekrarını önleriz.</p>
+
+        <div class="grid-2">
+          <div style="background:#111a2e; border-top:4px solid #38bdf8; border-radius:12px; padding:1.25rem;">
+            <h4 style="color:#38bdf8; font-size:1.05rem; margin-bottom:0.4rem;">🏛️ Base Class (Temel / Ata Sınıf)</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+              Tüm alt türlerin sahip olduğu genel özellikleri barındırır.<br><br>
+              <b>Örnek:</b> <code>Arac</code> sınıfı<br>
+              • Özellik: <code>hiz</code><br>
+              • Metot: <code>hizlan()</code>
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border-top:4px solid #10b981; border-radius:12px; padding:1.25rem;">
+            <h4 style="color:#10b981; font-size:1.05rem; margin-bottom:0.4rem;">🚀 Derived Class (Türetilmiş / Alt Sınıf)</h4>
+            <p style="font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+              Ata sınıfın tüm mirasını alır ve üzerine kendine özgü yeni yetenekler ekler.<br><br>
+              <b>Örnek:</b> <code>Drone : public Arac</code><br>
+              • Miras: <code>hiz</code>, <code>hizlan()</code><br>
+              • Yeni Özellik: <code>irtifa</code>, <code>yuksel()</code>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">🔑 <code>protected</code> Burada Devreye Girer!</div>
+          <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.6;">
+            Ata sınıftaki bir değişken <code>private</code> ise miras alan sınıf bile ona erişemez. Ama <code>protected</code> yaparsanız dışarıya kapalı kalır, fakat <b>türetilmiş sınıflar (Derived Class)</b> doğrudan kullanabilir.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3.2: Temel Kalıtım Örneği (Tek dosyada :: ile eksiksiz) -->
+      <div class="slide" id="slide-3-2">
+        <span class="slide-badge">Konu 3 / Slayt 2</span>
+        <h2 class="slide-title">Kod Örneği: Sınıflar Arası Miras (<code>::</code> ile)</h2>
+        <p class="slide-desc">Tek dosya içinde hem <code>Arac</code> hem <code>Drone</code> sınıflarını tanımlayıp gövdelerini <code>::</code> operatörüyle yazıyoruz.</p>
+
+        <div class="code-window">
+          <div class="code-topbar">
+            <div class="topbar-left"><span class="c-dot cd-red"></span><span class="c-dot cd-yellow"></span><span class="c-dot cd-green"></span><span class="c-filename">main.cpp</span></div>
+            <span class="c-tag">INHERITANCE</span>
+          </div>
+          <pre><code><span class="inc">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="cmt">// 1. Base Class (Ana Sınıf)</span>
+<span class="kw">class</span> <span class="fn">Arac</span> {
+<span class="kw">protected</span>:
+    <span class="kw">int</span> hiz = <span class="num">0</span>; <span class="cmt">// Alt sınıflar erişebilir</span>
+<span class="kw">public</span>:
+    <span class="kw">void</span> <span class="fn">hizlan</span>(<span class="kw">int</span> artis);
+};
+
+<span class="cmt">// 2. Derived Class (Arac sınıfından miras alır)</span>
+<span class="kw">class</span> <span class="fn">Drone</span> : <span class="kw">public</span> Arac {
+<span class="kw">public</span>:
+    <span class="kw">int</span> irtifa = <span class="num">0</span>;
+    <span class="kw">void</span> <span class="fn">yuksel</span>(<span class="kw">int</span> metre);
+};
+
+<span class="cmt">// Metot gövdeleri (:: ile)</span>
+<span class="kw">void</span> Arac::<span class="fn">hizlan</span>(<span class="kw">int</span> artis) {
+    hiz += artis;
+    cout &lt;&lt; <span class="str">"Guncel Hiz: "</span> &lt;&lt; hiz &lt;&lt; <span class="str">" km/s"</span> &lt;&lt; endl;
+}
+
+<span class="kw">void</span> Drone::<span class="fn">yuksel</span>(<span class="kw">int</span> metre) {
+    irtifa += metre;
+    cout &lt;&lt; <span class="str">"Irtifa: "</span> &lt;&lt; irtifa &lt;&lt; <span class="str">" m | Yatay Hiz: "</span> &lt;&lt; hiz &lt;&lt; endl;
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    Drone iha;
+    iha.<span class="fn">hizlan</span>(<span class="num">40</span>);  <span class="cmt">// Arac sınıfından gelen miras fonksiyon!</span>
+    iha.<span class="fn">yuksel</span>(<span class="num">100</span>); <span class="cmt">// Drone sınıfının kendi fonksiyonu!</span>
+
+    <span class="kw">return</span> <span class="num">0</span>;
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- KONU 4: BUNDAN SONRA NELER VAR? (2 Slayt)                -->
+    <!-- ======================================================== -->
+    <div class="topic-group" id="topic-group-4">
+
+      <!-- 4.1: C++ Yol Haritası -->
+      <div class="slide active" id="slide-4-1">
+        <span class="slide-badge">Konu 4 / Slayt 1</span>
+        <h2 class="slide-title">Temelleri Attık: Bundan Sonra Neler Var?</h2>
+        <p class="slide-desc">5 haftada C++'ın omurgasını inşa ettiniz. Şimdi kendinizi bir üst seviyeye taşımak için sıradaki duraklar:</p>
+
+        <div class="grid-3">
+          <div style="background:#111a2e; border:1px solid var(--surface-border); border-radius:12px; padding:1.15rem;">
+            <h4 style="color:#38bdf8; font-size:1rem; margin-bottom:0.4rem;">1. İleri OOP &amp; Polymorphism</h4>
+            <p style="font-size:0.83rem; color:#94a3b8; line-height:1.5;">
+              <code>virtual</code> fonksiyonlar, çok biçimlilik (Polymorphism), çoklu dosya (<code>.h</code> / <code>.cpp</code>) mimarisi ve Operator Overloading.
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border:1px solid var(--surface-border); border-radius:12px; padding:1.15rem;">
+            <h4 style="color:#10b981; font-size:1rem; margin-bottom:0.4rem;">2. STL (Standard Template Library)</h4>
+            <p style="font-size:0.83rem; color:#94a3b8; line-height:1.5;">
+              Hazır veri yapıları ve algoritmalar: <code>vector</code>, <code>map</code>, <code>set</code>, <code>stack</code>, <code>queue</code> ve <code>sort()</code>.
+            </p>
+          </div>
+
+          <div style="background:#111a2e; border:1px solid var(--surface-border); border-radius:12px; padding:1.15rem;">
+            <h4 style="color:#c084fc; font-size:1rem; margin-bottom:0.4rem;">3. Modern C++ &amp; Smart Pointers</h4>
+            <p style="font-size:0.83rem; color:#94a3b8; line-height:1.5;">
+              <code>delete</code> unutma derdini bitiren akıllı işaretçiler (<code>unique_ptr</code>, <code>shared_ptr</code>), lambda ifadeleri ve dosya/thread yönetimi.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-title">🧭 Hangi Alana Yönelebilirsiniz?</div>
+          <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.6;">
+            • <b>Gömülü Sistemler &amp; Robotik:</b> STM32, ESP32, Arduino, ROS2 (Robot Operating System)<br>
+            • <b>Oyun Geliştirme:</b> Unreal Engine (Endüstri standardı doğrudan C++ kullanır)<br>
+            • <b>Algoritma &amp; Rekabetçi Programlama:</b> Veri yapıları ve yüksek performanslı problem çözme
+          </p>
+        </div>
+      </div>
+
+      <!-- 4.2: Kapanış & Teşekkür -->
+      <div class="slide" id="slide-4-2">
+        <span class="slide-badge">Konu 4 / Slayt 2</span>
+        <h2 class="slide-title">Programmix V Tamamlandı! 🎉</h2>
+        <p class="slide-desc">5 hafta boyunca gösterdiğiniz azim, sorduğunuz sorular ve yazdığınız her satır kod için teşekkürler.</p>
+
+        <div style="background:linear-gradient(135deg, #0f172a, #132238); border:1px solid rgba(56, 189, 248, 0.35); border-radius:16px; padding:1.75rem; line-height:1.7;">
+          <h4 style="color:var(--accent); font-size:1.15rem; margin-bottom:0.75rem;">Öğrenmenin Altın Kuralı</h4>
+          <p style="font-size:0.92rem; color:#e2e8f0; margin-bottom:1rem;">
+            Programlama sadece slayt okuyarak değil, <b>hata mesajlarıyla boğuşarak ve proje üreterek</b> öğrenilir. Rover projenizi sınıflara (<code>class</code>) dönüştürerek kendi dokunuşlarınızı eklemekten çekinmeyin.
+          </p>
+          <p style="font-size:0.85rem; color:#94a3b8;">
+            Takıldığınız her noktada, proje fikirlerinizde veya kariyer yolculuğunuzda iletişim kanallarımız her zaman açık. Başarılar dileriz!
+          </p>
+        </div>
+
+        <div class="info-card" style="margin-top:1.25rem; text-align:center;">
+          <p style="font-size:0.9rem; color:#fff; font-weight:700;">
+            IEEE Hacettepe Öğrenci Kolu • Programmix V C++ Eğitimi
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ALT KONTROL ÇUBUĞU -->
+  <footer>
+    <div class="controls-wrapper">
+      <span class="slide-counter" id="slide-num">Konu 1 • Slayt 1 / 2</span>
+      <div class="nav-btns">
+        <button class="btn-slide" id="btn-prev" onclick="changeSlide(-1)" disabled>← Önceki Slayt</button>
+        <button class="btn-slide" id="btn-next" onclick="changeSlide(1)">Sonraki Slayt →</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let activeTopic = 1;
+    let currentSlide = 1;
+    const topicSlideCounts = {
+      1: 2, // Class, Erişim & :: Operatörü
+      2: 2, // Constructor & Destructor
+      3: 2, // Kalıtım (Inheritance)
+      4: 2  // Bundan Sonra Neler Var?
+    };
+
+    function switchTopic(topicNum) {
+      activeTopic = topicNum;
+      currentSlide = 1;
+
+      document.querySelectorAll('.topic-btn').forEach((btn) => {
+        btn.classList.remove('active');
+      });
+      const activeBtn = document.getElementById(`tab-btn-${topicNum}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.querySelectorAll('.topic-group').forEach((group) => {
+        group.classList.remove('active');
+      });
+      const activeGroup = document.getElementById(`topic-group-${topicNum}`);
+      if (activeGroup) activeGroup.classList.add('active');
+
+      updateSlideView();
+    }
+
+    function updateSlideView() {
+      const totalSlides = topicSlideCounts[activeTopic] || 1;
+
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${activeTopic}-${i}`);
+        if (slide) {
+          slide.classList.toggle('active', i === currentSlide);
+        }
+      }
+
+      document.getElementById('slide-num').innerText = `Konu ${activeTopic} • Slayt ${currentSlide} / ${totalSlides}`;
+      document.getElementById('btn-prev').disabled = (currentSlide === 1);
+      document.getElementById('btn-next').disabled = (currentSlide === totalSlides);
+    }
+
+    function changeSlide(direction) {
+      const totalSlides = topicSlideCounts[activeTopic] || 1;
+      const target = currentSlide + direction;
+      if (target >= 1 && target <= totalSlides) {
+        currentSlide = target;
+        updateSlideView();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+      }
+    });
+  </script>
+
+</body>
+</html>
